@@ -37,3 +37,12 @@
 - story
 
 전역상태 관리
+
+## github 관리
+화면 또는 기능 개발시 develop-Feat/[기능이름] 으로 브랜치 파서 개발하기 
+
+예시) Feat/login 
+
+- 개발이 엉킬 수 있으니 꼭 push전엔 pull한 뒤 push하기
+
+- push 할 땐 바로 develop브랜치에 하지 않고, 기능개발한 브랜치에 push하기
