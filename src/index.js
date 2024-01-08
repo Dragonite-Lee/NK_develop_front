@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import './index.css';
+// import "./fonts/Font.css"
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

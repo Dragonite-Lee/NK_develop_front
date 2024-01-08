@@ -18,3 +18,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: "nanum_800";
+  src: url("./fonts/NanumSquareNeo-cBd.ttf");
+}
+@font-face {
+  font-family: "nanum_400";
+  src: url("./fonts/NanumSquareNeo-bRg.ttf");
+}
+
+@font-face {
+  font-family: "paybooc_800";
+  src: url("./fonts/paybooc ExtraBold.ttf");
+}
+@font-face {
+  font-family: "paybooc_700";
+  src: url("./fonts/paybooc Bold.ttf");
+}
+@font-face {
+  font-family: "paybooc_500";
+  src: url("./fonts/paybooc Medium.ttf");
+}
