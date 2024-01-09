@@ -12,7 +12,9 @@
 ## 폴더 구조
 📦src  
  ┣ 📂assets  
+ ┣ 📂fonts  
  ┣ 📂components  
+ ┣ 📂container
  ┣ 📂services  
  ┣ 📂store
 
@@ -26,7 +28,7 @@
  
 - assets
 
-이미지 혹은 폰트 파일 관리 (파비콘과 같이 index.html에서 직접 사용하여 컴파일 시 필요없는 이미지를 제외하곤 assets에서 관리)  
+이미지 파일 관리 (파비콘과 같이 index.html에서 직접 사용하여 컴파일 시 필요없는 이미지를 제외하곤 assets에서 관리)  
 
 - components
 
