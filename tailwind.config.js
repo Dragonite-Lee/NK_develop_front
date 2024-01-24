@@ -10,11 +10,10 @@ module.exports = {
       'tablet' : '600px'
     },
     fontFamily: {
-      'nanum_800' : ['nanum_800'],
+      'nanum_700' : ['nanum_700'],
       'nanum_400' : ['nanum_400'],
       'paybooc_500' : ['paybooc_500'],
       'paybooc_700' : ['paybooc_700'],
-      'paybooc_800' : ['paybooc_800'],
     },
     colors: {
       'main1' : '#536FF4',
