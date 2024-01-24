@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import useInput from "../../utils/useInput";
+import { useNavigate } from "react-router-dom";
 
 const roleArray = [
   {
@@ -20,11 +21,19 @@ const roleArray = [
   }
 ]
 
+const dummylogin = {
+  id: "test@test.com",
+  pw: "abcd"
+}
+
+
 const LoginInput = () => {
   const [emailValue, emailHandle] = useInput("");
   const [pwValue, pwhHandler] = useInput("");
 
   const [role, setRole] = useState(roleArray);
+
+  const navigate = useNavigate();
 
   const onClickRoleHandler = (id) => {
     const changeActiveDefault = role.map((item) => {
@@ -35,6 +44,18 @@ const LoginInput = () => {
   
     setRole(changeActiveDefault);
   };
+
+  const onLoginHandler = (id, pw, role) => {
+    if (id === dummylogin.id && pw === dummylogin.pw) {
+      for (let i = 0; i < role.length; i++) {
+        if (role[i].default === true) {
+          sessionStorage.setItem("role", role[i].title);
+        }
+      }
+    };
+    
+    navigate("/");
+  }
 
   return (
     <section className="tablet:w-full desktop:w-[486px] flex justify-center items-center h-[460px] glassWhite">
@@ -80,6 +101,7 @@ const LoginInput = () => {
           />
           <button className={`mt-[30px] font-nanum_700 text-[15px] desktop:w-[282px] tablet:w-[440px] h-[49px] rounded-[30px] text-white 
             ${emailValue !== "" && pwValue !== "" ? " bg-main3 hover:bg-main3/50 active:bg-main2 cursor-pointer" : " bg-grayLight cursor-auto"}` }
+            onClick={() => onLoginHandler(emailValue, pwValue, role)}
           >
             로그인하기
           </button>
