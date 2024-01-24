@@ -7,7 +7,9 @@ module.exports = {
     extend: {},
     screens: {
       'desktop' : '1240px',
-      'tablet' : '600px'
+      'tablet_change' : '768px',
+      'tablet' : '600px',
+      'mobile' : '280px'
     },
     fontFamily: {
       'nanum_700' : ['nanum_700'],

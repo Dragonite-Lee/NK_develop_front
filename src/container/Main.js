@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 const Main = () => {
@@ -7,7 +8,7 @@ const Main = () => {
       <div>
       메인화면
       </div>
-      
+      <Footer />
     </>
    );
 }
