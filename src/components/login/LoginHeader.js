@@ -6,7 +6,7 @@ const LoginHeader = () => {
       <div className="flex items-center gap-7">
         <img src={NKlogo} alt="NK로고" className="w-[70px] h-[70px]" />
         <div>
-          <h1 className="font-nanum_800 text-4xl text-black">
+          <h1 className="font-nanum_700 text-4xl text-black">
             NK에듀
           </h1>
           <h2 className="font-nanum_400 text-xl text-black">
