@@ -7,19 +7,21 @@ module.exports = {
     extend: {},
     screens: {
       'desktop' : '1240px',
-      'tablet' : '600px'
+      'tablet_change' : '768px',
+      'tablet' : '600px',
+      'mobile' : '280px'
     },
     fontFamily: {
-      'nanum_800' : ['nanum_800'],
+      'nanum_700' : ['nanum_700'],
       'nanum_400' : ['nanum_400'],
       'paybooc_500' : ['paybooc_500'],
       'paybooc_700' : ['paybooc_700'],
-      'paybooc_800' : ['paybooc_800'],
     },
     colors: {
       'main1' : '#536FF4',
       'main2' : '#789AF4',
       'main3' : '#88BFFE',
+      'main4' : '#EDF4FC',
       'homework1' : '#E24E4A',
       'homework2' : '#DE6A57',
       'homework3' : '#DB8D5C',
@@ -38,8 +40,9 @@ module.exports = {
       'gray' : '#969699',
       'grayLight' : '#D1D1D6',
       'border' : '#F1F1F5',
-      'white' : '#F9F9FC'
-    }
+      'white' : '#F9F9FC',
+      'whiteTotal' : '#FFFFFF'
+    },
   },
   plugins: [],
 }
