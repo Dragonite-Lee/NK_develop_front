@@ -97,7 +97,7 @@ const Header = () => {
             <div className="font-nanum_400 text-[14px] text-black">
               홍길동 {/* 학생이름 들어갈 예정 */}
             </div>
-            <div className={`font-nanum_700 text-[13px] text-white rounded-[8px] px-[6px] h-[21px] flex items-center justify-center
+            <div className={`font-nanum_700 text-[13px] text-white rounded-[8px] px-[7px] h-[21px] flex items-center justify-center
               ${role === "학생" ? " bg-main1" : role === "선생님" ? " bg-main2" : " bg-main3"}`}
             >
               {role}
