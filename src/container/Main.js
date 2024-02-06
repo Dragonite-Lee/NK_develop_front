@@ -5,7 +5,7 @@ const Main = () => {
   return ( 
     <>
       <Header/>
-      <div>
+      <div className="mainHeight">
       메인화면
       </div>
       <Footer />
