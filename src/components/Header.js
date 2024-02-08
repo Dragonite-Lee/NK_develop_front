@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 
+<<<<<<< HEAD
 import NKlogo from "../assets/NKlogo.png";
 import UserCircle from "../assets/header/UserCircle.png"
 import List from "../assets/header/List.png"
+=======
+
+import NKlogo from "../assets/header/NK_logo.png";
+import UserCircle from "../assets/header/profile.png"
+import List from "../assets/header/List.png"
+import Notice from "../assets/header/notice.png"
+>>>>>>> 4c3c391 (숙제 목록 디자인 적용 중)
 
 const student_route = [
   {
@@ -93,7 +101,12 @@ const Header = () => {
             })}
           </div>
           <div className="mobile:hidden tablet_change:flex items-center justify-between gap-[6px]" >
+<<<<<<< HEAD
             <img src={UserCircle} alt="user" className="w-[25px] h-[25px]" />
+=======
+            <img src={Notice} alt="user" className="w-[25px] h-[25px]" />
+            <img src={UserCircle} alt="user" className="w-[25px] h-[2d5px]" />
+>>>>>>> 4c3c391 (숙제 목록 디자인 적용 중)
             <div className="font-nanum_400 text-[14px] text-black">
               홍길동 {/* 학생이름 들어갈 예정 */}
             </div>
