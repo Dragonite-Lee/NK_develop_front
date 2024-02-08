@@ -57,7 +57,6 @@ const parent_route = [
 
 const Header = () => {
     const role = sessionStorage.getItem("role");
-
     return (
         <header className="headerBorder desktop:px-[222px] tablet_change:px-[40px] mobile:px-[20px] py-[20px] flex items-center justify-between">
           <div className="flex items-center justify-start gap-[8px] h-[35px]">

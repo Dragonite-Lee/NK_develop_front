@@ -42,8 +42,16 @@ body {
   }
 
   .homeworkFilter{
+    width: 90px;
+    height: 28px;
     border-radius: 20px;
-    background: var(--homeworkFilter, linear-gradient(rgba(226, 78, 74, 0.0)));
+    background: rgba(213,213,217,1);
+
+  }
+
+  .divider{
+    border-top: 0.5px solid rgb(232,232,234);
+    width: 100%;
 
   }
 }
