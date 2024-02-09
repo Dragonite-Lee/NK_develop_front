@@ -6,8 +6,6 @@ import ArrowRightBlack from "../../assets/ArrowRightBlack.png"
 import ArrowLeftBlack from "../../assets/ArrowLeftBlack.png"
 
 
-
-
 const Dummy_student = [
     {
         work: '중등 수학 내신반 12월 1주차 테스트 오답풀이',
