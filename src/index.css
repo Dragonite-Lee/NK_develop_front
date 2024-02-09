@@ -56,3 +56,26 @@ body {
   }
 }
 
+  .loginHeight {
+    @media (min-width: 280px) { 
+      min-height: calc(100vh - 268px);
+    };
+    @media (min-width: 600px) { 
+      min-height: calc(100vh - 193px);
+    };
+    @media (min-width: 768px) { 
+      min-height: calc(100vh - 151px);
+    };
+  }
+  .mainHeight {
+    @media (min-width: 280px) { 
+      min-height: calc(100vh - 268px - 75px);
+    };
+    @media (min-width: 600px) { 
+      min-height: calc(100vh - 193px - 75px);
+    };
+    @media (min-width: 768px) { 
+      min-height: calc(100vh - 151px - 75px);
+    };
+  }
+

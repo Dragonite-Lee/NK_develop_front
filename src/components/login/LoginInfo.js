@@ -24,9 +24,13 @@ const LoginInfo = () => {
         </div>
         <div className="mobile:px-[30px] mobile:py-[27px] tablet:px-[34px] tablet:pt-[28px] tablet:pb-[24px] desktop:py-[28px] desktop:w-[282px] desktop:px-[22px] rounded-[20px] bg-management1 text-white h-[156px] w-full flex flex-col justify-between">
           <p className="text-[14px]">경기 안산시 단원구 광덕대로 130 폴리타운 A동 7층</p>
-          <div className="text-[15px] flex justify-end gap-[4px]">
-            <Link href="#">오시는 길</Link>
-            <img src={ArrowRightWhite} alt="ArrowRightWhite" className="w-[19px] h-[19px]" />
+          <div className="text-[15px] flex justify-end">
+            <Link to="https://naver.me/FyenH0Xj" target="_blank">
+              <div className="flex gap-[4px]">
+                오시는 길
+                <img src={ArrowRightWhite} alt="ArrowRightWhite" className="w-[19px] h-[19px]" />
+              </div>
+            </Link>
           </div>
         </div>
       </div>

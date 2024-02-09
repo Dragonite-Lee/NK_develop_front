@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import NKlogo from "../assets/header/NK_logo.png";
 import UserCircle from "../assets/header/profile.png"
 import List from "../assets/header/List.png"
-import Notice from "../assets/header/notice.png"
+import Notice from "../assets/header/Notice.png"
 
 const student_route = [
   {
@@ -94,8 +94,8 @@ const Header = () => {
             })}
           </div>
           <div className="mobile:hidden tablet_change:flex items-center justify-between gap-[6px]" >
-            <img src={Notice} alt="user" className="w-[25px] h-[25px]" />
-            <img src={UserCircle} alt="user" className="w-[25px] h-[2d5px]" />
+            <img src={Notice} alt="user" className="w-[17px] h-[20px]" />
+            <img src={UserCircle} alt="user" className="w-[25px] h-[25px]" />
             <div className="font-nanum_400 text-[14px] text-black">
               홍길동 {/* 학생이름 들어갈 예정 */}
             </div>
