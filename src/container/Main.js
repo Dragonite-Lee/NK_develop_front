@@ -8,14 +8,14 @@ import Homeworklist from "../components/student/HomeworkList"
 
 
 const Main = () => {
-  const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
+  // const navigator = useNavigate();
+  // const refreshToken = getCookie("refreshToken");
   
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    };
-  }, [refreshToken])
+  // useEffect(() => {
+  //   if (!refreshToken) {
+  //     navigator("/");
+  //   };
+  // }, [refreshToken])
 
   return ( 
     <>
