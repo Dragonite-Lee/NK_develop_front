@@ -1,7 +1,9 @@
 import { useState } from "react";
+import axios from "axios";
 
 import useInput from "../../utils/useInput";
 import { useNavigate } from "react-router-dom";
+import { loginApi, onLoginSuccess } from "../../services/loginApi";
 
 const roleArray = [
   {
@@ -21,10 +23,6 @@ const roleArray = [
   }
 ]
 
-const dummylogin = {
-  id: "test@test.com",
-  pw: "abcd"
-}
 
 
 const LoginInput = () => {
@@ -45,16 +43,25 @@ const LoginInput = () => {
     setRole(changeActiveDefault);
   };
 
-  const onLoginHandler = (id, pw, role) => {
-    if (id === dummylogin.id && pw === dummylogin.pw) {
+  const onLoginHandler = async (id, pw, role) => {
+    const data = {
+      "username" : id,
+      "password" : pw
+    };
+
+    await loginApi.login(data).then((response) => {
+      onLoginSuccess(response);
+      
       for (let i = 0; i < role.length; i++) {
         if (role[i].default === true) {
           sessionStorage.setItem("role", role[i].title);
         }
-      }
-    };
+      };
+    }).catch((error) => {
+      console.log("[loginApi Error] : " + error);
+    })
     
-    navigate("/");
+    navigate("/main");
   }
 
   return (
