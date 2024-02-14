@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useState } from 'react';
 import SelectOption from "./SelectOption"
 import SelectClass from "./SelectClass"
 
@@ -10,66 +8,66 @@ import ArrowLeftBlack from "../../assets/ArrowLeftBlack.png"
 
 
 const Dummy_student = [
-    {
-        work: '중등 수학 내신반 12월 1주차 테스트 오답풀이',
-        status: '미완료',
-        name: '이적분 선생님',
-        date: '2023.12.09까지',
-      },
-    {
-      work: '중등 수학 내신반 12월 1주차 공통숙제',
-      status: '완료',
-      name: '김수학 선생님',
+  {
+      work: '중등 수학 내신반 12월 1주차 테스트 오답풀이',
+      status: '미완료',
+      name: '이적분 선생님',
       date: '2023.12.09까지',
     },
-    {
-        work: '중등 수학 내신반 6월 기출풀이',
-        status: '완료',
-        name: '박미분 선생님',
-        date: '2023.12.09까지',
-      },
-      {
-        work: '중등 수학 내신반 11월 4주차 공통숙제',
-        status: '미완료',
-        name: '김수학 선생님',
-        date: '2023.12.09까지',
-      },
-      {
-        work: '중등 수학 내신반 11월 3주차 공통숙제',
-        status: '미완료',
-        name: '김수학 선생님',
-        date: '2023.12.09까지',
-      },
-      {
-        work: '중등 수학 내신반 11월 2주차 공통숙제',
-        status: '완료',
-        name: '김수학 선생님',
-        date: '2023.12.09까지',
-      },
-      {
-        work: '중등 수학 내신반 11월 1주차 테스트 오답풀이',
-        status: '미완료',
-        name: '이적분 선생님',
-        date: '2023.12.09까지',
-      },
-      {
-        work: '중등 수학 내신반 11월 1주차 공통숙제',
-        status: '미완료',
-        name: '김수학 선생님',
-        date: '2023.12.09까지',
-      },
-      {
-        work: '중등 수학 내신반 3월 기출풀이',
-        status: '완료',
-        name: '박미분 선생님',
-        date: '2023.12.09까지',
-      },
-      {
-        work: '중등 수학 내신반 10월 5주차 공통숙제',
-        status: '미완료',
-        name: '김수학 선생님',
-        date: '2023.12.09까지',
-      },  
+  {
+    work: '중등 수학 내신반 12월 1주차 공통숙제',
+    status: '완료',
+    name: '김수학 선생님',
+    date: '2023.12.09까지',
+  },
+  {
+    work: '중등 수학 내신반 6월 기출풀이',
+    status: '완료',
+    name: '박미분 선생님',
+    date: '2023.12.09까지',
+  },
+  {
+    work: '중등 수학 내신반 11월 4주차 공통숙제',
+    status: '미완료',
+    name: '김수학 선생님',
+    date: '2023.12.09까지',
+  },
+  {
+    work: '중등 수학 내신반 11월 3주차 공통숙제',
+    status: '미완료',
+    name: '김수학 선생님',
+    date: '2023.12.09까지',
+  },
+  {
+    work: '중등 수학 내신반 11월 2주차 공통숙제',
+    status: '완료',
+    name: '김수학 선생님',
+    date: '2023.12.09까지',
+  },
+  {
+    work: '중등 수학 내신반 11월 1주차 테스트 오답풀이',
+    status: '미완료',
+    name: '이적분 선생님',
+    date: '2023.12.09까지',
+  },
+  {
+    work: '중등 수학 내신반 11월 1주차 공통숙제',
+    status: '미완료',
+    name: '김수학 선생님',
+    date: '2023.12.09까지',
+  },
+  {
+    work: '중등 수학 내신반 3월 기출풀이',
+    status: '완료',
+    name: '박미분 선생님',
+    date: '2023.12.09까지',
+  },
+  {
+    work: '중등 수학 내신반 10월 5주차 공통숙제',
+    status: '미완료',
+    name: '김수학 선생님',
+    date: '2023.12.09까지',
+  },  
 
   ];
 
@@ -82,7 +80,7 @@ const HomeworkList = () => {
             <SelectClass />
           </p>
         </div>
-        <div className="flex tablet:flex-row mobile:flex-col items-right justify-between w-full tablet:gap-[6px] mobile:gap-[6px] mt-[30px] mb-[12px] font-paybooc_700">
+        <div className="flex tablet:flex-row mobile:flex-col items-right justify-between w-full tablet:gap-[6px] mobile:gap-[6px] mt-[32px] mb-[12px] font-paybooc_700">
           <p className="text-[18px] flex items-center">
           숙제 목록 (15)
           </p>

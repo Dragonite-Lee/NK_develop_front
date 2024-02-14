@@ -5,6 +5,7 @@ import { getCookie } from "../utils/cookie";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Homeworklist from "../components/student/HomeworkList"
+import Notice from "../components/student/NoticeList"
 
 
 const Main = () => {
@@ -21,7 +22,7 @@ const Main = () => {
     <>
       <Header/>
       <div>
-      <Homeworklist />
+      <Notice />
       </div>
       <Footer />
     </>

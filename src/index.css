@@ -34,7 +34,13 @@ body {
   .glassWhite {
     border-radius: 20px;
     background: var(--glass-white, linear-gradient(153deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%));
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(21px);
+  }
+  .glassWhite2 {
+    border-radius: 10px;
+    background: var(--glass-white, linear-gradient(153deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%));
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(21px);
   }
   .headerBorder {
