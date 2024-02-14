@@ -65,11 +65,10 @@ const NoticeNormal= [
 
 ]
 
-const HomeworkList = () => {
+const NoticeList = () => {
 
 	const handleSearch = (query) => {
 		<div className="text-[14px] font-nanum_400">
-			\' query \'로 검색한 결과입니다.
 		</div>
   };
 
