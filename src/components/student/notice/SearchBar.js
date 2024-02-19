@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import Delete from "../../assets/student/Delete.png"
-import MagnifyingGlass from "../../assets/student/MagnifyingGlass.png"
+import Delete from "../../../assets/student/Delete.png"
+import MagnifyingGlass from "../../../assets/student/MagnifyingGlass.png"
 
 const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
@@ -35,6 +35,7 @@ const SearchBar = ({ onSearch }) => {
             src={Delete} className='h-[18px] w-[18px]'
             onClick={Clear}
             style={{ cursor: 'pointer' }}
+            alt="delete"
           />
         )}
         {(query || true) && (
@@ -42,6 +43,7 @@ const SearchBar = ({ onSearch }) => {
             src={MagnifyingGlass} className='h-[22px] w-[22px]'
             onClick={Search}
             style={{ cursor: 'pointer' }}
+            alt="search"
           />
         )}
       </div>

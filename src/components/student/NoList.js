@@ -1,0 +1,128 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { useState } from 'react';
+import SelectOption from "./notice/SelectOption"
+import SelectClass from "./SelectClass"
+import SearchBar from "./notice/SearchBar";
+
+
+import ArrowRightBlack from "../../assets/ArrowRightBlack.png"
+import ArrowLeftBlack from "../../assets/ArrowLeftBlack.png"
+import Speaker from "../../assets/student/Speaker.png"
+
+
+const NoticeImportant= [
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+
+  ];
+
+const NoticeNormal= [
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	{
+		work: '중등 수학 내신반 12월 1주차 숙제 공지',
+		date: '2023.12.09'
+	},
+	
+
+
+]
+
+const NoList = () => {
+
+	const handleSearch = (query) => {
+		<div className="text-[14px] font-nanum_400"></div>
+  };
+
+  return (
+    <section>
+      <div className="px-[22px] py-[18px] tablet:w-[344px] h-[56px] w-full glassWhite flex items-center justify-between">
+        <div className="text-[16px] flex w-full items-center font-paybooc_500">
+          <SelectClass />
+        </div>
+      </div>
+      <div className="w-full mt-[32px] mb-[8px] font-paybooc_700">
+        <div className="text-[18px] flex items-center">
+        우리 반 공지 ({NoticeImportant.length + NoticeNormal.length})
+        </div>
+      </div>
+      {/* 수정예상 */}
+      <div className="w-[300px] h-[40px] glassWhite2 flex justify-end ml-auto mb-[20px]">
+        <div className="text-[13px] flex items-center justify-start px-[12px] py-[7px] w-full font-nanum_400">
+          <SearchBar onSearch={handleSearch} />
+        </div>
+      </div>
+      <div className="w-full mb-[16px]">
+        {NoticeImportant.map((item, index) => (
+          <div key={index} className="justify-between items-center bg-white">
+            <div className="flex items-start gap-[16px] py-[16px] px-[16px]">
+              <img src={Speaker} alt="Speaker" className="w-[20px] h-[20px]" />
+              <div className="text-[14px] font-nanum_700">{item.work}</div>
+              <div className="tablet:text-[13px] mobile:text-[12px] text-gray flex justify-end font-nanum_400 ml-auto ">{item.date}</div>
+            </div>
+            <div className="divider" />
+          </div>
+        ))}
+        {NoticeNormal.map((item, index) => (
+          <div key={index} className="justify-between items-center">
+            <div className="flex items-start gap-[16px] py-[16px] px-[16px]">
+              <div className="text-[14px] font-nanum_700">{item.work}</div>
+              <div className="tablet:text-[13px] mobile:text-[12px] text-gray flex justify-end font-nanum_400 ml-auto ">{item.date}</div>
+            </div>
+            <div className="divider" />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center items-center w-full tablet:gap-[60px] mobile:gap-[30px] text-[12px]">
+        <div className="flex justify-center items-center gap-[3px]">
+          <img src={ArrowLeftBlack} alt="ArrowleftBlack" className="w-[20px] h-[20px]" />
+          <div className="text-grayDark font-nanum_400" >이전</div>
+        </div>
+        <div className="items-center text-grayDark font-nanum_400">2 / 3 페이지</div>
+        <div className="flex justify-center items-center gap-[3px]">
+          <div className="text-grayDark font-nanum_400" >다음</div>
+          <img src={ArrowRightBlack} alt="ArrowRightBlack" className="w-[20px] h-[20px]" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default NoList;

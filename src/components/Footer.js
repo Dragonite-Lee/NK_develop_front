@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import footerLogo from "../assets/NKlogo.png"
-import snsNaver from "../assets/footer/sns_naver.png"
+import snsInsta from "../assets/footer/sns_insta.png"
 import snsBlog from "../assets/footer/sns_blog.png"
 import snsKakao from "../assets/footer/sns_kakao.png"
 
@@ -25,8 +25,8 @@ const Footer = () => {
       </div>
       <div className="tablet:self-auto mobile:self-end">
         <div className="flex items-center justify-end gap-[22px]">
-          <Link  to="https://naver.me/FyenH0Xj" target="_blank">
-            <img src={snsNaver} alt="sns로고" className="w-[24px] h-[24px]" />
+          <Link  to="https://www.instagram.com/nk_study_1204?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+            <img src={snsInsta} alt="sns로고" className="w-[24px] h-[24px]" />
           </Link>
           <Link to="https://blog.naver.com/nkinfinite" target="_blank">
             <img src={snsBlog} alt="sns로고" className="w-[24px] h-[24px]" />
