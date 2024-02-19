@@ -1,19 +1,19 @@
-import { Link } from "react-router-dom";
-
+import { Link, useLocation } from "react-router-dom";
 
 import NKlogo from "../assets/header/NK_logo.png";
 import UserCircle from "../assets/header/profile.png"
 import List from "../assets/header/List.png"
-import Notice from "../assets/header/Notice.png"
+import Bell from "../assets/header/Bell.png"
+import Bell_notice from "../assets/header/Bell_notice.png"
 
 const student_route = [
   {
-    title: "숙제공지",
-    href: "#"
+    title: "우리반 공지",
+    href: "/main/noticelist"
   },
   {
     title: "숙제하기",
-    href: "#"
+    href: "/main/homeworklist"
   },
   {
     title: "선생님과 채팅",
@@ -57,9 +57,11 @@ const parent_route = [
 
 const Header = () => {
     const role = sessionStorage.getItem("role");
+    let { pathname } = useLocation();
+    
     return (
         <header className="min-w-[280px] headerBorder desktop:px-[222px] tablet_change:px-[40px] mobile:px-[20px] py-[20px] flex items-center justify-between">
-          <div className="flex items-center justify-start gap-[8px] h-[35px]">
+          <Link className="flex items-center justify-start gap-[8px] h-[35px]" to="/main">
             <img src={NKlogo} alt="NK로고" className="w-[35px] h-[35px]" />
             <div>
               <h1 className="font-nanum_700 text-[12px] text-gray">
@@ -69,33 +71,34 @@ const Header = () => {
                 학생 관리 서비스
               </h2>
             </div>
-          </div>
+          </Link>
           <div className="mobile:hidden tablet_change:flex justify-between gap-[44px] font-nanum_700 text-[16px] text-black">
             {role === "학생" && student_route.map((item,id) => {
               return (
-                <Link key={id} href={item.href}>
+                <Link key={id} to={item.href} className={`${pathname === item.href && " text-main1"}`}>
                   {item.title}
                 </Link>
               )
             })}
             {role === "선생님" && teacher_route.map((item,id) => {
               return (
-                <Link key={id} href={item.href}>
+                <Link key={id} to={item.href} className={`${pathname === item.href && " text-main1"}`}>
                   {item.title}
                 </Link>
               )
             })}
             {role === "학부모" && parent_route.map((item,id) => {
               return (
-                <Link key={id} href={item.href}>
+                <Link key={id} to={item.href} className={`${pathname === item.href && " text-main1"}`}>
                   {item.title}
                 </Link>
               )
             })}
           </div>
           <div className="mobile:hidden tablet_change:flex items-center justify-between gap-[6px]" >
-            <img src={Notice} alt="user" className="w-[17px] h-[20px]" />
-            <img src={UserCircle} alt="user" className="w-[25px] h-[25px]" />
+            {/* 공지가 있다면 Bell_notice로 바뀔예정 */}
+            <img src={Bell} alt="bell" className="w-[23px] h-[23px] mr-[6px]" />
+            <img src={UserCircle} alt="user" className="w-[25px] h-[25px] " />
             <div className="font-nanum_400 text-[14px] text-black">
               홍길동 {/* 학생이름 들어갈 예정 */}
             </div>
