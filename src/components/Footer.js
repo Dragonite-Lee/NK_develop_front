@@ -7,7 +7,7 @@ import snsKakao from "../assets/footer/sns_kakao.png"
 
 const Footer = () => {
   return ( 
-    <footer className="min-w-[280px] w-full flex tablet:flex-row mobile:flex-col tablet:items-start mobile:items-start justify-between desktop:px-[222px] desktop:py-[38px] tablet:px-[24px] tablet:[24px] mobile:px-[20px] mobile:py-[38px] tablet:gap-0 mobile:gap-[20px] bg-border">
+    <footer className="min-w-[280px] w-full flex tablet:flex-row mobile:flex-col tablet:items-start mobile:items-start justify-between desktop:px-[222px] desktop:py-[38px] tablet:px-[24px] mobile:px-[20px] mobile:py-[38px] tablet:gap-0 mobile:gap-[20px] bg-border">
       <div className="flex desktop:flex-row tablet_change:flex-row mobile:flex-col items-start justify-center gap-[18px]">
         <div className="font-nanum_700 text-[16px] text-gray flex items-start justify-center gap-[8px]">
           <img src={footerLogo} alt="nk로고" className="w-[23px] h-[23px]" />

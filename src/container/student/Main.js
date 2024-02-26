@@ -5,6 +5,9 @@ import { getCookie } from "../../utils/cookie";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import SelectClass from "../../components/student/SelectClass"
+import MainHwList from "../../components/student/main/MainHwList";
+import MainHwDoing from "../../components/student/main/MainHwDoing";
+import MainNoList from "../../components/student/main/MainNoList";
 
 
 const Main = () => {
@@ -24,6 +27,13 @@ const Main = () => {
         <div className="px-[22px] py-[18px] tablet:w-[344px] h-[56px] w-full glassWhite flex items-center justify-between">
           <div className="text-[16px] flex w-full items-center font-paybooc_500">
             <SelectClass />
+          </div>
+        </div>
+        <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px]'>
+          <MainHwList />
+          <div className="flex flex-col gap-[24px]">
+            <MainHwDoing />
+            <MainNoList />
           </div>
         </div>
       </main>
