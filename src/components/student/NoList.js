@@ -13,18 +13,22 @@ import Speaker from "../../assets/student/Speaker.png"
 
 const NoticeImportant= [
 	{
+    id: 11,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
 	{
+    id: 12,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
 	{
+    id: 13,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
 	{
+    id: 14,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
@@ -33,36 +37,40 @@ const NoticeImportant= [
 
 const NoticeNormal= [
 	{
+    id: 0,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
 	{
+    id: 1,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
 	{
+    id: 2,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
 	{
+    id: 3,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
 	{
+    id: 4,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
 	{
+    id: 5,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
 	{
+    id: 6,
 		work: '중등 수학 내신반 12월 1주차 숙제 공지',
 		date: '2023.12.09'
 	},
-	
-
-
 ]
 
 const NoList = () => {
@@ -91,23 +99,23 @@ const NoList = () => {
       </div>
       <div className="w-full mb-[16px]">
         {NoticeImportant.map((item, index) => (
-          <div key={index} className="justify-between items-center bg-white">
+          <Link key={index} className="block justify-between items-center bg-white" to={`/main/noticelist/:${item.id}`}>
             <div className="flex items-start gap-[16px] py-[16px] px-[16px]">
               <img src={Speaker} alt="Speaker" className="w-[20px] h-[20px]" />
               <div className="text-[14px] font-nanum_700">{item.work}</div>
               <div className="tablet:text-[13px] mobile:text-[12px] text-gray flex justify-end font-nanum_400 ml-auto ">{item.date}</div>
             </div>
             <div className="divider" />
-          </div>
+          </Link>
         ))}
         {NoticeNormal.map((item, index) => (
-          <div key={index} className="justify-between items-center">
+          <Link key={index} className="justify-between items-center" to={`/main/noticelist/:${item.id}`}>
             <div className="flex items-start gap-[16px] py-[16px] px-[16px]">
               <div className="text-[14px] font-nanum_700">{item.work}</div>
               <div className="tablet:text-[13px] mobile:text-[12px] text-gray flex justify-end font-nanum_400 ml-auto ">{item.date}</div>
             </div>
             <div className="divider" />
-          </div>
+          </Link>
         ))}
       </div>
       <div className="flex justify-center items-center w-full tablet:gap-[60px] mobile:gap-[30px] text-[12px]">

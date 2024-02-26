@@ -1,10 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 import NKlogo from "../assets/header/NK_logo.png";
 import UserCircle from "../assets/header/profile.png"
 import List from "../assets/header/List.png"
 import Bell from "../assets/header/Bell.png"
 import Bell_notice from "../assets/header/Bell_notice.png"
+import MobileMenu from "./MobileMenu";
 
 const student_route = [
   {
@@ -57,9 +59,11 @@ const parent_route = [
 
 const Header = () => {
     const role = sessionStorage.getItem("role");
+    const [sidebar, setSidebar] = useState(false);
     let { pathname } = useLocation();
     
     return (
+      <>
         <header className="min-w-[280px] headerBorder desktop:px-[222px] tablet_change:px-[40px] mobile:px-[20px] py-[20px] flex items-center justify-between">
           <Link className="flex items-center justify-start gap-[8px] h-[35px]" to="/main">
             <img src={NKlogo} alt="NK로고" className="w-[35px] h-[35px]" />
@@ -108,8 +112,15 @@ const Header = () => {
               {role}
             </div>
           </div>
-          <img src={List} alt="listbar" className="w-[32px] h-[32px] mobile:block tablet_change:hidden" />
+          <img src={List} alt="listbar" onClick={() => setSidebar(true)} className="w-[32px] h-[32px] mobile:block tablet_change:hidden" />
         </header>
+        {sidebar && (
+          <MobileMenu student_route={student_route} teacher_route={teacher_route} parent_route={parent_route} 
+            onClick={() => setSidebar(false)}
+            role={role} pathname={pathname}
+          />
+        )}
+      </>
     )
 }
 
