@@ -11,11 +11,11 @@ import MobileMenu from "./MobileMenu";
 const student_route = [
   {
     title: "우리반 공지",
-    href: "/main/noticelist"
+    href: "/student/noticelist"
   },
   {
     title: "숙제하기",
-    href: "/main/homeworklist"
+    href: "/student/homeworklist"
   },
   {
     title: "선생님과 채팅",
@@ -45,7 +45,7 @@ const teacher_route = [
 const parent_route = [
   {
     title: "학습태도 분석",
-    href: "#"
+    href: "/parent/behaving"
   },
   {
     title: "선생님과 채팅",
@@ -53,19 +53,19 @@ const parent_route = [
   },
   {
     title: "공지사항",
-    href: "#"
+    href: "/parent/noticelist"
   }
 ];
 
 const Header = () => {
-    const role = sessionStorage.getItem("role");
+    const role = "학부모"
     const [sidebar, setSidebar] = useState(false);
     let { pathname } = useLocation();
     
     return (
       <>
         <header className="min-w-[280px] headerBorder desktop:px-[222px] tablet_change:px-[40px] mobile:px-[20px] py-[20px] flex items-center justify-between">
-          <Link className="flex items-center justify-start gap-[8px] h-[35px]" to="/main">
+          <Link className="flex items-center justify-start gap-[8px] h-[35px]" to="/parent">
             <img src={NKlogo} alt="NK로고" className="w-[35px] h-[35px]" />
             <div>
               <h1 className="font-nanum_700 text-[12px] text-gray">

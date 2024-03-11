@@ -61,7 +61,7 @@ const LoginInput = () => {
       console.log("[loginApi Error] : " + error);
     })
     
-    navigate("/main");
+    navigate("/parent");
   }
 
   return (

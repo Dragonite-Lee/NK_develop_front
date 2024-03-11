@@ -5,26 +5,9 @@ import ArrowRightBlack from "../../../assets/ArrowRightBlack.png"
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png"
 import CircleRight from "../../../assets/student/CaretCircleRight.png"
 
-const NoticeNormal= [
-	{
-    id: 0,
-		work: '중등 수학 내신반 12월 1주차 숙제 공지',
-    name: '김수학 선생님',
-		date: '2023.12.09'
-	},
-	{
-    id: 1,
-		work: '중등 수학 내신반 12월 1주차 숙제 공지',
-    name: '김수학 선생님',
-		date: '2023.12.09'
-	},
-	{
-    id: 2,
-		work: '중등 수학 내신반 12월 1주차 숙제 공지',
-    name: '김수학 선생님',
-		date: '2023.12.09'
-	},
-]
+import {getNoticeImportant, getNoticeNormal} from "../../student/temporary/NoticeData"
+const NoticeImportant = getNoticeImportant();
+const NoticeNormal = getNoticeNormal().slice(0,3);
 
 const MainNoList = () => {
   return (
