@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from 'react';
-import SelectOption from "./notice/SelectOption"
-import SelectClass from "./SelectClass"
-import SearchBar from "./notice/SearchBar";
+import SelectClass from "../SelectClass"
+import SearchBar from "./SearchBar";
 
 
-import ArrowRightBlack from "../../assets/ArrowRightBlack.png"
-import ArrowLeftBlack from "../../assets/ArrowLeftBlack.png"
-import Speaker from "../../assets/student/Speaker.png"
+import ArrowRightBlack from "../../../assets/ArrowRightBlack.png"
+import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png"
+import Speaker from "../../../assets/student/Speaker.png"
 
 
 const NoticeImportant= [
@@ -73,6 +71,8 @@ const NoticeNormal= [
 	},
 ]
 
+const NumOfNotice = NoticeImportant.length + NoticeNormal.length;
+
 const NoList = () => {
 
 	const handleSearch = (query) => {
@@ -88,7 +88,7 @@ const NoList = () => {
       </div>
       <div className="w-full mt-[32px] mb-[8px] font-paybooc_700">
         <div className="text-[18px] flex items-center">
-        우리 반 공지 ({NoticeImportant.length + NoticeNormal.length})
+        우리 반 공지 ({NumOfNotice})
         </div>
       </div>
       {/* 수정예상 */}

@@ -58,7 +58,7 @@ const parent_route = [
 ];
 
 const Header = () => {
-    const role = sessionStorage.getItem("role");
+    const role = "학생"
     const [sidebar, setSidebar] = useState(false);
     let { pathname } = useLocation();
     

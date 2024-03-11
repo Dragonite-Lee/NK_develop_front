@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getCookie } from "../../../utils/cookie";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
+import NoDetail from "../../../components/student/notice/NoDetail"
 
 const NoticeDetail = () => {
   // const navigator = useNavigate();
@@ -16,12 +17,13 @@ const NoticeDetail = () => {
   // }, [refreshToken])
 
   let { id } = useParams();
+  const parsedId = parseInt(id.slice(1));
 
   return ( 
     <div className="min-w-[280px]">
       <Header/>
       <main className='desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] desktop:pt-[28px] mobile:pt-[32px] desktop:pb-[71px] mobile:pb-[74px] mainHeight'>
-        공지디테일 페이지 {id}
+        <NoDetail ID={parsedId} />
       </main>
       <Footer />
     </div>
