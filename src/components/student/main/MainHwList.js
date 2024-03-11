@@ -90,7 +90,7 @@ const MainHwList = () => {
 //     return homework.status == 원하는값
 // });
   return (
-    <section className="z-[-1] glassWhite mt-[24px] py-[24px] desktop:w-[486px] mobile:w-full tablet:px-[32px] mobile:px-[26px]">
+    <section className="glassWhite mt-[24px] py-[24px] desktop:w-[486px] mobile:w-full tablet:px-[32px] mobile:px-[26px]">
       <div className="w-full flex items-center justify-between">
         <div className="text-[15px] flex items-center font-paybooc_700">
           숙제 목록 ({Dummy_student.length})

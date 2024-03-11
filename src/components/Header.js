@@ -118,6 +118,7 @@ const Header = () => {
           <MobileMenu student_route={student_route} teacher_route={teacher_route} parent_route={parent_route} 
             onClick={() => setSidebar(false)}
             role={role} pathname={pathname}
+            sidebar={sidebar}
           />
         )}
       </>
