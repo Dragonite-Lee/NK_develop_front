@@ -33,11 +33,7 @@ const NoList = () => {
 
   return (
     <section>
-      <div className="px-[22px] py-[18px] tablet:w-[344px] h-[56px] w-full glassWhite flex items-center justify-between">
-        <div className="text-[16px] flex w-full items-center font-paybooc_500">
-          <SelectClass />
-        </div>
-      </div>
+      <SelectClass />
       <div className="w-full mt-[32px] mb-[8px] font-paybooc_700">
         <div className="text-[18px] flex items-center">
         우리 반 공지 ({TotalNotice})
