@@ -4,7 +4,7 @@
 - React (18.2.0 버전)
 - Tailwind css (3.4 버전)
 - zustand (4.4.7 버전)
-- react-query (5.15.0 버전)
+- tanstack-query (4.36.1 버전)
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Tailwindcss-06B6D4?style=for-the-badge&logo=Tailwindcss&logoColor=white"><img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=purple"><img src="https://img.shields.io/badge/Zustand-000000?style=for-the-badge&logo=Zustand&logoColor=white">
 

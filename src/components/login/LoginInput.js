@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-import useInput from "../../utils/useInput";
+import useInput from "../../hooks/useInput";
 import { useNavigate } from "react-router-dom";
 import { loginApi, onLoginSuccess } from "../../services/loginApi";
 
