@@ -6,18 +6,20 @@ import { useEffect } from 'react';
 
 import './App.css';
 import Login from './container/Login';
-import Main from './container/student/Main';
+import Main from './container/Main';
 import HomeworkList from './container/student/homework/HomeworkList';
 import NoticeList from './container/student/notice/NoticeList';
 import HomeworkDetail from './container/student/homework/HomeworkDetail';
 import NoticeDetail from './container/student/notice/NoticeDetail';
 
+import ParentAd from './container/admin/ParentAd';
+
 import { refreshTokenApi } from './services/loginApi';
 
 function App() {
-  useEffect(() => {
-    refreshTokenApi();
-  }, [])
+  // useEffect(() => {
+  //   refreshTokenApi();
+  // }, [])
 
   return (
     <div>
@@ -29,6 +31,7 @@ function App() {
           <Route path="/main/homeworklist/:id" element={<HomeworkDetail />}></Route>
           <Route path="/main/noticelist" element={<NoticeList />}></Route>
           <Route path="/main/noticelist/:id" element={<NoticeDetail />}></Route>
+          <Route path="/main/parentAd" element={<ParentAd />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

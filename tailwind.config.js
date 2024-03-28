@@ -6,8 +6,9 @@ module.exports = {
   theme: {
     extend: {},
     screens: {
+      'desktop_header' : '1440px',
       'desktop' : '1240px',
-      'tablet_header_change' : '844px',
+      'tablet_header_change' : '1040px',
       'tablet_change' : '768px',
       'tablet' : '600px',
       'mobile' : '280px'
@@ -38,12 +39,14 @@ module.exports = {
       'error' : '#F6403F',
       'black' : '#212121',
       'grayDark' : '#4C4C4E',
-      'gray' : '#969699',
+      'grey' : '#969699',
       'grayLight' : '#D1D1D6',
       'border' : '#F1F1F5',
       'white' : '#F9F9FC',
       'whiteTotal' : '#FFFFFF'
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+]
 }

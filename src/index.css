@@ -60,6 +60,16 @@ body {
   .invisible {
     visibility: hidden;
   }
+  .checkbox {
+    content:'✔';
+    font-size: 14px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top:0;
+  }
 
 }
 

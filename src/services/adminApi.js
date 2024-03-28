@@ -24,3 +24,8 @@ export const getAdMainTeacher = async () =>{
   const data = await axios.get('/teacher?_limit=6').then((res) => res.data);
   return data;
 }
+
+export const getAdParent = async () =>{
+  const data = await axios.get('/parent').then((res) => res.data);
+  return data;
+}

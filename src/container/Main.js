@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getCookie } from "../../utils/cookie";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import SelectClass from "../../components/student/SelectClass"
-import MainHwList from "../../components/student/main/MainHwList";
-import MainHwDoing from "../../components/student/main/MainHwDoing";
-import MainNoList from "../../components/student/main/MainNoList";
-import AdMainNoList from "../../components/admin/main/AdMainNoList";
-import AdMainStList from "../../components/admin/main/AdMainStList";
-import AdMainTeList from "../../components/admin/main/AdMainTeList";
+import { getCookie } from "../utils/cookie";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import SelectClass from "../components/student/SelectClass"
+import MainHwList from "../components/student/main/MainHwList";
+import MainHwDoing from "../components/student/main/MainHwDoing";
+import MainNoList from "../components/student/main/MainNoList";
+import AdMainNoList from "../components/admin/main/AdMainNoList";
+import AdMainStList from "../components/admin/main/AdMainStList";
+import AdMainTeList from "../components/admin/main/AdMainTeList";
 
 const Main = () => {
   // const navigator = useNavigate();

@@ -67,6 +67,14 @@ const admin_route = [
     href: "#"
   },
   {
+    title: "반 관리",
+    href: "#"
+  },
+  {
+    title: "학부모 관리",
+    href: "/main/parentAd"
+  },
+  {
     title: "채팅하기",
     href: "#"
   },
@@ -83,7 +91,7 @@ const Header = () => {
     
     return (
       <>
-        <header className="min-w-[280px] headerBorder desktop:px-[222px] tablet_header_change:px-[40px] mobile:px-[20px] py-[20px] flex items-center justify-between">
+        <header className="min-w-[280px] headerBorder desktop_header:px-[222px] tablet_header_change:px-[40px] mobile:px-[20px] py-[20px] flex items-center justify-between">
           <Link className="flex items-center justify-start gap-[8px] h-[35px]" to="/main">
             <img src={NKlogo} alt="NK로고" className="w-[35px] h-[35px]" />
             <div>
