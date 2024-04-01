@@ -1,5 +1,5 @@
-import ArrowRightBlack from "../../assets/ArrowRightBlack.png"
-import ArrowLeftBlack from "../../assets/ArrowLeftBlack.png"
+import ArrowRightBlack from "../assets/ArrowRightBlack.png"
+import ArrowLeftBlack from "../assets/ArrowLeftBlack.png"
 
 const Pagination = ({numOfData, itemsPerPage, setCurrentPage, currentPage}) => {
 

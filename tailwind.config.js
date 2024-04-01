@@ -47,6 +47,29 @@ module.exports = {
     },
   },
   plugins: [
-    require('flowbite/plugin')
-]
+    require('flowbite/plugin'),
+    function ({addUtilities}) {
+      const newUtilities = {
+        ".scrollbar-thin" : {
+          scrollbarWidth : "thin",
+          scrollbarColor: "rgb(94,166,219) white",
+        },
+        ".scrollbar-webkit" : {
+          "&::-webkit-scrollbar" : {
+            width: "8px"
+          },
+          "&::-webkit-scrollbar-track" : {
+            background: "white"
+          },
+          "&::-webkit-scrollbar-thumb" : {
+            backgroundColor: "rgb(94,166,219)",
+            borderRadius: "20px",
+            border: "1px solid white"
+          }
+        }
+      }
+
+      addUtilities(newUtilities, ["responsive", "hover"])
+    }
+  ]
 }

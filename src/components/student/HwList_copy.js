@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SelectOption from "./notice/SelectOption"
 import SelectClass from "./SelectClass"
-import  Pagination  from "./Pagination";
+import Pagination from "../Pagination";
 import { Link } from "react-router-dom";
 
 

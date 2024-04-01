@@ -10,27 +10,33 @@ import Table from "../../components/admin/table";
 const header = [
   {
     text: "이름",
-    value: "username"
+    value: "username",
+    width: "w-[10%]"
   },
   {
     text: "연락처",
-    value: "phoneNumber"
+    value: "phoneNumber",
+    width: "w-[18%]"
   },
   {
     text: "자녀 정보",
-    value: "studentInfo"
+    value: "studentInfo",
+    width: "w-[11%]"
   },
   {
     text: "자녀와의 관계",
-    value: "studentRela"
+    value: "studentRela",
+    width: "w-[15%]"
   },
   {
     text: "학부모 아이디",
-    value: "parentId"
+    value: "parentId",
+    width: "w-[23%]"
   },
   {
     text: "비밀번호",
-    value: "parentPw"
+    value: "parentPw",
+    width: "w-[23%]"
   },
 ]
 
