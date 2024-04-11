@@ -60,15 +60,15 @@ const parent_route = [
 const admin_route = [
   {
     title: "학생 관리",
-    href: "#"
+    href: "/main/studentAd"
   },
   {
     title: "선생님 관리",
-    href: "#"
+    href: "/main/teacherAd"
   },
   {
     title: "반 관리",
-    href: "#"
+    href: "/main/classroomAd"
   },
   {
     title: "학부모 관리",

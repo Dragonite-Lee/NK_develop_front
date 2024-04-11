@@ -13,8 +13,12 @@ import HomeworkDetail from './container/student/homework/HomeworkDetail';
 import NoticeDetail from './container/student/notice/NoticeDetail';
 
 import ParentAd from './container/admin/ParentAd';
+import StudentAd from './container/admin/StudentAd';
+import TeacherAd from './container/admin/TeacherAd';
 
 import { refreshTokenApi } from './services/loginApi';
+import ClassroomAd from './container/admin/ClassroomAd';
+
 
 function App() {
   // useEffect(() => {
@@ -31,7 +35,11 @@ function App() {
           <Route path="/main/homeworklist/:id" element={<HomeworkDetail />}></Route>
           <Route path="/main/noticelist" element={<NoticeList />}></Route>
           <Route path="/main/noticelist/:id" element={<NoticeDetail />}></Route>
+          
           <Route path="/main/parentAd" element={<ParentAd />}></Route>
+          <Route path="/main/studentAd" element={<StudentAd />}></Route>
+          <Route path="/main/teacherAd" element={<TeacherAd />}></Route>
+          <Route path="/main/classroomAd" element={<ClassroomAd />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

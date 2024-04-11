@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 
 import Pagination from "../Pagination";
+import YellowModal from "./YellowModal";
 
 import Pencil from "../../assets/admin/Pencil.png"
 import Trash from "../../assets/admin/Trash.png"
 
-const Table = ({header, data, updateSelection}) => {
+const Table = ({cancleText, cancleText2, header, data, updateSelection, onDelete, isSuccess, isLoading}) => {
 
   const [selection, setSelection] = useState(new Set());
   const [currentPage, setCurrentPage] = useState(1);
   const [perData, setPerDate] = useState([]);
+  const [cancleModal, setCancleModal] = useState(false);
+  const [cancleId, setCancleId] = useState()
 
   const onChangeSelection = (value) => {
     const newSelection = new Set(selection)
@@ -39,6 +42,11 @@ const Table = ({header, data, updateSelection}) => {
     return selection.size === data?.length;
   };
 
+  const onClickCancleModal = (id) => {
+    setCancleId(id)
+    setCancleModal(true)
+  }
+
   const headerkey = header.map((header) => header.value);
   const width = header.map((header) => header.width);
 
@@ -48,17 +56,26 @@ const Table = ({header, data, updateSelection}) => {
     const currentItems = data?.slice(FirstItem, LastItem);
 
     setPerDate(currentItems);
-  }, [currentPage]);
+  }, [currentPage,data]);
+
+  useEffect(() => {
+    if (isSuccess == true) {
+      setCancleModal(false)
+    }
+  },[isSuccess])
+
+  if (isLoading) {
+    return <div>로딩중</div>
+  }
 
   
   return ( 
     <div className="mt-[12px]">
-      {/* 필터 및 검색 */}
-      <div>
-    필터들
-      </div>
+      {cancleModal && (
+        <YellowModal setState={setCancleModal} mutate={onDelete} selection={cancleId} title={`${cancleText} 정보 삭제`} content1={`선택한 ${cancleText2} 삭제하시겠습니까?`} content2="" content3="" cancle="취소하기" del="삭제하기" />
+      )}
       {/* 테이블 */}
-      <table className="mt-[20px] text-[14px] grid desktop:w-[996px] overflow-x-auto scrollbar-thin scrollbar-webkit	scroll-behavior: smooth; desktop:pb-[90px] tablet_change:pb-[49px] mobile:pb-[29px]">
+      <table className="mt-[20px] text-[14px] grid desktop:w-[996px] overflow-x-auto scrollbar-thin scrollbar-webkit	scroll-behavior:smooth tablet_change:pb-[49px] mobile:pb-[29px]">
         <thead className="font-nanum_700 bg-management2 text-white flex items-center justify-between py-[10px] px-[16px]">
           <tr className="flex items-center gap-[16px] w-[900px]  ">
             <th className="w-[20px] h-[20px]">
@@ -98,7 +115,7 @@ const Table = ({header, data, updateSelection}) => {
                 </td>
                 <td className="flex items-center justify-between gap-[12px]">
                   <img src={Pencil} alt="pencil" className="w-[20px] h-[20px]" />
-                  <img src={Trash} alt="trash" className="w-[20px] h-[20px]" />
+                  <img src={Trash} alt="trash" className="w-[20px] h-[20px]" onClick={()=>onClickCancleModal(data.id)} />
                 </td>
               </tr>
             ))

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getAdMainNotice, getAdMainStudent, getAdMainTeacher, getAdParent } from "../../services/adminApi"
+import { getAdMainNotice, getAdMainStudent, getAdMainTeacher, getAdParent, getAdStudent, getAdTeacher, getAdClassroom } from "../../services/adminApi"
 
 export const useAdMainNoticeQuery = () => {
   const { data, isLoading } = useQuery(['/admin/main/notice'],() =>
@@ -38,6 +38,36 @@ export const useAdParentQuery = () => {
   );
   return {
     parentData: data,
+    isLoading
+  }
+}
+
+export const useAdStudentQuery = () => {
+  const { data, isLoading } = useQuery(['/admin/student'],() =>
+    getAdStudent()
+  );
+  return {
+    studentData: data,
+    isLoading
+  }
+}
+
+export const useAdTeacherQuery = () => {
+  const { data, isLoading } = useQuery(['/admin/teacher'],() =>
+    getAdTeacher()
+  );
+  return {
+    teacherData: data,
+    isLoading
+  }
+}
+
+export const useAdClassroomQuery = () => {
+  const { data, isLoading } = useQuery(['/admin/classroom'],() =>
+    getAdClassroom()
+  );
+  return {
+    classroomData: data,
     isLoading
   }
 }
