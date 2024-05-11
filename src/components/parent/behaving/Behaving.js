@@ -118,9 +118,6 @@ const Behaving = () => {
 				<div className="text-[14px] font-nanum_700"> {selectedStudent ? `${selectedStudent.label} 학생의 주간 출석률 및 숙제 완료 현황입니다.`:''} </div>
       </div>
       <div className="mt-[20px] w-[1000px] h-full">
-        <div className="justify-end">
-          
-        </div>
         <div className="mt-[86px] flex gap-[44px] h-[160px] w-[160px]">
           {weekdata.map((item, index) => (
             <Chart complete={item.complete} amount={item.amount} />
