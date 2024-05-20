@@ -1,20 +1,50 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getAdMainNotice, getAdMainStudent, getAdMainTeacher, getAdParent, getAdStudent, getAdTeacher, getAdClassroom } from "../../services/adminApi"
+import { 
+  getAdAllStudnet, 
+  getAdOneParent, 
+  getAdOneStudnet, 
+  getAdOneTeacher, 
+  getAdParent, 
+  getAdSchool, 
+  getAdStudnet, 
+  getAdTeacher } from "../../services/api/adminApi"
 
-export const useAdMainNoticeQuery = () => {
-  const { data, isLoading } = useQuery(['/admin/main/notice'],() =>
-    getAdMainNotice()
+// export const useAdNoticeDetailQuery = (id) => {
+//   const { data, isLoading } = useQuery(['/admin/notice/detail'],() =>
+//     getAdNoticeDetail(id)
+//   );
+//   return {
+//     noticeDetailData: data,
+//     isLoading
+//   }
+// }
+
+// 학교 관리
+export const useAdSchoolQuery = () => {
+  const { data, isLoading } = useQuery(['/admin/school'],() =>
+    getAdSchool()
   );
   return {
-    noticeData: data,
+    schoolData: data,
     isLoading
   }
 }
 
-export const useAdMainStudentQuery = () => {
-  const { data, isLoading } = useQuery(['/admin/main/student'],() =>
-    getAdMainStudent()
+//학생 관리
+export const useAdAllStudentQuery = () => {
+  const { data, isLoading } = useQuery(['/admin/student'],() =>
+    getAdAllStudnet()
+  );
+  return {
+    allStudentData: data,
+    isLoading
+  }
+}
+
+export const useAdStudentQuery = (page,keyword) => {
+  const { data, isLoading } = useQuery(['/admin/student', page, keyword],() =>
+    getAdStudnet(page, keyword)
   );
   return {
     studentData: data,
@@ -22,19 +52,20 @@ export const useAdMainStudentQuery = () => {
   }
 }
 
-export const useAdMainTeacherQuery = () => {
-  const { data, isLoading } = useQuery(['/admin/main/teacher'],() =>
-    getAdMainTeacher()
+export const useAdOneStudentQuery = (username) => {
+  const { data, isLoading } = useQuery(['/admin/student/one'],() =>
+    getAdOneStudnet(username)
   );
   return {
-    teacherData: data,
+    oneStudentData: data,
     isLoading
   }
 }
 
-export const useAdParentQuery = () => {
-  const { data, isLoading } = useQuery(['/admin/parent'],() =>
-  getAdParent()
+//학부모 관리
+export const useAdParentQuery = (page,keyword) => {
+  const { data, isLoading } = useQuery(['/admin/parent', page, keyword],() =>
+    getAdParent(page, keyword)
   );
   return {
     parentData: data,
@@ -42,19 +73,20 @@ export const useAdParentQuery = () => {
   }
 }
 
-export const useAdStudentQuery = () => {
-  const { data, isLoading } = useQuery(['/admin/student'],() =>
-    getAdStudent()
+export const useAdOneParentQuery = (username) => {
+  const { data, isLoading } = useQuery(['/admin/parent/one'],() =>
+    getAdOneParent(username)
   );
   return {
-    studentData: data,
+    oneParentData: data,
     isLoading
   }
 }
 
-export const useAdTeacherQuery = () => {
-  const { data, isLoading } = useQuery(['/admin/teacher'],() =>
-    getAdTeacher()
+//선생님 관리
+export const useAdTeacherQuery = (page,keyword) => {
+  const { data, isLoading } = useQuery(['/admin/teacher', page, keyword],() =>
+    getAdTeacher(page, keyword)
   );
   return {
     teacherData: data,
@@ -62,12 +94,12 @@ export const useAdTeacherQuery = () => {
   }
 }
 
-export const useAdClassroomQuery = () => {
-  const { data, isLoading } = useQuery(['/admin/classroom'],() =>
-    getAdClassroom()
+export const useAdOneTeacherQuery = (username) => {
+  const { data, isLoading } = useQuery(['/admin/teacher/one'],() =>
+    getAdOneTeacher(username)
   );
   return {
-    classroomData: data,
+    oneTeacherData: data,
     isLoading
   }
 }

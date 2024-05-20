@@ -9,13 +9,13 @@ const Footer = () => {
   return ( 
     <footer className="min-w-[280px] w-full flex tablet:flex-row mobile:flex-col tablet:items-start mobile:items-start justify-between desktop:px-[222px] desktop:py-[38px] tablet:px-[24px] mobile:px-[20px] mobile:py-[38px] tablet:gap-0 mobile:gap-[20px] bg-border">
       <div className="flex desktop:flex-row tablet_change:flex-row mobile:flex-col items-start justify-center gap-[18px]">
-        <div className="font-nanum_700 text-[16px] text-gray flex items-start justify-center gap-[8px]">
+        <div className="font-nanum_700 text-[16px] text-grey flex items-start justify-center gap-[8px]">
           <img src={footerLogo} alt="nk로고" className="w-[23px] h-[23px]" />
           <div>
             NK에듀
           </div>
         </div>
-        <div className="font-nanum_400 text-[10px] text-gray">
+        <div className="font-nanum_400 text-[10px] text-grey">
           (주) NK에듀<br/>
           대표 : 홍길동, 주소 : 경기 안산시 단원구 광덕대로 130 폴리타운 A동 7층<br/>
           사업자등록번호 : 110-12-34567, Tel : 031-401-8102<br/><br/>

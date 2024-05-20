@@ -31,8 +31,8 @@ const NoDetail = ({ID}) => {
             <div className="text-[13px] font-nanum_700">조회수 8</div>
           </div>
           <div className="flex items-start gap-[12px] mt-[7px] mb-[15px] text-[12px]">
-            <div className="text-gray text-[13px] font-nanum_700">{notice.date}</div>
-            <div className="text-gray text-[13px] font-nanum_400">{notice.name}</div>
+            <div className="text-grey text-[13px] font-nanum_700">{notice.date}</div>
+            <div className="text-grey text-[13px] font-nanum_400">{notice.name}</div>
           </div>
         </div>
 				<div className="w-full items-start"> 
@@ -41,7 +41,7 @@ const NoDetail = ({ID}) => {
       </div>
 			<div className="flex justify-end mt-[20px] gap-[15px] text-[13px] font-nanum_700 ml-auto">
         <Button backgroundColor='#D1D1D6' Color="white" content={"이전 공지 보기"} link={`/main/noticelist/:${ID-1}`}/>
-        <Button backgroundColor="gray" Color="white" content={"목록으로 돌아가기"} link={'/main/noticelist/'} />
+        <Button backgroundColor="grey" Color="white" content={"목록으로 돌아가기"} link={'/main/noticelist/'} />
         <Button backgroundColor="#D1D1D6" Color="white" content={"다음 공지 보기"} link={`/main/noticelist/:${ID+1}`}/>
       </div>
     </section>

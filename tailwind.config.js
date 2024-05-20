@@ -67,6 +67,19 @@ module.exports = {
             borderRadius: "20px",
             border: "1px solid white"
           }
+        },
+        ".scrollbar-medium" : {
+          "&::-webkit-scrollbar" : {
+            width: "10px"
+          },
+          "&::-webkit-scrollbar-track" : {
+            background: "white"
+          },
+          "&::-webkit-scrollbar-thumb" : {
+            backgroundColor: "rgb(217,217,217)",
+            borderRadius: "20px",
+            border: "1px solid white"
+          }
         }
       }
 

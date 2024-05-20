@@ -15,15 +15,17 @@ import NoticeDetail from './container/student/notice/NoticeDetail';
 import ParentAd from './container/admin/ParentAd';
 import StudentAd from './container/admin/StudentAd';
 import TeacherAd from './container/admin/TeacherAd';
-
-import { refreshTokenApi } from './services/loginApi';
 import ClassroomAd from './container/admin/ClassroomAd';
+import NoticeAd from './container/admin/NoticeAd';
+import NoticeAdWrite from './container/admin/notice/NoticeAdWrite';
+import NoticeAdDetail from './container/admin/notice/NoticeAdDetail';
 
+import { refreshTokenApi } from './services/api/loginApi';
 
 function App() {
-  // useEffect(() => {
-  //   refreshTokenApi();
-  // }, [])
+  useEffect(() => {
+    refreshTokenApi();
+  }, [])
 
   return (
     <div>
@@ -40,6 +42,9 @@ function App() {
           <Route path="/main/studentAd" element={<StudentAd />}></Route>
           <Route path="/main/teacherAd" element={<TeacherAd />}></Route>
           <Route path="/main/classroomAd" element={<ClassroomAd />}></Route>
+          <Route path="/main/noticeAd" element={<NoticeAd />}></Route>
+          <Route path="/main/noticeAd/noticeAdWrite/:id" element={<NoticeAdWrite />}></Route>
+          <Route path="/main/noticeAd/:id" element={<NoticeAdDetail />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

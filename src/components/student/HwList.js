@@ -125,8 +125,8 @@ const HwList = () => {
               <div className="font-nanum_400">{item.status}</div>
             </div>
             <div className="flex items-start justify-between mt-[7px] mb-[15px] text-[12px]">
-              <div className="text-gray font-nanum_700">{item.name}</div>
-              <div className="text-gray font-nanum_400">{item.date}</div>
+              <div className="text-grey font-nanum_700">{item.name}</div>
+              <div className="text-grey font-nanum_400">{item.date}</div>
             </div>
             <div className="divider" />
           </Link>

@@ -13,14 +13,14 @@ import AdMainStList from "../components/admin/main/AdMainStList";
 import AdMainTeList from "../components/admin/main/AdMainTeList";
 
 const Main = () => {
-  // const navigator = useNavigate();
-  // const refreshToken = getCookie("refreshToken");
+  const navigator = useNavigate();
+  const refreshToken = getCookie("refreshToken");
   const role = sessionStorage.getItem("role")
-  // useEffect(() => { 
-  //   if (!refreshToken) {
-  //     navigator("/");
-  //   };
-  // }, [refreshToken])
+  useEffect(() => { 
+    if (!refreshToken) {
+      navigator("/");
+    };
+  }, [refreshToken])
 
   return ( 
     <div className="min-w-[280px]">
@@ -40,10 +40,10 @@ const Main = () => {
       {role === "관리자" && (
         <main className='desktop:w-[1000px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] desktop:pb-[156px] tablet_change:pb-[48px] mobile:pb-[68px] mainHeight'>
           <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px]'>
-            <AdMainNoList />
+            {/* <AdMainNoList /> */}
             <div className="flex flex-col self-start gap-[24px]">
-              <AdMainStList />
-              <AdMainTeList />
+              {/* <AdMainStList />
+              <AdMainTeList /> */}
             </div>
           </div>
         </main>

@@ -111,7 +111,7 @@ const MainHwList = () => {
               <div className="font-nanum_700">{item.work}</div>
               <div className="font-paybooc_700">{item.status}</div>
             </div>
-            <div className={`flex items-center justify-between mt-[9px] text-[11px] font-nanum_400 text-gray ${index != 4 && " mb-[16px]"}`}>
+            <div className={`flex items-center justify-between mt-[9px] text-[11px] font-nanum_400 text-grey ${index != 4 && " mb-[16px]"}`}>
               <div>{item.name}</div>
               <div>{item.date}</div>
             </div>

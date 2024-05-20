@@ -3,7 +3,7 @@ import axios from "axios";
 
 import useInput from "../../hooks/useInput";
 import { useNavigate } from "react-router-dom";
-import { loginApi, onLoginSuccess } from "../../services/loginApi";
+import { loginApi, onLoginSuccess } from "../../services/api/loginApi";
 
 const roleArray = [
   {
@@ -20,10 +20,13 @@ const roleArray = [
     id: 2,
     title: "선생님",
     default: false,
+  },
+  {
+    id: 3,
+    title: "관리자",
+    default: false,
   }
 ]
-
-
 
 const LoginInput = () => {
   const [emailValue, emailHandle] = useInput("");
@@ -51,7 +54,7 @@ const LoginInput = () => {
 
     await loginApi.login(data).then((response) => {
       onLoginSuccess(response);
-      
+      // console.log("success")
       for (let i = 0; i < role.length; i++) {
         if (role[i].default === true) {
           sessionStorage.setItem("role", role[i].title);
@@ -87,7 +90,7 @@ const LoginInput = () => {
             value={emailValue}
             onChange={emailHandle}
             autoComplete="off"
-            className={`font-nanum_400 text-[15px] desktop:w-[330px] tablet:w-[488px] mobile:w-full h-[48px] indent-[24px] bg-white rounded-[10px] focus:outline-none focus:border-main1 border-solid border-[1px] ${
+            className={`font-nanum_400 text-[15px] desktop:w-[330px] tablet:w-[488px] mobile:w-full h-[48px] tablet:indent-[24px] mobile:indent-[6px] bg-white rounded-[10px] focus:outline-none focus:border-main1 border-solid border-[1px] ${
               emailValue !== ""
                 ? " outline-none border-main1"
                 : " border-border"
@@ -99,7 +102,7 @@ const LoginInput = () => {
           <input
             value={pwValue}
             onChange={pwhHandler}
-            className={`font-nanum_400 text-[15px] desktop:w-[330px] tablet:w-[488px] mobile:w-full h-[48px] indent-[24px] bg-white rounded-[10px] focus:outline-none focus:border-main1 border-solid border-[1px] ${
+            className={`font-nanum_400 text-[15px] desktop:w-[330px] tablet:w-[488px] mobile:w-full h-[48px] tablet:indent-[24px] mobile:indent-[6px] bg-white rounded-[10px] focus:outline-none focus:border-main1 border-solid border-[1px] ${
               pwValue !== "" ? " outline-none border-main1" : " border-border"
             }`}
             name="password"

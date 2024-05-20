@@ -80,7 +80,7 @@ const admin_route = [
   },
   {
     title: "공지사항",
-    href: "#"
+    href: "/main/NoticeAd"
   }
 ];
 
@@ -95,7 +95,7 @@ const Header = () => {
           <Link className="flex items-center justify-start gap-[8px] h-[35px]" to="/main">
             <img src={NKlogo} alt="NK로고" className="w-[35px] h-[35px]" />
             <div>
-              <h1 className="font-nanum_700 text-[12px] text-gray">
+              <h1 className="font-nanum_700 text-[12px] text-grey">
                 NK에듀
               </h1>
               <h2 className="font-nanum_700 text-[16px] text-black">

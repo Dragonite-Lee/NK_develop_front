@@ -99,7 +99,7 @@ const NoList = () => {
             <div className="flex items-start gap-[16px] py-[16px] px-[16px]">
               <img src={Speaker} alt="Speaker" className="w-[20px] h-[20px]" />
               <div className="text-[14px] font-nanum_700">{item.work}</div>
-              <div className="tablet:text-[13px] mobile:text-[12px] text-gray flex justify-end font-nanum_400 ml-auto ">{item.date}</div>
+              <div className="tablet:text-[13px] mobile:text-[12px] text-grey flex justify-end font-nanum_400 ml-auto ">{item.date}</div>
             </div>
             <div className="divider" />
           </Link>
@@ -108,7 +108,7 @@ const NoList = () => {
           <Link key={index} className="justify-between items-center" to={`/main/noticelist/:${item.id}`}>
             <div className="flex items-start gap-[16px] py-[16px] px-[16px]">
               <div className="text-[14px] font-nanum_700">{item.work}</div>
-              <div className="tablet:text-[13px] mobile:text-[12px] text-gray flex justify-end font-nanum_400 ml-auto ">{item.date}</div>
+              <div className="tablet:text-[13px] mobile:text-[12px] text-grey flex justify-end font-nanum_400 ml-auto ">{item.date}</div>
             </div>
             <div className="divider" />
           </Link>
