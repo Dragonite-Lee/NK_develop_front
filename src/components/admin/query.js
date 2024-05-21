@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import { 
   getAdAllStudnet, 
+  getAdClassroom, 
+  getAdOneClassroom, 
   getAdOneParent, 
   getAdOneStudnet, 
   getAdOneTeacher, 
@@ -9,16 +11,6 @@ import {
   getAdSchool, 
   getAdStudnet, 
   getAdTeacher } from "../../services/api/adminApi"
-
-// export const useAdNoticeDetailQuery = (id) => {
-//   const { data, isLoading } = useQuery(['/admin/notice/detail'],() =>
-//     getAdNoticeDetail(id)
-//   );
-//   return {
-//     noticeDetailData: data,
-//     isLoading
-//   }
-// }
 
 // 학교 관리
 export const useAdSchoolQuery = () => {
@@ -100,6 +92,27 @@ export const useAdOneTeacherQuery = (username) => {
   );
   return {
     oneTeacherData: data,
+    isLoading
+  }
+}
+
+//반 관리
+export const useAdClassroomQuery = (page,keyword) => {
+  const { data, isLoading } = useQuery(['/admin/classroom', page, keyword],() =>
+    getAdClassroom(page, keyword)
+  );
+  return {
+    classroomData: data,
+    isLoading
+  }
+}
+
+export const useAdOneClassroomQuery = (username) => {
+  const { data, isLoading } = useQuery(['/admin/classroom/one'],() =>
+    getAdOneClassroom(username)
+  );
+  return {
+    oneClassroomData: data,
     isLoading
   }
 }
