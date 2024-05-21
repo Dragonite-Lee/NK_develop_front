@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { 
   getAdAllStudnet, 
+  getAdAllTeacherClassroom, 
   getAdClassroom, 
   getAdOneClassroom, 
   getAdOneParent, 
@@ -76,6 +77,16 @@ export const useAdOneParentQuery = (username) => {
 }
 
 //선생님 관리
+export const useAdAllTeacherClassroomQuery = () => {
+  const { data, isLoading } = useQuery(['/admin/teacher/classroom'],() =>
+    getAdAllTeacherClassroom()
+  );
+  return {
+    allTeacherClassroomData: data,
+    isLoading
+  }
+}
+
 export const useAdTeacherQuery = (page,keyword) => {
   const { data, isLoading } = useQuery(['/admin/teacher', page, keyword],() =>
     getAdTeacher(page, keyword)

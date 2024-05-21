@@ -66,6 +66,11 @@ export const deleteAdParent = async (id) => {
 };
 
 // 선생님 관리 (get, post, put, delete)
+export const getAdAllTeacherClassroom = async () => {
+  const data = await client.get("/api/teacher/classroom");
+  return data;
+};
+
 export const getAdTeacher = async (page, keyword) => {
   const data = await client.get("/api/teacher", { params: { page, keyword } });
   return data;
