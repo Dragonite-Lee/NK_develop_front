@@ -2,25 +2,41 @@
 
 // import { testDataAxios } from "./services/test";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 
 import './App.css';
-import Login from './container/Login';
-import Main from './container/Main';
-import HomeworkList from './container/student/homework/HomeworkList';
-import NoticeList from './container/student/notice/NoticeList';
-import HomeworkDetail from './container/student/homework/HomeworkDetail';
-import NoticeDetail from './container/student/notice/NoticeDetail';
-
-import ParentAd from './container/admin/ParentAd';
-import StudentAd from './container/admin/StudentAd';
-import TeacherAd from './container/admin/TeacherAd';
-import ClassroomAd from './container/admin/ClassroomAd';
-import NoticeAd from './container/admin/NoticeAd';
-import NoticeAdWrite from './container/admin/notice/NoticeAdWrite';
-import NoticeAdDetail from './container/admin/notice/NoticeAdDetail';
 
 import { refreshTokenApi } from './services/api/loginApi';
+
+const Login = lazy(() => import("./container/Login"));
+const Main = lazy(() => import("./container/Main"));
+const HomeworkList = lazy(() => import("./container/student/homework/HomeworkList"));
+const NoticeList = lazy(() => import("./container/student/notice/NoticeList"));
+const HomeworkDetail = lazy(() => import("./container/student/homework/HomeworkDetail"));
+const NoticeDetail = lazy(() => import("./container/student/notice/NoticeDetail"));
+
+const ParentAd = lazy(() => import("./container/admin/ParentAd"));
+const StudentAd = lazy(() => import("./container/admin/StudentAd"));
+const TeacherAd = lazy(() => import("./container/admin/TeacherAd"));
+const ClassroomAd = lazy(() => import("./container/admin/ClassroomAd"));
+const NoticeAd = lazy(() => import("./container/admin/NoticeAd"));
+const NoticeAdWrite = lazy(() => import("./container/admin/notice/NoticeAdWrite"));
+const NoticeAdDetail = lazy(() => import("./container/admin/notice/NoticeAdDetail"));
+// import Login from './container/Login';
+// import Main from './container/Main';
+// import HomeworkList from './container/student/homework/HomeworkList';
+// import NoticeList from './container/student/notice/NoticeList';
+// import HomeworkDetail from './container/student/homework/HomeworkDetail';
+// import NoticeDetail from './container/student/notice/NoticeDetail';
+
+// import ParentAd from './container/admin/ParentAd';
+// import StudentAd from './container/admin/StudentAd';
+// import TeacherAd from './container/admin/TeacherAd';
+// import ClassroomAd from './container/admin/ClassroomAd';
+// import NoticeAd from './container/admin/NoticeAd';
+// import NoticeAdWrite from './container/admin/notice/NoticeAdWrite';
+// import NoticeAdDetail from './container/admin/notice/NoticeAdDetail';
+
 
 function App() {
   useEffect(() => {
