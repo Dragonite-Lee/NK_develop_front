@@ -7,100 +7,10 @@ import Chart from "./Chart"
 import Button1 from "./Button1"
 import Button2 from "./Button2"
 
+import {getweekData} from "../temporary/weekData"
+const weekData = getweekData();
 
 const Behaving = () => {
-
-  const weekdata = [
-    {
-      complete : 4,
-      amount : 5,
-      label:"월"
-    },
-    {
-      complete : 3,
-      amount : 5,
-      label:"화"
-    },
-    {
-      complete : 2,
-      amount : 5,
-      label:"수"
-    },
-    {
-      complete : 5,
-      amount : 5,
-      label:"목"
-    },
-    {
-      complete : 0,
-      amount : 5,
-      label:"금"
-    },
-  ]
-
-  const monthdata = [
-    {
-      complete : 4,
-      amount : 5,
-      label:"1월"
-    },
-    {
-      complete : 5,
-      amount : 5,
-      label:"2월"
-    },
-    {
-      complete : 3,
-      amount : 5,
-      label:"3월"
-    },
-    {
-      complete : 2,
-      amount : 5,
-      label:"4월"
-    },
-    {
-      complete : 0,
-      amount : 5,
-      label:"5월"
-    },
-    {
-      complete : 4,
-      amount : 5,
-      label:"6월"
-    },
-    {
-      complete : 4,
-      amount : 5,
-      label:"7월"
-    },
-    {
-      complete : 5,
-      amount : 5,
-      label:"8월"
-    },
-    {
-      complete : 5,
-      amount : 5,
-      label:"9월"
-    },
-    {
-      complete : 3,
-      amount : 5,
-      label:"10월"
-    },
-    {
-      complete : 0,
-      amount : 5,
-      label:"11월"
-    },
-    {
-      complete : 2,
-      amount : 5,
-      label:"12월"
-    },
-
-  ]
 
 	const [selectedStudent, setSelectedStudent] = useState(null);
 
@@ -121,7 +31,7 @@ const Behaving = () => {
       </div>
       <div className="mt-[20px] w-[1000px] h-full">
         <div className = "gap-[44px] flex items-center justify-center" >
-          {weekdata.map((item, index) => (
+          {weekData.map((item, index) => (
             <div className="font-nanum_700"> 
               <div className="h-[160px] w-[160px]">
                 <Chart complete={item.complete} amount={item.amount} />
