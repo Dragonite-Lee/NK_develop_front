@@ -1,9 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { 
+  getAdAdminNotice,
+  getAdAllAdminNotice,
+  getAdAllClassroom,
   getAdAllStudnet, 
+  getAdAllTeacher, 
   getAdAllTeacherClassroom, 
   getAdClassroom, 
+  getAdClassroomStudent, 
+  getAdOneAdminNotice, 
   getAdOneClassroom, 
   getAdOneParent, 
   getAdOneStudnet, 
@@ -77,6 +83,16 @@ export const useAdOneParentQuery = (username) => {
 }
 
 //선생님 관리
+export const useAdAllTeacherQuery = () => {
+  const { data, isLoading } = useQuery(['/admin/teacher'],() =>
+    getAdAllTeacher()
+  );
+  return {
+    allTeacherData: data,
+    isLoading
+  }
+}
+
 export const useAdAllTeacherClassroomQuery = () => {
   const { data, isLoading } = useQuery(['/admin/teacher/classroom'],() =>
     getAdAllTeacherClassroom()
@@ -107,7 +123,17 @@ export const useAdOneTeacherQuery = (username) => {
   }
 }
 
-//반 관리
+//반 관리getAdAllClassroom
+export const useAdAllClassroomQuery = () => {
+  const { data, isLoading } = useQuery(['/admin/classroom'],() =>
+    getAdAllClassroom()
+  );
+  return {
+    allClassroomData: data,
+    isLoading
+  }
+}
+
 export const useAdClassroomQuery = (page,keyword) => {
   const { data, isLoading } = useQuery(['/admin/classroom', page, keyword],() =>
     getAdClassroom(page, keyword)
@@ -124,6 +150,47 @@ export const useAdOneClassroomQuery = (username) => {
   );
   return {
     oneClassroomData: data,
+    isLoading
+  }
+}
+
+export const useAdClassroomStudentQuery = (id) => {
+  const { data, isLoading } = useQuery(['/admin/classroom/student', id],() =>
+    getAdClassroomStudent(id)
+  );
+  return {
+    classroomStudentData: data,
+    isLoading
+  }
+}
+
+//어드민 공지 관리
+export const useAdAllAdminNoticeQuery = () => {
+  const { data, isLoading } = useQuery(['/admin/admin-notice'],() =>
+    getAdAllAdminNotice()
+  );
+  return {
+    allAdminNoticeData: data,
+    isLoading
+  }
+}
+
+export const useAdAdminNoticeQuery = (page,keyword,type) => {
+  const { data, isLoading } = useQuery(['/admin/admin-notice', page, keyword, type],() =>
+    getAdAdminNotice(page, keyword, type)
+  );
+  return {
+    adminNoticeData: data,
+    isLoading
+  }
+}
+
+export const useAdOneAdminNoticeQuery = (id) => {
+  const { data, isLoading } = useQuery(['/admin/admin-notice/one'],() =>
+    getAdOneAdminNotice(id)
+  );
+  return {
+    oneAdminNoticeData: data,
     isLoading
   }
 }

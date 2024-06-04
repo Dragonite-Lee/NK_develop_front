@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { useAdAllTeacherClassroomQuery } from "../query";
+
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import CircleRight from "../../../assets/student/CaretCircleRight.png";
 import calculateAge from "../../../utils/calculateAge";
 
 const AdMainTeList = () => {
-  const { allTeacherClassroomData, isLoading } =
-    useAdAllTeacherClassroomQuery();
+  const { allTeacherClassroomData, isLoading } = useAdAllTeacherClassroomQuery();
 
   if (isLoading)
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;

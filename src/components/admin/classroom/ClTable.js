@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 
 import YellowModal from "../YellowModal";
-import BlueModalTePut from "./BlueModalTePut";
+import BlueModalClPut from "./BlueModalClPut";
 import { useAdClassroomQuery } from "../query";
 
 import Pencil from "../../../assets/admin/Pencil.png";
 import Trash from "../../../assets/admin/Trash.png";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png"
+import BlueModalClSt from "./BlueModalClSt";
 
 const ClTable = ({cancleText, cancleText2, keyword, header, updateSelection, deleteMutate}) => {
   const [selection, setSelection] = useState(new Set());
   const [cancleModal, setCancleModal] = useState(false);
   const [modifyModal, setModifyModal] = useState(false);
+  const [classrommModal, setClassroomModal] = useState(false);
   const [cancleId, setCancleId] = useState([]);
   const [modifyId, setModifyId] = useState();
+  const [classroomId, setClassroomId] = useState();
   const [paramsPage, setParamsPage] = useState(0);
   const { classroomData, isLoading } = useAdClassroomQuery(paramsPage, keyword);
   const [current, setCurrent] = useState(classroomData?.data.currentPage + 1);
@@ -63,10 +66,14 @@ const ClTable = ({cancleText, cancleText2, keyword, header, updateSelection, del
     setModifyModal(true)
   };
 
-  
+  const onClickClassroomModal = (studentClassroomData) => {
+    setClassroomId(studentClassroomData)
+    setClassroomModal(true)
+  };
+
   const headerkey = header.map((header) => header.value);
   const width = header.map((header) => header.width);
-  // console.log(headerkey)
+  // console.log(classroomData?.data.results[0]['TeachingTeacher'])
   useEffect(() => {
     if (deleteMutate.isSuccess == true) {
       setCancleModal(false)
@@ -88,14 +95,17 @@ const ClTable = ({cancleText, cancleText2, keyword, header, updateSelection, del
   if (isLoading) return <div className="font-nanum_700 text-[14px]">로딩 중...</div>
 
   if (classroomData?.data.results.length == 0) return <div className="font-nanum_700 text-[14px]">등록된 데이터가 존재하지 않습니다.</div>
-  // console.log(classroomData)
+
   return ( 
     <div className="mt-[12px]">
       {cancleModal && (
         <YellowModal setState={setCancleModal} mutate={deleteMutate.mutate} selection={cancleId} title={`${cancleText} 정보 삭제`} content1={`선택한 ${cancleText2} 삭제하시겠습니까?`} content2="" content3="" cancle="취소하기" del="삭제하기" />
       )}
       {modifyModal && (
-        <BlueModalTePut setState={setModifyModal} data={modifyId}/>
+        <BlueModalClPut setState={setModifyModal} data={modifyId}/>
+      )}
+      {classrommModal && (
+        <BlueModalClSt setState={setClassroomModal} id={classroomId.id} title={classroomId.classname}/>
       )}
       {/* 테이블 */}
       <table className="mt-[20px] text-[14px] grid desktop:w-[996px] overflow-x-auto scrollbar-thin scrollbar-webkit	scroll-behavior:smooth tablet_change:pb-[49px] mobile:pb-[29px]">
@@ -132,7 +142,11 @@ const ClTable = ({cancleText, cancleText2, keyword, header, updateSelection, del
                     headerkey.map((key, id) =>
                       <div key={key + id} className={`flex items-center justify-center ${width[id]}`}>
                         <div>
-                          {data[key]}
+                        {key == 'TeachingTeacher' ? data[key]?.nickname
+                          : key == 'AssistantTeacher' ? data[key].map((data, index) => (<div key={index}>{data.nickname}</div>)) 
+                            : key == 'classname' ? <span className="hover:text-management2" onClick={()=>onClickClassroomModal(data)}>{data[key]}</span>
+                              : data[key]
+                        }
                         </div>
                       </div>
                     )

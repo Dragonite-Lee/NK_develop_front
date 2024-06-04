@@ -87,7 +87,7 @@ const StTable = ({cancleText, cancleText2, keyword, header, updateSelection, del
 	};
 
   if (isLoading) return <div className="font-nanum_700 text-[14px]">로딩 중...</div>
-
+ 
   if (studentData?.data.results.length == 0) return <div className="font-nanum_700 text-[14px]">등록된 데이터가 존재하지 않습니다.</div>
 
   return ( 

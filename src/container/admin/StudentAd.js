@@ -8,6 +8,7 @@ import StTable from "../../components/admin/student/StTable";
 import YellowModal from "../../components/admin/YellowModal";
 import BlueModalSt from "../../components/admin/student/BlueModalSt";
 import BlueModalStSc from "../../components/admin/student/BludModalStSc";
+import BlueModalStCl from "../../components/admin/student/BlueModalStCl";
 
 import { deleteAdStudent } from "../../services/api/adminApi";
 import { getCookie } from "../../utils/cookie";
@@ -16,6 +17,7 @@ import useInput from "../../hooks/useInput";
 import trash_white from "../../assets/admin/Trash_white.png";
 import circle_plus_white from "../../assets/admin/PlusCircle_white.png";
 import FolderPlus_white from "../../assets/admin/FolderPlus_white.png";
+
 
 const header = [
   {
@@ -88,7 +90,7 @@ const StudentAd = () => {
       setCancleModal(false)
     }
   },[deleteMutate.isSuccess])
-  // console.log(allStudentData)
+  
   return (
     <>
       {cancleModal && ( selection?.length != 0 && selection?.length != undefined ? (
@@ -102,6 +104,9 @@ const StudentAd = () => {
       )}
       {schoolRegisterModal && (
         <BlueModalStSc setState={setSchoolRegisterModal} />
+      )}
+      {classRegisterModal && (
+        <BlueModalStCl setState={setClassRegisterModal} selection={selection} />
       )}
       <div className="min-w-[280px]">
         <Header/>

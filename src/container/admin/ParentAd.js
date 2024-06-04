@@ -8,12 +8,10 @@ import PaTable from "../../components/admin/parent/PaTable";
 import YellowModal from "../../components/admin/YellowModal";
 import BlueModalPa from "../../components/admin/parent/BlueModalPa";
 
-import { useAdParentQuery } from "../../components/admin/query";
 import { deleteAdParent } from "../../services/api/adminApi";
 import { getCookie } from "../../utils/cookie";
 import useInput from "../../hooks/useInput";
 
-import glass from "../../assets/admin/MagnifyingGlass.png"
 import trash_white from "../../assets/admin/Trash_white.png"
 import circle_plus_white from "../../assets/admin/PlusCircle_white.png"
 
@@ -64,7 +62,6 @@ const ParentAd = () => {
   const [selection, setSelection] = useState([]);
   const [searchInput, setSearchInput] = useInput('');
   const [keyword, setKeyword] = useState('');
-  const [searchData, setSearchData] = useState([]);
   const [cancleModal, setCancleModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
 

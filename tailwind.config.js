@@ -43,7 +43,7 @@ module.exports = {
       'grey' : '#969699',
       'grayLight' : '#D1D1D6',
       'border' : '#F1F1F5',
-      'white' : '#F9F9FC',
+      'white1' : '#F9F9FC',
       'whiteTotal' : '#FFFFFF'
     },
   },

@@ -2,7 +2,7 @@
 
 // import { testDataAxios } from "./services/test";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 
 import './App.css';
 
@@ -21,6 +21,7 @@ const TeacherAd = lazy(() => import("./container/admin/TeacherAd"));
 const ClassroomAd = lazy(() => import("./container/admin/ClassroomAd"));
 const NoticeAd = lazy(() => import("./container/admin/NoticeAd"));
 const NoticeAdWrite = lazy(() => import("./container/admin/notice/NoticeAdWrite"));
+const NoticeAdNewWrite = lazy(() => import("./container/admin/notice/NoticeAdNewWrite"));
 const NoticeAdDetail = lazy(() => import("./container/admin/notice/NoticeAdDetail"));
 // import Login from './container/Login';
 // import Main from './container/Main';
@@ -35,6 +36,7 @@ const NoticeAdDetail = lazy(() => import("./container/admin/notice/NoticeAdDetai
 // import ClassroomAd from './container/admin/ClassroomAd';
 // import NoticeAd from './container/admin/NoticeAd';
 // import NoticeAdWrite from './container/admin/notice/NoticeAdWrite';
+// import NoticeAdNewWrite from './container/admin/notice/NoticeAdNewWrite';
 // import NoticeAdDetail from './container/admin/notice/NoticeAdDetail';
 
 
@@ -46,22 +48,25 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<Login />}></Route>
-          <Route path="/main" element={<Main />}></Route>
-          <Route path="/main/homeworklist" element={<HomeworkList />}></Route>
-          <Route path="/main/homeworklist/:id" element={<HomeworkDetail />}></Route>
-          <Route path="/main/noticelist" element={<NoticeList />}></Route>
-          <Route path="/main/noticelist/:id" element={<NoticeDetail />}></Route>
-          
-          <Route path="/main/parentAd" element={<ParentAd />}></Route>
-          <Route path="/main/studentAd" element={<StudentAd />}></Route>
-          <Route path="/main/teacherAd" element={<TeacherAd />}></Route>
-          <Route path="/main/classroomAd" element={<ClassroomAd />}></Route>
-          <Route path="/main/noticeAd" element={<NoticeAd />}></Route>
-          <Route path="/main/noticeAd/noticeAdWrite/:id" element={<NoticeAdWrite />}></Route>
-          <Route path="/main/noticeAd/:id" element={<NoticeAdDetail />}></Route>
-        </Routes>
+        <Suspense fallback={<div>로딩 중...</div>}>
+          <Routes>
+            <Route exact path="/" element={<Login />}></Route>
+            <Route path="/main" element={<Main />}></Route>
+            <Route path="/main/homeworklist" element={<HomeworkList />}></Route>
+            <Route path="/main/homeworklist/:id" element={<HomeworkDetail />}></Route>
+            <Route path="/main/noticelist" element={<NoticeList />}></Route>
+            <Route path="/main/noticelist/:id" element={<NoticeDetail />}></Route>
+            
+            <Route path="/main/parentAd" element={<ParentAd />}></Route>
+            <Route path="/main/studentAd" element={<StudentAd />}></Route>
+            <Route path="/main/teacherAd" element={<TeacherAd />}></Route>
+            <Route path="/main/classroomAd" element={<ClassroomAd />}></Route>
+            <Route path="/main/noticeAd" element={<NoticeAd />}></Route>
+            <Route path="/main/noticeAd/noticeAdNewWrite" element={<NoticeAdNewWrite />}></Route>
+            <Route path="/main/noticeAd/noticeAdWrite/:id" element={<NoticeAdWrite />}></Route>
+            <Route path="/main/noticeAd/:id" element={<NoticeAdDetail />}></Route>
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </div>
   );

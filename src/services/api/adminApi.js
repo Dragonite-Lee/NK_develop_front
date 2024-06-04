@@ -66,6 +66,11 @@ export const deleteAdParent = async (id) => {
 };
 
 // 선생님 관리 (get, post, put, delete)
+export const getAdAllTeacher = async () => {
+  const data = await client.get(`/api/teacher/list`);
+  return data;
+};
+
 export const getAdAllTeacherClassroom = async () => {
   const data = await client.get("/api/teacher/classroom");
   return data;
@@ -94,6 +99,11 @@ export const deleteAdTeacher = async (id) => {
 };
 
 // 반 관리 (get, post, put, delete)
+export const getAdAllClassroom = async () => {
+  const data = await client.get(`/api/classroom/list`);
+  return data;
+};
+
 export const getAdClassroom = async (page, keyword) => {
   const data = await client.get("/api/classroom", {
     params: { page, keyword },
@@ -116,4 +126,48 @@ export const putAdClassroom = async (id, data) => {
 
 export const deleteAdClassroom = async (id) => {
   await client.post("/api/classroom", id);
+};
+
+//반에 속한 학생 관리(get, post, delete)
+export const getAdClassroomStudent = async (id) => {
+  const data = await client.get(`/api/classroom/${id}/student`);
+  return data;
+}
+
+export const postAdClassroomStudent = async (id, data) => {
+  await client.post(`/api/classroom/${id}/student`, data);
+};
+
+export const deleteAdClassroomStudent = async (id, data) => {
+  await client.post(`/api/classroom/${id}/student`, data);
+};
+
+//관리자 공지 관리(get, post, delete, put)
+export const getAdAllAdminNotice = async () => {
+  const data = await client.get(`/api/admin-notice/list`);
+  return data;
+};
+
+export const getAdOneAdminNotice = async (id) => {
+  const data = await client.get(`/api/admin-notice/${id}`);
+  return data;
+};
+
+export const getAdAdminNotice = async (page, keyword, type) => {
+  const data = await client.get(`/api/admin-notice`, {
+    params: { page, keyword, type },
+  });
+  return data;
+};
+
+export const postAdAdminNotice = async (data) => {
+  await client.post(`/api/admin-notice`, data);
+};
+
+export const putAdAdminNotice = async (id, data) => {
+  await client.put(`/api/admin-notice/${id}`, data);
+};
+
+export const deleteAdAdminNotice = async (id) => {
+  await client.delete(`/api/admin-notice/${id}`);
 };
