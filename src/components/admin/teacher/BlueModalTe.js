@@ -42,7 +42,7 @@ const workList = [
 const BlueModalTe = ({setState}) => {
   const [nicknameValue, nicknameHandler] = useInput("");
   const [phoneNumberValue, phoneNumberHandler] = useInput("");
-  const [birthValue, birthHandler] = useState("");
+  const [birthValue, birthHandler] = useInput("");
   const [usernameValue, usernameHandler] = useInput("");
   const [passwordValue, passwordHandler] = useInput("");
   const [registrationDateValue, registrationDateHandler] = useInput('');
@@ -56,7 +56,7 @@ const BlueModalTe = ({setState}) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries('/admin/teacher');
-      alert("선생님이 추가 되었습니다.");
+      alert("선생님이 추가되었습니다.");
       setState(false);
     }
   });
@@ -108,7 +108,7 @@ const BlueModalTe = ({setState}) => {
             </div>
             <div>
               <div className="flex items-center justify-between">
-                <div>학부모 연락처 <span className="text-error">*</span></div>
+                <div>선생님 연락처 <span className="text-error">*</span></div>
                 <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" value={phoneNumberValue} onChange={phoneNumberHandler} placeholder="010-1234-5678" className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"/>
               </div>
               {phoneValid == false && (

@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import StTable from "../../components/admin/student/StTable";
-import YellowModal from "../../components/admin/YellowModal";
+import YellowModal from "../../components/YellowModal";
 import BlueModalSt from "../../components/admin/student/BlueModalSt";
 import BlueModalStSc from "../../components/admin/student/BludModalStSc";
 import BlueModalStCl from "../../components/admin/student/BlueModalStCl";
@@ -82,6 +82,7 @@ const StudentAd = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries('/admin/student')
+      alert("삭제되었습니다.")
     }
   });
 
@@ -105,9 +106,11 @@ const StudentAd = () => {
       {schoolRegisterModal && (
         <BlueModalStSc setState={setSchoolRegisterModal} />
       )}
-      {classRegisterModal && (
+      {classRegisterModal && ( selection?.length != 0 && selection?.length != undefined ? (
         <BlueModalStCl setState={setClassRegisterModal} selection={selection} />
-      )}
+      ): (
+        <YellowModal setState={setClassRegisterModal} title="알림" content1="학생을 선택해주세요" content2="" content3="" cancle="닫기" del="" />
+      ))}
       <div className="min-w-[280px]">
         <Header/>
           <main className='desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight'>

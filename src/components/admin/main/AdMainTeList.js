@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { useAdAllTeacherClassroomQuery } from "../query";
+import { useAdAllTeacherClassroomQuery } from "../adminQuery";
 
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
@@ -9,7 +9,8 @@ import CircleRight from "../../../assets/student/CaretCircleRight.png";
 import calculateAge from "../../../utils/calculateAge";
 
 const AdMainTeList = () => {
-  const { allTeacherClassroomData, isLoading } = useAdAllTeacherClassroomQuery();
+  const { allTeacherClassroomData, isLoading } =
+    useAdAllTeacherClassroomQuery();
 
   if (isLoading)
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
@@ -24,24 +25,30 @@ const AdMainTeList = () => {
         </Link>
       </div>
       <div className="w-full mt-[8px]">
-        {allTeacherClassroomData?.data.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-between mt-[16px] text-[14px] font-nanum_400"
-          >
-            <div>{item.nickname}</div>
-            {item.Classroom.length === 1 ? (
-              <div className="text-grey">
-                {item.Classroom[0].classroom.classname}
+        {allTeacherClassroomData?.data.map((item, index) => {
+          return (
+            index < 6 && (
+              <div
+                key={index}
+                className="flex items-center justify-between mt-[16px] text-[14px] font-nanum_400"
+              >
+                <div>{item.nickname}</div>
+                {item.Classroom.length === 0 ? (
+                  <div></div>
+                ) : item.Classroom.length === 1 ? (
+                  <div className="text-grey">
+                    {item.Classroom[0].classroom.classname}
+                  </div>
+                ) : (
+                  <div className="text-grey">
+                    {item.Classroom[0].classroom.classname} 외{" "}
+                    {item.Classroom.length - 1}개 반
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="text-grey">
-                {item.Classroom[0].classroom.classname} 외 {item.Classroom.length - 1}개
-                반
-              </div>
-            )}
-          </div>
-        ))}
+            )
+          );
+        })}
       </div>
     </section>
   );

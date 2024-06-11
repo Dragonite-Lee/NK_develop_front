@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import PaTable from "../../components/admin/parent/PaTable";
-import YellowModal from "../../components/admin/YellowModal";
+import YellowModal from "../../components/YellowModal";
 import BlueModalPa from "../../components/admin/parent/BlueModalPa";
 
 import { deleteAdParent } from "../../services/api/adminApi";
@@ -71,6 +71,7 @@ const ParentAd = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries('/admin/parent')
+      alert("삭제되었습니다.")
     }
   });
 

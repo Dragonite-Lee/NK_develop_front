@@ -11,7 +11,9 @@ export const postAdSchool = async (data) => {
 };
 
 export const deleteAdSchool = async (id) => {
-  await client.post("/api/school", id);
+  await client.delete("/api/school",
+    {data : { "schoolNames": id}}
+  );
 };
 
 // 학생 관리 (get, post, put, delete)
@@ -39,7 +41,9 @@ export const putAdStudent = async (username, data) => {
 };
 
 export const deleteAdStudent = async (id) => {
-  await client.post("/api/student", id);
+  await client.delete("/api/student",
+    {data : { "studentIds": id}}
+  );
 };
 
 // 학부모 관리 (get, post, put, delete)
@@ -62,7 +66,9 @@ export const putAdParent = async (username, data) => {
 };
 
 export const deleteAdParent = async (id) => {
-  await client.post("/api/parent", id);
+  await client.delete("/api/parent", 
+    {data : { "parentIds": id}}
+  );
 };
 
 // 선생님 관리 (get, post, put, delete)
@@ -95,7 +101,9 @@ export const putAdTeacher = async (username, data) => {
 };
 
 export const deleteAdTeacher = async (id) => {
-  await client.post("/api/teacher", id);
+  await client.delete("/api/teacher",
+    {data : { "teacherIds": id}}
+  );
 };
 
 // 반 관리 (get, post, put, delete)
@@ -125,7 +133,8 @@ export const putAdClassroom = async (id, data) => {
 };
 
 export const deleteAdClassroom = async (id) => {
-  await client.post("/api/classroom", id);
+  await client.delete(`/api/classroom/${id}`
+  );
 };
 
 //반에 속한 학생 관리(get, post, delete)
@@ -139,7 +148,9 @@ export const postAdClassroomStudent = async (id, data) => {
 };
 
 export const deleteAdClassroomStudent = async (id, data) => {
-  await client.post(`/api/classroom/${id}/student`, data);
+  await client.delete(`/api/classroom/${id}/student`, 
+    {data : { "studentIds": data}}
+  );
 };
 
 //관리자 공지 관리(get, post, delete, put)

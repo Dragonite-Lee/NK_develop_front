@@ -23,6 +23,13 @@ const NoticeAd = lazy(() => import("./container/admin/NoticeAd"));
 const NoticeAdWrite = lazy(() => import("./container/admin/notice/NoticeAdWrite"));
 const NoticeAdNewWrite = lazy(() => import("./container/admin/notice/NoticeAdNewWrite"));
 const NoticeAdDetail = lazy(() => import("./container/admin/notice/NoticeAdDetail"));
+
+const StudentTe = lazy(() => import("./container/teacher/StudentTe"));
+const NoticeTe = lazy(() => import("./container/teacher/NoticeTe"));
+const NoticeAdDetailTe = lazy(() => import("./container/teacher/notice/NoticeAdDetailTe"));
+const NoticeTeDetailTe = lazy(() => import("./container/teacher/notice/NoticeTeDetailTe"));
+const NoticeTeWrite = lazy(() => import("./container/teacher/notice/NoticeTeWrite"));
+const NoticeTeNewWrite = lazy(() => import("./container/teacher/notice/NoticeTeNewWrite"));
 // import Login from './container/Login';
 // import Main from './container/Main';
 // import HomeworkList from './container/student/homework/HomeworkList';
@@ -38,6 +45,13 @@ const NoticeAdDetail = lazy(() => import("./container/admin/notice/NoticeAdDetai
 // import NoticeAdWrite from './container/admin/notice/NoticeAdWrite';
 // import NoticeAdNewWrite from './container/admin/notice/NoticeAdNewWrite';
 // import NoticeAdDetail from './container/admin/notice/NoticeAdDetail';
+
+// import StudentTe from './container/teacher/StudentTe';
+// import NoticeTe from './container/teacher/NoticeTe';
+// import NoticeAdDetailTe from './container/teacher/notice/NoticeAdDetailTe';
+// import NoticeTeDetailTe from './container/teacher/notice/NoticeTeDetailTe';
+// import NoticeTeNewWrite from './container/teacher/notice/NoticeTeNewWrite';
+// import NoticeTeWrite from './container/teacher/notice/NoticeTeWrite';
 
 
 function App() {
@@ -65,6 +79,13 @@ function App() {
             <Route path="/main/noticeAd/noticeAdNewWrite" element={<NoticeAdNewWrite />}></Route>
             <Route path="/main/noticeAd/noticeAdWrite/:id" element={<NoticeAdWrite />}></Route>
             <Route path="/main/noticeAd/:id" element={<NoticeAdDetail />}></Route>
+
+            <Route path="/main/studentTe" element={<StudentTe />}></Route>
+            <Route path="/main/noticeTe" element={<NoticeTe />}></Route>
+            <Route path="/main/noticeTe/adminDetail/:id" element={<NoticeAdDetailTe />}></Route>
+            <Route path="/main/noticeTe/teacherDetail/:id" element={<NoticeTeDetailTe />}></Route>
+            <Route path="/main/noticeTe/noticeTeNewWrite" element={<NoticeTeNewWrite />}></Route>
+            <Route path="/main/noticeTe/noticeTeWrite/:id" element={<NoticeTeWrite />}></Route>
           </Routes>
         </Suspense>
       </BrowserRouter>

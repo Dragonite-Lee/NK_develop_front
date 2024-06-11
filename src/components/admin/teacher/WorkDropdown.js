@@ -10,7 +10,11 @@ const WorkDropdown = ({state, setState, itemData}) => {
   
   const onChangeSelection = (value) => {
     const newSelection = new Set(selection);
-    newSelection.add(value);
+    if (newSelection.has(value)) {
+      newSelection.delete(value);
+    } else {
+      newSelection.add(value);
+    }
     const sortedData = Array.from(newSelection).sort((a, b) => a.id - b.id);
     
     const workData = sortedData.map((data) => data.data);

@@ -25,8 +25,8 @@ const student_route = [
 
 const teacher_route = [
   {
-    title: "우리반 관리",
-    href: "#"
+    title: "숙제 관리",
+    href: "/main/homeworkTe"
   },
   {
     title: "채팅하기",
@@ -34,11 +34,11 @@ const teacher_route = [
   },
   {
     title: "공지사항",
-    href: "#"
+    href: "/main/noticeTe"
   },
   {
     title: "학생 관리",
-    href: "#"
+    href: "/main/studentTe"
   }
 ];
 

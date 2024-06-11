@@ -1,6 +1,12 @@
 import warning_white from "../../../assets/admin/Warning_white.png"
 
 const YellowModalCl = ({setState, title, id, content1, content2, content3, cancle, del, mutate, selection}) => {
+  
+  const deleteData = {
+    "id": id,
+    "studentIds": selection
+  }
+  
   return ( 
     <div className="z-[15] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full y-full min-h-full bg-[#212121]/[.08]">
       <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] desktop:w-[390px] tablet:w-[300px] mobile:w-[240px] h-[158px] rounded-[20px] border drop-shadow">
@@ -15,7 +21,7 @@ const YellowModalCl = ({setState, title, id, content1, content2, content3, cancl
               <button onClick={() => setState(false)} className="bg-grayLight w-[104px] h-[36px] flex items-center justify-center rounded-[18px]">{cancle}</button>
             )}
             {del && (
-              <button onClick={() => mutate(id, selection)} className="bg-warning2 w-[104px] h-[36px] flex items-center justify-center rounded-[18px]">{del}</button>
+              <button onClick={() => mutate(deleteData)} className="bg-warning2 w-[104px] h-[36px] flex items-center justify-center rounded-[18px]">{del}</button>
             )}
           </div>
         </div>

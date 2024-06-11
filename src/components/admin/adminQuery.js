@@ -123,7 +123,7 @@ export const useAdOneTeacherQuery = (username) => {
   }
 }
 
-//반 관리getAdAllClassroom
+//반 관리
 export const useAdAllClassroomQuery = () => {
   const { data, isLoading } = useQuery(['/admin/classroom'],() =>
     getAdAllClassroom()
@@ -186,8 +186,10 @@ export const useAdAdminNoticeQuery = (page,keyword,type) => {
 }
 
 export const useAdOneAdminNoticeQuery = (id) => {
-  const { data, isLoading } = useQuery(['/admin/admin-notice/one'],() =>
-    getAdOneAdminNotice(id)
+  const { data, isLoading } = useQuery(['/admin/admin-notice/one', id],() =>
+    getAdOneAdminNotice(id), {
+      enabled: !!id
+    }
   );
   return {
     oneAdminNoticeData: data,

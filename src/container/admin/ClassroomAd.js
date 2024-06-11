@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ClTable from "../../components/admin/classroom/ClTable";
-import YellowModal from "../../components/admin/YellowModal";
+import YellowModal from "../../components/YellowModal";
 import BlueModalCl from "../../components/admin/classroom/BlueModalCl";
 
 import { deleteAdClassroom } from "../../services/api/adminApi";
@@ -19,22 +19,22 @@ const header = [
   {
     text: "이름",
     value: "classname",
-    width: "w-[24%]",
+    width: "w-[15%]",
   },
   {
     text: "티칭 선생님",
     value: "TeachingTeacher",
-    width: "w-[23%]",
+    width: "w-[15%]",
   },
   {
     text: "코칭 선생님",
     value: "AssistantTeacher",
-    width: "w-[23%]",
+    width: "w-[40%]",
   },
   {
     text: "요일",
     value: "days",
-    width: "w-[23%]",
+    width: "w-[30%]",
   },
 ];
 
@@ -62,6 +62,7 @@ const ClassroomAd = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/classroom");
+      alert("삭제되었습니다.")
     },
   });
 

@@ -9,6 +9,7 @@ module.exports = {
       'desktop_header' : '1440px',
       'desktop' : '1240px',
       'tablet_header_change' : '1040px',
+      'tablet_quill_change' : '800px',
       'tablet_change' : '768px',
       'tablet' : '600px',
       'mobile' : '280px'

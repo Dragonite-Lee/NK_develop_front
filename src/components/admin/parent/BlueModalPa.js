@@ -22,6 +22,7 @@ const relationList = [
 const BlueModalPa = ({setState}) => {
   const [nicknameValue, nicknameHandler] = useInput("");
   const [phoneNumberValue, phoneNumberHandler] = useInput("");
+  const [birthValue, birthValueHandler] = useInput("");
   const [relationshipValue, relationshipHandler] = useState("");
   const [usernameValue, usernameHandler] = useInput("");
   const [passwordValue, passwordHandler] = useInput("");
@@ -35,7 +36,7 @@ const BlueModalPa = ({setState}) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries('/admin/parent');
-      alert("학부모가 추가 되었습니다.");
+      alert("학부모가 추가되었습니다.");
       setState(false);
     }
   });
@@ -56,7 +57,7 @@ const BlueModalPa = ({setState}) => {
   
   return ( 
     <div className="z-10 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full y-full min-h-full bg-[#212121]/[.08]">
-      <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] tablet_change:w-[694px] tablet:w-[383px] mobile:w-[260px] tablet_change:h-[323px] mobile:h-[484px] rounded-[20px] border drop-shadow">
+      <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] tablet_change:w-[694px] tablet:w-[383px] mobile:w-[260px] tablet_change:h-[373px] mobile:h-[534px] rounded-[20px] border drop-shadow">
         <div className="h-[64px] bg-management1 flex items-center pl-[36px] rounded-t-[20px]">
           <div className="font-pacbooc_700 text-[18px] text-white">학부모 신규 등록</div>
         </div>
@@ -73,6 +74,17 @@ const BlueModalPa = ({setState}) => {
             <div className="relative z-10 flex items-center justify-between">
               <div>자녀 정보 <span className="text-error">*</span></div>
               <SearchDropdownSt state={studentIds} setState={setStudentIds} value={studentIdsValue} setValue={setStudentIdsValue} />
+            </div>
+            <div className="flex items-center justify-between">
+              <div>
+                생년월일 <span className="text-error">*</span>
+              </div>
+              <input
+                type="date"
+                value={birthValue}
+                onChange={birthValueHandler}
+                className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
+              />
             </div>
           </div>
           <div className="flex flex-col gap-[17px] tablet_change:w-[292px] tablet:w-[303px] mobile:w-[220px]">

@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import TeTable from "../../components/admin/teacher/TeTable";
-import YellowModal from "../../components/admin/YellowModal";
+import YellowModal from "../../components/YellowModal";
 import BlueModalTe from "../../components/admin/teacher/BlueModalTe";
 
 import { deleteAdTeacher } from "../../services/api/adminApi";
@@ -77,6 +77,7 @@ const TeacherAd = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries('/admin/teacher')
+      alert("삭제되었습니다.")
     }
   });
 
