@@ -6,7 +6,10 @@ module.exports = {
   theme: {
     extend: {},
     screens: {
+      'desktop_header' : '1440px',
       'desktop' : '1240px',
+      'tablet_header_change' : '1040px',
+      'tablet_quill_change' : '800px',
       'tablet_change' : '768px',
       'tablet' : '600px',
       'mobile' : '280px'
@@ -34,15 +37,54 @@ module.exports = {
       'success' : '#63C714',
       'information' : '#2D9AFF',
       'warning' : '#F5A020',
+      'warning2' : '#EA9619',
       'error' : '#F6403F',
       'black' : '#212121',
       'grayDark' : '#4C4C4E',
-      'gray' : '#969699',
+      'grey' : '#969699',
       'grayLight' : '#D1D1D6',
       'border' : '#F1F1F5',
-      'white' : '#F9F9FC',
+      'white1' : '#F9F9FC',
       'whiteTotal' : '#FFFFFF'
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin'),
+    function ({addUtilities}) {
+      const newUtilities = {
+        ".scrollbar-thin" : {
+          scrollbarWidth : "thin",
+          scrollbarColor: "rgb(94,166,219) white",
+        },
+        ".scrollbar-webkit" : {
+          "&::-webkit-scrollbar" : {
+            width: "8px"
+          },
+          "&::-webkit-scrollbar-track" : {
+            background: "white"
+          },
+          "&::-webkit-scrollbar-thumb" : {
+            backgroundColor: "rgb(94,166,219)",
+            borderRadius: "20px",
+            border: "1px solid white"
+          }
+        },
+        ".scrollbar-medium" : {
+          "&::-webkit-scrollbar" : {
+            width: "10px"
+          },
+          "&::-webkit-scrollbar-track" : {
+            background: "white"
+          },
+          "&::-webkit-scrollbar-thumb" : {
+            backgroundColor: "rgb(217,217,217)",
+            borderRadius: "20px",
+            border: "1px solid white"
+          }
+        }
+      }
+
+      addUtilities(newUtilities, ["responsive", "hover"])
+    }
+  ]
 }

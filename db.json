@@ -1,0 +1,350 @@
+{
+  "student": [
+    {
+      "id": "7",
+      "username": "김태1현",
+      "nickname": "태현이",
+      "birth": "2000-01-21",
+      "phoneNumber": "010-2444-2323",
+      "schoolName": "등촌초",
+      "createDate": "2022-02-02",
+      "studentPw": "fsdf",
+      "studentId": 10,
+      "parent": "고길동 (모)",
+      "parentPhoneNumber": "010-4848-5959"
+    },
+    {
+      "id": "8",
+      "username": "이준영",
+      "nickname": "준영이",
+      "birth": "1999-12-22",
+      "phoneNumber": "010-1111-2323",
+      "schoolName": "등촌중",
+      "createDate": "2022-02-02",
+      "studentPw": "fsdf",
+      "studentId": 9,
+      "parent": "고길동 (부)",
+      "parentPhoneNumber": "010-4848-5959"
+    },
+    {
+      "id": "6",
+      "username": "뇽냥",
+      "nickname": "뇽냥이",
+      "birth": "2005-07-21",
+      "phoneNumber": "010-3333-2323",
+      "schoolName": "송도고",
+      "createDate": "2022-02-02",
+      "studentPw": "fsdf",
+      "studentId": 10,
+      "parent": "뇽냥냥 (모)",
+      "parentPhoneNumber": "010-1111-9392`"
+    }
+  ],
+  "classroom": [
+    {
+      "id": "1212",
+      "classroom": "제 3-2학기 수업",
+      "teacherId": 10,
+      "coachName": "코치쌤",
+      "createDate": "2021-04-15",
+      "teacherName": "가나다"
+    },
+    {
+      "id": "1213",
+      "classroom": "제 4-2학기 수업",
+      "teacherId": 11,
+      "coachName": "코치쌤",
+      "createDate": "2021-04-15",
+      "teacherName": "라마바"
+    },
+    {
+      "id": "1214",
+      "classroom": "수학특별보강1",
+      "teacherId": 12,
+      "coachName": "코치쌤",
+      "createDate": "2021-04-15",
+      "teacherName": "사아자"
+    },
+    {
+      "id": "1216",
+      "classroom": "수학특별보강3",
+      "teacherId": 12,
+      "coachName": "코치쌤",
+      "createDate": "2021-04-15",
+      "teacherName": "사아자"
+    },
+    {
+      "id": "1215",
+      "classroom": "수학특별보강",
+      "teacherId": 10,
+      "coachName": "코치쌤",
+      "createDate": "2021-04-15",
+      "teacherName": "가나다"
+    }
+  ],
+  "teacher": [
+    {
+      "id": "10",
+      "username": "가나다",
+      "nickname": "가나다",
+      "birth": "1989-10-12",
+      "workDay": "월화수",
+      "createDate": "2023-02-02",
+      "phoneNumber": "010-3231-8753",
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1212,
+          "classroom": "제 3-2학기 수업"
+        },
+        {
+          "id": 1215,
+          "classroom": "수학특별보강"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "username": "사아자",
+      "nickname": "사아자",
+      "birth": "1987-02-12",
+      "workDay": "월화수",
+      "createDate": "2023-02-02",
+      "phoneNumber": "010-1111-4949",
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1214,
+          "classroom": "수학특별보강1"
+        },
+        {
+          "id": 1215,
+          "classroom": "수학특별보강2"
+        },
+        {
+          "id": 1216,
+          "classroom": "수학특별보강3"
+        }
+      ]
+    }
+  ],
+  "notice": [
+    {
+      "id": "50",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목1(학생은학생공지만옴)",
+      "content": "뭐시기뭐시기 공지합니다 아하하하ㅏ핳하",
+      "user": {
+        "username": "가나다",
+        "nickname": "가나다"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1212
+        },
+        {
+          "id": 1215
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목2(학생은학생공지만옴)",
+      "content": "뭐시기으아아ㅏㅇ하하ㅏ핳하",
+      "user": {
+        "username": "라마바",
+        "nickname": "라마바"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1213
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목3(학생은학생공지만옴)",
+      "content": "어으응으ㅡㅇ으아아아아아ㅏ",
+      "user": {
+        "username": "사아자",
+        "nickname": "사아자"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1214
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목3(학생은학생공지만옴)",
+      "content": "어으응으ㅡㅇ으아아아아아ㅏ",
+      "user": {
+        "username": "사아자",
+        "nickname": "사아자"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1214
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목3(학생은학생공지만옴)",
+      "content": "어으응으ㅡㅇ으아아아아아ㅏ",
+      "user": {
+        "username": "사아자",
+        "nickname": "사아자"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1214
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목3(학생은학생공지만옴)",
+      "content": "어으응으ㅡㅇ으아아아아아ㅏ",
+      "user": {
+        "username": "사아자",
+        "nickname": "사아자"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1214
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목3(학생은학생공지만옴)",
+      "content": "어으응으ㅡㅇ으아아아아아ㅏ",
+      "user": {
+        "username": "사아자",
+        "nickname": "사아자"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1214
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목3(학생은학생공지만옴)",
+      "content": "어으응으ㅡㅇ으아아아아아ㅏ",
+      "user": {
+        "username": "사아자",
+        "nickname": "사아자"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1214
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목3(학생은학생공지만옴)",
+      "content": "어으응으ㅡㅇ으아아아아아ㅏ",
+      "user": {
+        "username": "사아자",
+        "nickname": "사아자"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1214
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "createDate" : "2023-02-02",
+      "title": "공지 제목3(학생은학생공지만옴)",
+      "content": "어으응으ㅡㅇ으아아아아아ㅏ",
+      "user": {
+        "username": "사아자",
+        "nickname": "사아자"
+      },
+      "teacherId": "rewr",
+      "teacherPw": "Fsdfs",
+      "classroom": [
+        {
+          "id": 1214
+        }
+      ]
+    }
+  ],
+  "parent": [
+    {
+      "id": "1",
+      "username": "가나다",
+      "nickname": "가나다",
+      "phoneNumber": "010-2444-2323",
+      "studentInfo": "홍길동 학생",
+      "studentRela": "부",
+      "parentId": "fsdfsf",
+      "parentPw": "fsdfsfewfwefw"
+    },
+    {
+      "id": "4",
+      "username": "요로로",
+      "nickname": "요로로",
+      "phoneNumber": "010-2444-2323",
+      "studentInfo": "홍길동 학생",
+      "studentRela": "부",
+      "parentId": "fsdfsf",
+      "parentPw": "fsdfsfewfwefw"
+    },
+    {
+      "id": "10",
+      "username": "최미분",
+      "nickname": "최미분",
+      "phoneNumber": "010-2444-2323",
+      "studentInfo": "홍길동 학생",
+      "studentRela": "부",
+      "parentId": "fsdfsf",
+      "parentPw": "fsdfsfewfwefw"
+    },
+    {
+      "id": "11",
+      "username": "최미분",
+      "nickname": "최미분",
+      "phoneNumber": "010-2444-2323",
+      "studentInfo": "홍길동 학생",
+      "studentRela": "부",
+      "parentId": "fsdfsf",
+      "parentPw": "fsdfsfewfwefw"
+    }
+  ]
+}
