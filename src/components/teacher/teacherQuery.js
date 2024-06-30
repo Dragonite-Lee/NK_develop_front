@@ -2,10 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { getTeAllAdminNotice,
   getTeAllClassNotice, 
   getTeAllClassroom, 
+  getTeAllHomework, 
   getTeAllStudnet, 
   getTeClassNotice, 
   getTeClassroomStudent, 
-  getTeOneClassNotice } from "../../services/api/teacherApi";
+  getTeHomework, 
+  getTeHomeworkAllStudent, 
+  getTeOneClassNotice, 
+  getTeOneHomework} from "../../services/api/teacherApi";
 
 
 //반 관리getAdAllClassroom
@@ -84,6 +88,48 @@ export const useTeOneAdminNoticeQuery = (classnameId, noticeId) => {
   );
   return {
     oneclassNoticeData: data,
+    isLoading
+  }
+}
+
+export const useTeOneHomeworkQuery = (classnameId, homeworkId) => {
+  const { data, isLoading } = useQuery(['/teacher/homework/one', classnameId, homeworkId],() =>
+    getTeOneHomework(classnameId, homeworkId)
+  );
+  return {
+    oneHomeworkData: data,
+    isLoading
+  }
+}
+
+export const useTeAllHomeworkQuery = (classnameId) => {
+  const { data, isLoading } = useQuery(['/teacher/homework', classnameId],() =>
+    getTeAllHomework(classnameId), {
+      enabled: !!classnameId
+    }
+  );
+  return {
+    allHomeworkData: data,
+    isLoading
+  }
+}
+
+export const useTeHomeworkQuery = (classnameId, page, filter) => {
+  const { data, isLoading } = useQuery(['/teacher/homework', classnameId, filter],() =>
+    getTeHomework(classnameId, page, filter)
+  );
+  return {
+    homeworkData: data,
+    isLoading
+  }
+}
+
+export const useTeHomeworkAllStudentQuery = (classnameId, homeworkId) => {
+  const { data, isLoading } = useQuery(['/teacher/homework/student', classnameId, homeworkId],() =>
+    getTeHomeworkAllStudent(classnameId, homeworkId)
+  );
+  return {
+    homeworkAllStudentData: data,
     isLoading
   }
 }

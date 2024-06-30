@@ -42,3 +42,7 @@ export const onLoginSuccess = response => {
   setTimeout(refreshTokenApi, JWT_EXPIRY_TIME - 10 * 60 * 1000);//accessToken 만료하기 10분 전에 로그인 연장
 }
 
+export const userApi = async (type, username) => {
+  const data = await client.get(`/api/${type}/${username}`);
+  return data;
+}

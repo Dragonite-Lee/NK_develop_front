@@ -32,7 +32,7 @@ const BlueModalPaPut = ({ setState, data }) => {
 
   const { oneParentData } = useAdOneParentQuery(data);
   const queryClient = useQueryClient();
-
+  
   const putMutate = useMutation({
     mutationFn: () => {
       return putAdParent(data, parentPostData);
@@ -58,6 +58,7 @@ const BlueModalPaPut = ({ setState, data }) => {
       setPhoneNumber(oneParentData.data.phoneNumber);
       setUsername(oneParentData.data.username);
       setPassword(oneParentData.data.password);
+      setBirth(oneParentData.data.birth)
       const allStudentIds = oneParentData.data.students.map((data) => data.id);
       const allStudentNicknames = oneParentData.data.students.map(
         (data) => data.nickname
@@ -74,6 +75,7 @@ const BlueModalPaPut = ({ setState, data }) => {
     phoneNumber: phoneNumberValue,
     relationship: relationshipValue,
     studentIds: studentIds,
+    birth: birthValue
   };
 
   return (

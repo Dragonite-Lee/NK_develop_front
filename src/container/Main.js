@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getCookie } from "../utils/cookie";
+import useTeacherMainStore from "../store/teacherMain";
+import { useTeAllClassroomQuery } from "../components/teacher/teacherQuery";
+
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SelectClass from "../components/student/SelectClass"
@@ -11,11 +14,37 @@ import MainNoList from "../components/student/main/MainNoList";
 import AdMainNoList from "../components/admin/main/AdMainNoList";
 import AdMainStList from "../components/admin/main/AdMainStList";
 import AdMainTeList from "../components/admin/main/AdMainTeList";
+import DropdownCl from "../components/teacher/DropdownCl";
+import TeMainNoList from "../components/teacher/main/TeMainNoList";
+import TeMainStList from "../components/teacher/main/TeMainStList";
+import useStudentMainStore from "../store/studentMain";
+import useUserStore from "../store/user";
+import StMainNoList from "../components/student/main/MainNoList";
+
 
 const Main = () => {
   const navigator = useNavigate();
   const refreshToken = getCookie("refreshToken");
-  const role = sessionStorage.getItem("role")
+  const role = sessionStorage.getItem("role");
+
+  const { user } = useUserStore();
+
+  const {
+    classnameIdClient,
+    classnameNameClient,
+    setClassnameIdClient,
+    setClassnameNameClient,
+  } = useTeacherMainStore();
+
+  const {
+    stClassnameIdClient,
+    stClassnameNameClient,
+    setStClassnameIdClient,
+    setStClassnameNameClient,
+  } = useStudentMainStore();
+
+  const { allClassroomData } = useTeAllClassroomQuery();
+  
   useEffect(() => { 
     if (!refreshToken) {
       navigator("/");
@@ -26,14 +55,23 @@ const Main = () => {
     <div className="min-w-[280px]">
       <Header/>
       {role === "학생" && (
-        <main className='desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] desktop:pb-[156px] tablet_change:pb-[48px] mobile:pb-[68px] mainHeight'>
-          <SelectClass />
-          <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px]'>
-            <MainHwList />
-            <div className="flex flex-col self-start gap-[24px]">
-              <MainHwDoing />
-              <MainNoList />
-            </div>
+        <main className='desktop:w-[1000px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] desktop:pb-[156px] tablet_change:pb-[48px] mobile:pb-[68px] mainHeight'>
+          <div className="relative">
+            <DropdownCl
+              state={stClassnameNameClient}
+              setState={setStClassnameNameClient}
+              setId={setStClassnameIdClient}
+              itemData={allClassroomData?.data}
+            />
+            {stClassnameIdClient && (
+              <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px] mt-[20px] z-0'>
+                {/* <TeMainStList classId={classnameIdClient} className={classnameNameClient} /> */}
+                <div className="flex flex-col self-start gap-[24px] mt-[24px]">
+                  {/* <AdMainStList /> */}
+                  <StMainNoList classId={stClassnameIdClient} className={stClassnameNameClient} />
+                </div>
+              </div>
+            )}
           </div>
         </main>
       )}
@@ -45,6 +83,27 @@ const Main = () => {
               <AdMainStList />
               <AdMainTeList />
             </div>
+          </div>
+        </main>
+      )}
+      {role === "선생님" && (
+        <main className='desktop:w-[1000px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] desktop:pb-[156px] tablet_change:pb-[48px] mobile:pb-[68px] mainHeight'>
+          <div className="relative">
+            <DropdownCl
+              state={classnameNameClient}
+              setState={setClassnameNameClient}
+              setId={setClassnameIdClient}
+              itemData={allClassroomData?.data}
+            />
+            {classnameIdClient && (
+              <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px] mt-[20px] z-0'>
+                <TeMainStList classId={classnameIdClient} className={classnameNameClient} />
+                <div className="flex flex-col self-start gap-[24px] mt-[24px]">
+                  {/* <AdMainStList /> */}
+                  <TeMainNoList classId={classnameIdClient} className={classnameNameClient} />
+                </div>
+              </div>
+            )}
           </div>
         </main>
       )}

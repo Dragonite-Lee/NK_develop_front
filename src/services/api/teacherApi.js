@@ -64,3 +64,38 @@ export const putTeClassNotice = async (classnameId, noticeId, data) => {
 export const deleteTeClassNotice = async (classnameId, noticeId) => {
   await client.delete(`/api/classroom/${classnameId}/class-notice/${noticeId}`);
 };
+
+//숙제 관리(get, post put, delete)
+export const postTeHomework = async (classnameId, data) => {
+  await client.post(`/api/classroom/${classnameId}/homework`, data);
+};
+
+export const putTeHomework = async (classnameId, homeworkId, data) => {
+  await client.put(`/api/classroom/${classnameId}/homework/${homeworkId}`, data);
+};
+
+export const deleteTeHomework = async (classnameId, homeworkId) => {
+  await client.delete(`/api/classroom/${classnameId}/homework/${homeworkId}`);
+};
+
+export const getTeOneHomework = async (classnameId, homeworkId) => {
+  const data = await client.get(`/api/classroom/${classnameId}/homework/${homeworkId}`);
+  return data;
+};
+
+export const getTeAllHomework = async (classnameId) => {
+  const data = await client.get(`/api/classroom/${classnameId}/homework/list`);
+  return data;
+};
+
+export const getTeHomework = async (classnameId, page, filter) => {
+  const data = await client.get(`/api/classroom/${classnameId}/homework`, {
+    params: { page, filter }
+  });
+  return data;
+};
+
+export const getTeHomeworkAllStudent = async (classnameId, homeworkId) => {
+  const data = await client.get(`/api/classroom/${classnameId}/homework/${homeworkId}/submit`);
+  return data;
+};

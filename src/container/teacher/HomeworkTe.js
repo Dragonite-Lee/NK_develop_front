@@ -3,16 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import useInput from "../../hooks/useInput";
+import DropdownCl from "../../components/teacher/DropdownCl";
+import TeHwTable from "../../components/teacher/homework/TeHwTable";
 
-import { useTeAllAdminNoticeQuery } from "../../components/teacher/teacherQuery";
-import AdClNoticeTable from "../../components/teacher/notice/AdClNoticeTable";
-
+import {
+  useTeAllClassroomQuery,
+  useTeAllHomeworkQuery
+} from "../../components/teacher/teacherQuery";
 import { getCookie } from "../../utils/cookie";
+import useTeacherHomeworkStore from "../../store/teacherHomework";
 
-import glass from "../../assets/admin/MagnifyingGlass.png";
-
-const HomeworkTe = () => {
+const HomewordTe = () => {
   const navigator = useNavigate();
   const refreshToken = getCookie("refreshToken");
   useEffect(() => {
@@ -21,10 +22,15 @@ const HomeworkTe = () => {
     }
   }, [refreshToken]);
 
-  const [searchInput, setSearchInput] = useInput("");
-  const [keyword, setKeyword] = useState("");
+  const {
+    classnameIdClient,
+    classnameNameClient,
+    setClassnameIdClient,
+    setClassnameNameClient,
+  } = useTeacherHomeworkStore();
+
   const [selection, setSelection] = useState(new Set());
-  const [type, setType] = useState([]);
+  const [filter, setFilter] = useState([]);
   const [stToggle, setStToggle] = useState(false);
   const [paToggle, setPaToggle] = useState(false);
   const [teToggle, setTeToggle] = useState(false);
@@ -53,77 +59,72 @@ const HomeworkTe = () => {
     }
     setSelection(newSelection);
     // prop으로 데이터 내보냄
-    setType([...newSelection]);
+    setFilter([...newSelection]);
   };
 
-  const { allAdminNoticeData, isLoading } = useTeAllAdminNoticeQuery();
+  const { allClassroomData, isLoading } = useTeAllClassroomQuery();
+  const { allHomeworkData } = useTeAllHomeworkQuery(classnameIdClient);
 
   if (isLoading)
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
-
-  
 
   return (
     <>
       <div className="min-w-[280px]">
         <Header />
         <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
-          <div className="flex items-center justify-between">
-            <div className="font-paybooc_700 text-[18px] text-black">
-              전체 공지 ({allAdminNoticeData?.data.length})
-            </div>
-            <Link to="/main/HomeworkTe/HomeworkTeNewWrite">
-              <button className="w-[130px] h-[36px] rounded-[10px] font-nanum_700 text-[15px] text-white bg-management2">
-                공지 등록하기
-              </button>
-            </Link>
-          </div>
-          {/* 필터 및 모달 */}
-          <div className="mt-[13px] flex tablet:items-center tablet:justify-end mobile:items-end mobile:justify-center tablet:gap-[20px] mobile:gap-[13px] tablet:flex-row mobile:flex-col">
-            <div className="flex items-center justify-center gap-[5px] text-[13px] font-nanum_700">
-              <div
-                onClick={() => onChangeSelection("STUDENT")}
-                className={`w-[55px] h-[26px] rounded-[10px] flex items-center justify-center ${
-                  stToggle ? " bg-main1/30" : " bg-white1"
-                } text-main1 border border-main1 outline outline-1 outline-main1`}
-              >
-                # 학생
+          <DropdownCl
+            state={classnameNameClient}
+            setState={setClassnameNameClient}
+            setId={setClassnameIdClient}
+            itemData={allClassroomData?.data}
+          />
+          {allHomeworkData && (
+            <>
+              <div className="flex items-center justify-between mt-[32px]">
+                <div className="font-paybooc_700 text-[18px] text-black">
+                  숙제 목록 ({allHomeworkData.data.length})
+                </div>
+                <Link to="/main/HomewordTe/HomewordTeNewWrite">
+                  <button className="w-[130px] h-[36px] rounded-[10px] font-nanum_700 text-[15px] text-white bg-homework2">
+                    숙제 등록하기
+                  </button>
+                </Link>
               </div>
-              <div
-                onClick={() => onChangeSelection("PARENT")}
-                className={`w-[67px] h-[26px] rounded-[10px] flex items-center justify-center ${
-                  paToggle ? " bg-main2/30" : " bg-white1"
-                } text-main2 border border-main2 outline outline-1 outline-main2`}
-              >
-                # 학부모
+              <div className="mt-[13px] flex tablet:items-center tablet:justify-end mobile:items-end mobile:justify-center tablet:gap-[20px] mobile:gap-[13px] tablet:flex-row mobile:flex-col">
+                <div className="flex items-center justify-center gap-[5px] text-[13px] font-nanum_700">
+                  {/* <div
+                    onClick={() => onChangeSelection("TODO")}
+                    className={`w-[68px] h-[26px] rounded-[10px] flex items-center justify-center ${
+                      stToggle ? " bg-homework1/30" : " bg-white1"
+                    } text-homework1 border border-homework1 outline outline-1 outline-homework1`}
+                  >
+                    # 미완료
+                  </div>
+                  <div
+                    onClick={() => onChangeSelection("REJECT")}
+                    className={`w-[95px] h-[26px] rounded-[10px] flex items-center justify-center ${
+                      paToggle ? " bg-homework2/30" : " bg-white1"
+                    } text-homework2 border border-homework2 outline outline-1 outline-homework2`}
+                  >
+                    # 반려된 숙제
+                  </div>
+                  <div
+                    onClick={() => onChangeSelection("COMPLETE")}
+                    className={`w-[67px] h-[26px] rounded-[10px] flex items-center justify-center ${
+                      teToggle ? " bg-main3/30" : " bg-white1"
+                    } text-main3 border border-main3 outline outline-1 outline-main3`}
+                  >
+                    # 완료
+                  </div> */}
+                </div>
               </div>
-              <div
-                onClick={() => onChangeSelection("TEACHER")}
-                className={`w-[67px] h-[26px] rounded-[10px] flex items-center justify-center ${
-                  teToggle ? " bg-main3/30" : " bg-white1"
-                } text-main3 border border-main3 outline outline-1 outline-main3`}
-              >
-                # 선생님
-              </div>
-            </div>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="검색어를 검색하세요"
-                value={searchInput}
-                onChange={setSearchInput}
-                className="tablet:w-[300px] mobile:w-[240px] h-[36px] text-[14px] font-nanum_400 pl-[15px] rounded-[10px] bg-whiteTotal drop-shadow-sm"
+              <TeHwTable
+                classId={classnameIdClient}
+                filter={filter}
               />
-              <button
-                onClick={() => setKeyword(searchInput)}
-                className="absolute right-0 bg-management2 rounded-r-[10px] text-white w-[50px] h-[36px] text-[14px] font-nanum_400"
-              >
-                검색
-              </button>
-            </div>
-          </div>
-          {/* content */}
-          <AdClNoticeTable keyword={keyword} type={type} />
+            </>
+          )}
         </main>
         <Footer />
       </div>
@@ -131,4 +132,4 @@ const HomeworkTe = () => {
   );
 };
 
-export default HomeworkTe;
+export default HomewordTe;

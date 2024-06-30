@@ -14,7 +14,7 @@ const DropdownCl = ({state, setState, itemData, setId}) => {
   };
 
   return ( 
-    <div className="relative">
+    <div className="relative z-10">
       <div className="relative tablet:w-[344px] mobile:w-[220px] h-[56px]" onClick={() => setTrigger(!trigger)}>
         <input  type="text" value={state} onChange={setState} placeholder="선택하세요" className="indent-[22px] caret-transparent font-paybooc_500 tablet:text-[16px] mobile:text-[14px] tablet:w-[344px] mobile:w-[220px] h-[56px] border border-border rounded-[20px] placeholder-grey"/>
         {trigger ? (

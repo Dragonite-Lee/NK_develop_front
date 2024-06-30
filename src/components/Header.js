@@ -1,36 +1,31 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
+import MobileMenu from "./MobileMenu";
+
+import useUserStore from "../store/user";
+
 import NKlogo from "../assets/header/NK_logo.png";
 import UserCircle from "../assets/header/profile.png"
 import List from "../assets/header/List.png"
 import Bell from "../assets/header/Bell.png"
 import Bell_notice from "../assets/header/Bell_notice.png"
-import MobileMenu from "./MobileMenu";
 
 const student_route = [
   {
     title: "우리반 공지",
-    href: "/main/noticelist"
+    href: "/main/noticeSt"
   },
   {
     title: "숙제하기",
     href: "/main/homeworklist"
   },
-  {
-    title: "선생님과 채팅",
-    href: "#"
-  }
 ];
 
 const teacher_route = [
   {
     title: "숙제 관리",
     href: "/main/homeworkTe"
-  },
-  {
-    title: "채팅하기",
-    href: "#"
   },
   {
     title: "공지사항",
@@ -45,10 +40,6 @@ const teacher_route = [
 const parent_route = [
   {
     title: "학습태도 분석",
-    href: "#"
-  },
-  {
-    title: "선생님과 채팅",
     href: "#"
   },
   {
@@ -75,10 +66,6 @@ const admin_route = [
     href: "/main/parentAd"
   },
   {
-    title: "채팅하기",
-    href: "#"
-  },
-  {
     title: "공지사항",
     href: "/main/NoticeAd"
   }
@@ -87,6 +74,7 @@ const admin_route = [
 const Header = () => {
     const role = sessionStorage.getItem("role")
     const [sidebar, setSidebar] = useState(false);
+    const { user } = useUserStore();
     let { pathname } = useLocation();
     
     return (
@@ -138,7 +126,7 @@ const Header = () => {
             <img src={Bell} alt="bell" className="w-[23px] h-[23px] mr-[6px]" />
             <img src={UserCircle} alt="user" className="w-[25px] h-[25px] " />
             <div className="font-nanum_400 text-[14px] text-black">
-              홍길동 {/* 학생이름 들어갈 예정 */}
+              {user ? user.nickname : "관리자"}
             </div>
             <div className={`font-nanum_700 text-[13px] text-white rounded-[8px] px-[7px] h-[21px] flex items-center justify-center
               ${role === "학생" ? " bg-main1" : role === "선생님" ? " bg-main2" : role === "학부모" ? " bg-main3" : " bg-grayDark"}`}

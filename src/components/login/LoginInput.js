@@ -1,30 +1,35 @@
 import { useState } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import useInput from "../../hooks/useInput";
-import { useNavigate } from "react-router-dom";
-import { loginApi, onLoginSuccess } from "../../services/api/loginApi";
+import useUserStore from "../../store/user";
+
+import { loginApi, onLoginSuccess, userApi } from "../../services/api/loginApi";
 
 const roleArray = [
   {
     id: 0,
     title: "학생",
     default: true,
+    path: "student"
   },
   {
     id: 1,
     title: "학부모",
     default: false,
+    path: "parent"
   },
   {
     id: 2,
     title: "선생님",
     default: false,
+    path: "teacher"
   },
   {
     id: 3,
     title: "관리자",
     default: false,
+    path: "admin"
   }
 ]
 
@@ -33,7 +38,7 @@ const LoginInput = () => {
   const [pwValue, pwhHandler] = useInput("");
 
   const [role, setRole] = useState(roleArray);
-
+  const { user, setUser } = useUserStore();
   const navigate = useNavigate();
 
   const onClickRoleHandler = (id) => {
@@ -45,7 +50,7 @@ const LoginInput = () => {
   
     setRole(changeActiveDefault);
   };
-
+  
   const onLoginHandler = async (id, pw, role) => {
     const data = {
       "username" : id,
@@ -58,13 +63,17 @@ const LoginInput = () => {
       for (let i = 0; i < role.length; i++) {
         if (role[i].default === true) {
           sessionStorage.setItem("role", role[i].title);
+          if (role[i].title != "관리자") {
+            userApi(role[i].path, id).then((res) => {
+              setUser(res.data);
+            })
+          }
         }
       };
-    }).catch((error) => {
-      console.log("[loginApi Error] : " + error);
+      navigate("/main");
+    }).catch(() => {
+      alert("잘못된 정보입니다.")
     })
-    
-    navigate("/main");
   }
 
   return (
