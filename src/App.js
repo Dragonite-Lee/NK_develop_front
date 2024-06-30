@@ -8,12 +8,13 @@ import './App.css';
 
 import { refreshTokenApi } from './services/api/loginApi';
 
+
 const Login = lazy(() => import("./container/Login"));
 const Main = lazy(() => import("./container/Main"));
-const HomeworkList = lazy(() => import("./container/student/homework/HomeworkList"));
-const NoticeList = lazy(() => import("./container/student/notice/NoticeList"));
-const HomeworkDetail = lazy(() => import("./container/student/homework/HomeworkDetail"));
-const NoticeDetail = lazy(() => import("./container/student/notice/NoticeDetail"));
+
+const NoticeSt = lazy(() => import("./container/student/NoticeSt"));
+const NoticeAdDetailSt = lazy(() => import("./container/student/notice/NoticeAdDetailSt"));
+const NoticeTeDetailSt = lazy(() => import("./container/student/notice/NoticeTeDetailSt"));
 
 const ParentAd = lazy(() => import("./container/admin/ParentAd"));
 const StudentAd = lazy(() => import("./container/admin/StudentAd"));
@@ -25,6 +26,7 @@ const NoticeAdNewWrite = lazy(() => import("./container/admin/notice/NoticeAdNew
 const NoticeAdDetail = lazy(() => import("./container/admin/notice/NoticeAdDetail"));
 
 const StudentTe = lazy(() => import("./container/teacher/StudentTe"));
+const HomeworkTe = lazy(() => import("./container/teacher/HomeworkTe"));
 const NoticeTe = lazy(() => import("./container/teacher/NoticeTe"));
 const NoticeAdDetailTe = lazy(() => import("./container/teacher/notice/NoticeAdDetailTe"));
 const NoticeTeDetailTe = lazy(() => import("./container/teacher/notice/NoticeTeDetailTe"));
@@ -32,10 +34,9 @@ const NoticeTeWrite = lazy(() => import("./container/teacher/notice/NoticeTeWrit
 const NoticeTeNewWrite = lazy(() => import("./container/teacher/notice/NoticeTeNewWrite"));
 // import Login from './container/Login';
 // import Main from './container/Main';
-// import HomeworkList from './container/student/homework/HomeworkList';
-// import NoticeList from './container/student/notice/NoticeList';
-// import HomeworkDetail from './container/student/homework/HomeworkDetail';
-// import NoticeDetail from './container/student/notice/NoticeDetail';
+// import NoticeAdDetailSt from './container/student/notice/NoticeAdDetailSt';
+// import NoticeTeDetailSt from './container/student/notice/NoticeTeDetailSt';
+// import NoticeSt from './container/student/NoticeSt';
 
 // import ParentAd from './container/admin/ParentAd';
 // import StudentAd from './container/admin/StudentAd';
@@ -47,11 +48,13 @@ const NoticeTeNewWrite = lazy(() => import("./container/teacher/notice/NoticeTeN
 // import NoticeAdDetail from './container/admin/notice/NoticeAdDetail';
 
 // import StudentTe from './container/teacher/StudentTe';
+// import HomeworkTe from './container/teacher/HomeworkTe';
 // import NoticeTe from './container/teacher/NoticeTe';
 // import NoticeAdDetailTe from './container/teacher/notice/NoticeAdDetailTe';
 // import NoticeTeDetailTe from './container/teacher/notice/NoticeTeDetailTe';
 // import NoticeTeNewWrite from './container/teacher/notice/NoticeTeNewWrite';
 // import NoticeTeWrite from './container/teacher/notice/NoticeTeWrite';
+
 
 
 function App() {
@@ -66,10 +69,10 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Login />}></Route>
             <Route path="/main" element={<Main />}></Route>
-            <Route path="/main/homeworklist" element={<HomeworkList />}></Route>
-            <Route path="/main/homeworklist/:id" element={<HomeworkDetail />}></Route>
-            <Route path="/main/noticelist" element={<NoticeList />}></Route>
-            <Route path="/main/noticelist/:id" element={<NoticeDetail />}></Route>
+    
+            <Route path="/main/noticeSt" element={<NoticeSt />}></Route>
+            <Route path="/main/noticeSt/adminDetail/:id" element={<NoticeAdDetailSt />}></Route>
+            <Route path="/main/noticeSt/teacherDetail/:id" element={<NoticeTeDetailSt />}></Route>
             
             <Route path="/main/parentAd" element={<ParentAd />}></Route>
             <Route path="/main/studentAd" element={<StudentAd />}></Route>
@@ -81,6 +84,7 @@ function App() {
             <Route path="/main/noticeAd/:id" element={<NoticeAdDetail />}></Route>
 
             <Route path="/main/studentTe" element={<StudentTe />}></Route>
+            <Route path="/main/homeworkTe" element={<HomeworkTe />}></Route>
             <Route path="/main/noticeTe" element={<NoticeTe />}></Route>
             <Route path="/main/noticeTe/adminDetail/:id" element={<NoticeAdDetailTe />}></Route>
             <Route path="/main/noticeTe/teacherDetail/:id" element={<NoticeTeDetailTe />}></Route>

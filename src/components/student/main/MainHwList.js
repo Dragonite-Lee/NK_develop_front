@@ -89,6 +89,30 @@ const MainHwList = () => {
 //   let findHomework = Dummy_student.find(function(homework) { 
 //     return homework.status == 원하는값
 // });
+{/* <div
+                    onClick={() => onChangeSelection("TODO")}
+                    className={`w-[68px] h-[26px] rounded-[10px] flex items-center justify-center ${
+                      stToggle ? " bg-homework1/30" : " bg-white1"
+                    } text-homework1 border border-homework1 outline outline-1 outline-homework1`}
+                  >
+                    # 미완료
+                  </div>
+                  <div
+                    onClick={() => onChangeSelection("REJECT")}
+                    className={`w-[95px] h-[26px] rounded-[10px] flex items-center justify-center ${
+                      paToggle ? " bg-homework2/30" : " bg-white1"
+                    } text-homework2 border border-homework2 outline outline-1 outline-homework2`}
+                  >
+                    # 반려된 숙제
+                  </div>
+                  <div
+                    onClick={() => onChangeSelection("COMPLETE")}
+                    className={`w-[67px] h-[26px] rounded-[10px] flex items-center justify-center ${
+                      teToggle ? " bg-main3/30" : " bg-white1"
+                    } text-main3 border border-main3 outline outline-1 outline-main3`}
+                  >
+                    # 완료
+                  </div> */}
   return (
     <section className="glassWhite mt-[24px] py-[24px] desktop:w-[486px] mobile:w-full tablet:px-[32px] mobile:px-[26px]">
       <div className="w-full flex items-center justify-between">

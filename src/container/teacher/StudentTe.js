@@ -10,7 +10,6 @@ import BlueModalStPlus from "../../components/teacher/student/BlueModalStPlus";
 import BlueModalStMove from "../../components/teacher/student/BlueModalStMove";
 import StTableAll from "../../components/teacher/student/StTableAll";
 
-import { deleteAdStudent } from "../../services/api/adminApi";
 import { getCookie } from "../../utils/cookie";
 import useInput from "../../hooks/useInput";
 import {

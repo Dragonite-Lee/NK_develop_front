@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-const useUserIdStore = create(
+const useUserStore = create(
   persist(
     (set) => ({
-      userId: '', // 초기값 작성
-      setUserId: (value) => set({ userId: value }), // name 변경 함수
+      user: {}, // 초기값 작성
+      setUser: (value) => set({ user: value }), // name 변경 함수
     }),
     {
-      name: 'user-id',
+      name: 'user',
       storage: createJSONStorage(() => sessionStorage),
     },
   ),
@@ -16,4 +16,4 @@ const useUserIdStore = create(
 
 // 사용시엔 사용하려는 파일에
 
-export default useUserIdStore;
+export default useUserStore;

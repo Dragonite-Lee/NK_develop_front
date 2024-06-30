@@ -83,7 +83,7 @@ const NoticeAdNewWrite = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries('/admin/admin-notice');
-      alert("공지가 추가 되었습니다.");
+      alert("공지가 추가되었습니다.");
       navigate('/main/noticeAd');
     }
   });

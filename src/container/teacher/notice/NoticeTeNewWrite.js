@@ -12,6 +12,7 @@ import useTeacherNoticeStore from "../../../store/teacherNotice";
 
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
 import { postTeClassNotice } from "../../../services/api/teacherApi";
+import useUserStore from "../../../store/user";
 
 const NoticeTeNewWrite = () => {
 
@@ -29,6 +30,8 @@ const NoticeTeNewWrite = () => {
   const [noticeType, setNoticeType] = useState(new Set());
   let today = new Date();
   const createDate = today.getFullYear() + '.' + (today.getMonth() + 1) + '.' + today.getDate();
+
+  const { user } = useUserStore();
 
   const formats = [
     "header",
@@ -83,13 +86,13 @@ const NoticeTeNewWrite = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries('/teacher/class-notice');
-      alert("공지가 추가 되었습니다.");
+      alert("공지가 추가되었습니다.");
       navigate('/main/noticeTe');
     }
   });
   
   const teacherPostData = {
-    "teacher" : { "id" : 1 },
+    "teacher" : { "id" : user?.id },
     "title" : title,
     "content" : content,
     "classNoticeType" : noticeType

@@ -35,7 +35,7 @@ const BlueModalStSc = ({ setState }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/school");
-      alert("학교가 추가 되었습니다.");
+      alert("학교가 추가되었습니다.");
       setHandleValue("");
     },
   });

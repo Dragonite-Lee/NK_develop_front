@@ -19,16 +19,17 @@ const NoticeTable = ({ keyword, type }) => {
 
   // console.log(keywordValue, ...type)
   useEffect(() => {
-    if (keyword) {
+    if (keyword || type) {
       setParamsPage(0);
     } else {
       setKeywordValue("");
     }
-  }, [keyword]);
+  }, [keyword, type]);
 
   useEffect(() => {
+    setKeywordValue(keyword)
     setCurrent(adminNoticeData?.data.currentPage);
-  }, [adminNoticeData?.data]);
+  }, [adminNoticeData?.data, keyword]);
 
   const NextPage = () => {
     setCurrent(current + 1);
