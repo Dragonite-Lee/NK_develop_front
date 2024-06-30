@@ -16,7 +16,7 @@ const HomeworkDetail = () => {
   //   };
   // }, [refreshToken])
 
-  let { id } = useParams();
+  const { id } = useParams();
   const parsedId = parseInt(id.slice(1));
 
   return ( 

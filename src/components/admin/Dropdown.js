@@ -8,12 +8,12 @@ const DropdownMenu = ({state, setState, itemData}) => {
   const [value, setValue] = useState('');
   
   useEffect(() => {
-    if (typeof state == 'number') {
+    if (typeof state === 'number') {
       const savedDate = itemData[state-1];
       if (savedDate) {
         setValue(savedDate?.text)
       }
-    } else if (typeof state == 'string') {
+    } else if (typeof state === 'string') {
       if (state == 'MOTHER') {
         setValue('모');
       } else if (state == 'FATHER') {

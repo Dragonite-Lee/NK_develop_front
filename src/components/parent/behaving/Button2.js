@@ -5,7 +5,7 @@ const Button = ({ backgroundColor, Color, content, size}) => {
   const { status, complete } = content;
 
   const buttonStyle = {
-    backgroundColor: backgroundColor,
+    backgroundColor,
     border: '#969699',
     borderRadius: '10px',
     color: Color,

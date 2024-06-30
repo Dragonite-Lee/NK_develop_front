@@ -20,9 +20,9 @@ const MobileMenu = ({
       <div
         className="transition-all w-screen tablet_header_change:hidden h-screen bg-black opacity-50 fixed top-0 z-10"
         onClick={onClick}
-      ></div>
+       />
       <div
-        className={`w-[37%] h-screen tablet_header_change:hidden bg-whiteTotal opacity-100 fixed top-0 right-0 z-20`}
+        className="w-[37%] h-screen tablet_header_change:hidden bg-whiteTotal opacity-100 fixed top-0 right-0 z-20"
       >
         <div className="mobile:flex flex-wrap tablet_header_change:hidden items-center justify-start gap-[6px] mt-[24px] tablet:ml-[33px] mobile:ml-[16px]">
           {/* 공지가 있다면 Bell_notice로 바뀔예정 */}

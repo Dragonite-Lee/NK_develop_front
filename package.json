@@ -16,7 +16,6 @@
     "axios": "^1.6.3",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.2",
-    "eslint": "^8.57.0",
     "flowbite": "^2.3.0",
     "postcss": "^8.4.34",
     "postcss-cli": "^11.0.0",
@@ -58,6 +57,13 @@
   "devDependencies": {
     "@tanstack/react-query-devtools": "^4.36.1",
     "cra-bundle-analyzer": "^0.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "tailwindcss": "^3.4.1",
     "webpack-bundle-analyzer": "^4.10.2"
   },

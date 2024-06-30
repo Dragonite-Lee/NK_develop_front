@@ -5,7 +5,6 @@ import {
   useTeHomeworkAllStudentQuery,
   useTeHomeworkQuery,
 } from "../teacherQuery";
-
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 import Megaphone from "../../../assets/MegaphoneSimple.png";

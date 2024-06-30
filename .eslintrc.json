@@ -9,8 +9,7 @@
     "airbnb/hooks",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "eslint-config-prettier",
-    "next/core-web-vitals"
+    "eslint-config-prettier"
   ],
   "plugins": ["@typescript-eslint"],
   "env": {

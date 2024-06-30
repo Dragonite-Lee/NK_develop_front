@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 import SelectClass from "../SelectClass"
 import SearchBar from "./SearchBar";
 import Pagination from "../Pagination";
-
 import Speaker from "../../../assets/student/Speaker.png"
-
 import {getNoticeImportant, getNoticeNormal} from "../temporary/NoticeData"
+
 const NoticeImportant = getNoticeImportant();
 const NoticeNormal = getNoticeNormal();
 
@@ -28,7 +28,7 @@ const NoList = () => {
   }, [currentPage]);
 
 	const handleSearch = (query) => {
-		<div className="text-[14px] font-nanum_400"></div>
+		<div className="text-[14px] font-nanum_400" />
   };
 
   return (

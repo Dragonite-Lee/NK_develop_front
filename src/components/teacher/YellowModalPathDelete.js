@@ -13,7 +13,7 @@ const YellowModalPathDelete = ({
   id,
 }) => {
   const deleteData = {
-    id: id,
+    id,
     studentIds: selection,
   };
 

@@ -6,7 +6,6 @@ import {
   deleteTeClassroomStudent,
   postTeClassroomStudent,
 } from "../../../services/api/teacherApi";
-
 import DropdownText from "../../admin/student/DropdownText";
 
 const BlueModalStMove = ({ nowId, setState, selection }) => {
@@ -41,7 +40,7 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
   });
 
   useEffect(() => {
-    let postData = [];
+    const postData = [];
     for (let i = 0; i < ClassroomId?.length; i++) {
       postData.push({ data: ClassroomId[i], text: ClassroomName[i] });
     }
@@ -115,10 +114,10 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
         </div>
 
         <div className="flex items-center justify-center gap-[16px] tablet:mt-[24px] mobile:mt-[12px] font-nanum_400 text-[14px]">
-          {/*${allCheck ? ' bg-management1' : ' bg-grayLight'}*/}
+          {/* ${allCheck ? ' bg-management1' : ' bg-grayLight'} */}
           <button
             onClick={onMoveHandler}
-            className={`bg-management1 text-white  tablet_change:w-[109px] mobile:w-[99px] h-[40px] flex items-center justify-center rounded-[10px]`}
+            className="bg-management1 text-white  tablet_change:w-[109px] mobile:w-[99px] h-[40px] flex items-center justify-center rounded-[10px]"
           >
             이동하기
           </button>

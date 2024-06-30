@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import useInput from "../../hooks/useInput";
-import { useAdAllStudentQuery } from "./adminQuery";
 
+import { useAdAllStudentQuery } from "./adminQuery";
 import CaretUp from "../../assets/CaretUp.png";
 import CaretDown from "../../assets/CaretDown.png";
 import MagnifyingGlass from "../../assets/admin/MagnifyingGlass.png";
@@ -17,7 +17,7 @@ const SearchDropdownSt = ({ state, setState, value, setValue }) => {
   const { allStudentData } = useAdAllStudentQuery();
 
   useEffect(() => {
-    //검색된 데이터
+    // 검색된 데이터
     const searched = allStudentData?.data.filter((item) =>
       item.nickname.includes(searchInput)
     );

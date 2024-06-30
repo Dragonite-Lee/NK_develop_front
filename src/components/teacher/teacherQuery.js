@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import {
   getTeAllAdminNotice,
   getTeAllClassNotice,
@@ -13,7 +14,7 @@ import {
   getTeOneHomework,
 } from "../../services/api/teacherApi";
 
-//반 관리getAdAllClassroom
+// 반 관리getAdAllClassroom
 export const useTeAllClassroomQuery = () => {
   const { data, isLoading } = useQuery(["/teacher/classroom"], () =>
     getTeAllClassroom()
@@ -38,7 +39,7 @@ export const useTeClassroomStudentQuery = (id) => {
   };
 };
 
-//학생 관리
+// 학생 관리
 export const useTeAllStudentQuery = () => {
   const { data, isLoading } = useQuery(["/teacher/student"], () =>
     getTeAllStudnet()
@@ -49,7 +50,7 @@ export const useTeAllStudentQuery = () => {
   };
 };
 
-//어드민 공지 관리
+// 어드민 공지 관리
 export const useTeAllAdminNoticeQuery = () => {
   const { data, isLoading } = useQuery(["/teacher/admin-notice"], () =>
     getTeAllAdminNotice()
@@ -60,7 +61,7 @@ export const useTeAllAdminNoticeQuery = () => {
   };
 };
 
-//수업 공지 관리
+// 수업 공지 관리
 export const useTeAllClassNoticeQuery = (classnameId) => {
   const { data, isLoading } = useQuery(
     ["/teacher/class-notice", classnameId],

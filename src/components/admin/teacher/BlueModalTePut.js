@@ -5,7 +5,6 @@ import useInput from "../../../hooks/useInput";
 import { idReg, phoneReg, pwReg } from "../../../utils/reg";
 import { useAdOneTeacherQuery } from "../adminQuery";
 import { putAdTeacher } from "../../../services/api/adminApi";
-
 import WorkDropdown from "./WorkDropdown";
 
 const workList = [
@@ -89,7 +88,7 @@ const BlueModalTePut = ({ setState, data }) => {
     phoneNumber: phoneNumberValue,
     birth: birthValue,
     registrationDate: registrationDateValue,
-    workingDays: workingDays,
+    workingDays,
   };
 
   return (

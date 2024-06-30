@@ -22,7 +22,7 @@ const Chart = ({complete, amount}) => {
 		plugins: {
 			tooltip: {
 				callbacks: {
-					label: function (context) {
+					label (context) {
 						return context.formattedValue ;
 					},
 				},
@@ -31,7 +31,7 @@ const Chart = ({complete, amount}) => {
 	};
 
   return (
-    <Doughnut data={Data} options={Options}></Doughnut>
+    <Doughnut data={Data} options={Options} />
   );
 }
 

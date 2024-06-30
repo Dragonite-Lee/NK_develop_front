@@ -6,7 +6,7 @@ const Button = ({ backgroundColor, Color, content, link}) => {
 	const navigate = useNavigate()
 
   const buttonStyle = {
-    backgroundColor: backgroundColor,
+    backgroundColor,
     borderRadius: '10px',
     color: Color,
 		width: '130px',

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { getCookie } from "../utils/cookie";
 import useTeacherMainStore from "../store/teacherMain";
 import { useTeAllClassroomQuery } from "../components/teacher/teacherQuery";
-
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import PaMainNoList from "../components/parent/main/MainNolist"

@@ -2,14 +2,12 @@ import { Link, useParams } from "react-router-dom";
 
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-
 import { useTeOneAdminNoticeQuery } from "../../../components/teacher/teacherQuery";
-
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
 import useStudentNoticeStore from "../../../store/studentNotice";
 
 const NoticeTeDetailSt = () => {
-  let { id } = useParams();
+  const { id } = useParams();
 
   const { classnameIdClient } = useStudentNoticeStore();
 
@@ -20,8 +18,7 @@ const NoticeTeDetailSt = () => {
   const markDownText = `${oneclassNoticeData?.data.content}`;
 
   return (
-    <>
-      <div className="min-w-[280px]">
+    <div className="min-w-[280px]">
         <Header />
         <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
           <Link to="/main/noticeSt">
@@ -42,19 +39,19 @@ const NoticeTeDetailSt = () => {
                   <div key={i}>
                     {type == "STUDENT" ? (
                       <div
-                        className={`w-[55px] h-[26px] rounded-[10px] flex items-center justify-center text-main1 border border-main1 outline outline-1 outline-main1`}
+                        className="w-[55px] h-[26px] rounded-[10px] flex items-center justify-center text-main1 border border-main1 outline outline-1 outline-main1"
                       >
                         # 학생
                       </div>
                     ) : type == "PARENT" ? (
                       <div
-                        className={`w-[67px] h-[26px] rounded-[10px] flex items-center justify-center text-main2 border border-main2 outline outline-1 outline-main2`}
+                        className="w-[67px] h-[26px] rounded-[10px] flex items-center justify-center text-main2 border border-main2 outline outline-1 outline-main2"
                       >
                         # 학부모
                       </div>
                     ) : (
                       <div
-                        className={`w-[67px] h-[26px] rounded-[10px] flex items-center justify-center text-main3 border border-main3 outline outline-1 outline-main3`}
+                        className="w-[67px] h-[26px] rounded-[10px] flex items-center justify-center text-main3 border border-main3 outline outline-1 outline-main3"
                       >
                         # 선생님
                       </div>
@@ -81,7 +78,6 @@ const NoticeTeDetailSt = () => {
         </main>
         <Footer />
       </div>
-    </>
   );
 };
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import SelectOption from "./notice/SelectOption"
 import SelectClass from "./SelectClass"
 import Pagination from "../Pagination";
-import { Link } from "react-router-dom";
+import {getHomeworkList} from "./temporary/HomeworkData"
 
-
-import {getHomeworkList} from "../../components/student/temporary/HomeworkData"
 const HomeworkList = getHomeworkList();
 
 const HwList = () => {

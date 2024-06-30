@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import YellowModal from "../../YellowModal";
 import BlueModalTePut from "./BlueModalTePut";
 import { useAdTeacherQuery } from "../adminQuery";
-
 import Pencil from "../../../assets/admin/Pencil.png";
 import Trash from "../../../assets/admin/Trash.png";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
@@ -143,7 +142,7 @@ const TeTable = ({
               </th>
             ))}
           </tr>
-          <tr className="w-[52px]"></tr>
+          <tr className="w-[52px]" />
         </thead>
         <tbody className="font-nanum_400 px-[16px]">
           {teacherData?.data.results.map((data, index) => (

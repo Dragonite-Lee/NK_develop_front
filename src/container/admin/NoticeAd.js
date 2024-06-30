@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import useInput from "../../hooks/useInput";
 
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { getCookie } from "../../utils/cookie";
-
 import glass from "../../assets/admin/MagnifyingGlass.png";
 import { useAdAllAdminNoticeQuery } from "../../components/admin/adminQuery";
 import NoticeTable from "../../components/admin/adminNotice/noticeTable";
@@ -63,8 +62,7 @@ const NoticeAd = () => {
   
 
   return (
-    <>
-      <div className="min-w-[280px]">
+    <div className="min-w-[280px]">
         <Header />
         <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
           <div className="flex items-center justify-between">
@@ -126,7 +124,6 @@ const NoticeAd = () => {
         </main>
         <Footer />
       </div>
-    </>
   );
 };
 

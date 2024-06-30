@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import ArrowLeft from "../../../assets/student/ArrowLeft.png"
 import Speaker from "../../../assets/student/Speaker.png"
-
 import Button from "../Button";
 import {getNoticeImportant, getNoticeNormal} from "../temporary/NoticeData"
+
 const NoticeImportant = getNoticeImportant();
 const NoticeNormal = getNoticeNormal();
 
@@ -40,9 +40,9 @@ const NoDetail = ({ID}) => {
 				</div>
       </div>
 			<div className="flex justify-end mt-[20px] gap-[15px] text-[13px] font-nanum_700 ml-auto">
-        <Button backgroundColor='#D1D1D6' Color="white" content={"이전 공지 보기"} link={`/student/noticelist/:${ID-1}`}/>
-        <Button backgroundColor="gray" Color="white" content={"목록으로 돌아가기"} link={'/student/noticelist/'} />
-        <Button backgroundColor="#D1D1D6" Color="white" content={"다음 공지 보기"} link={`/student/noticelist/:${ID+1}`}/>
+        <Button backgroundColor='#D1D1D6' Color="white" content="이전 공지 보기" link={`/student/noticelist/:${ID-1}`}/>
+        <Button backgroundColor="gray" Color="white" content="목록으로 돌아가기" link="/student/noticelist/" />
+        <Button backgroundColor="#D1D1D6" Color="white" content="다음 공지 보기" link={`/student/noticelist/:${ID+1}`}/>
       </div>
     </section>
   );

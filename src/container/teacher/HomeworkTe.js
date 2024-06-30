@@ -5,7 +5,6 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import DropdownCl from "../../components/teacher/DropdownCl";
 import TeHwTable from "../../components/teacher/homework/TeHwTable";
-
 import {
   useTeAllClassroomQuery,
   useTeAllHomeworkQuery
@@ -69,8 +68,7 @@ const HomewordTe = () => {
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
 
   return (
-    <>
-      <div className="min-w-[280px]">
+    <div className="min-w-[280px]">
         <Header />
         <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
           <DropdownCl
@@ -128,7 +126,6 @@ const HomewordTe = () => {
         </main>
         <Footer />
       </div>
-    </>
   );
 };
 

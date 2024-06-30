@@ -30,7 +30,7 @@ export const useAdSchoolQuery = () => {
   }
 }
 
-//학생 관리
+// 학생 관리
 export const useAdAllStudentQuery = () => {
   const { data, isLoading } = useQuery(['/admin/student'],() =>
     getAdAllStudnet()
@@ -61,7 +61,7 @@ export const useAdOneStudentQuery = (username) => {
   }
 }
 
-//학부모 관리
+// 학부모 관리
 export const useAdParentQuery = (page,keyword) => {
   const { data, isLoading } = useQuery(['/admin/parent', page, keyword],() =>
     getAdParent(page, keyword)
@@ -82,7 +82,7 @@ export const useAdOneParentQuery = (username) => {
   }
 }
 
-//선생님 관리
+// 선생님 관리
 export const useAdAllTeacherQuery = () => {
   const { data, isLoading } = useQuery(['/admin/teacher'],() =>
     getAdAllTeacher()
@@ -123,7 +123,7 @@ export const useAdOneTeacherQuery = (username) => {
   }
 }
 
-//반 관리
+// 반 관리
 export const useAdAllClassroomQuery = () => {
   const { data, isLoading } = useQuery(['/admin/classroom'],() =>
     getAdAllClassroom()
@@ -164,7 +164,7 @@ export const useAdClassroomStudentQuery = (id) => {
   }
 }
 
-//어드민 공지 관리
+// 어드민 공지 관리
 export const useAdAllAdminNoticeQuery = () => {
   const { data, isLoading } = useQuery(['/admin/admin-notice'],() =>
     getAdAllAdminNotice()

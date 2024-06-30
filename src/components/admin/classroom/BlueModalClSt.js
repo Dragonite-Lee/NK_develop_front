@@ -7,10 +7,8 @@ import {
   postAdTeacher,
 } from "../../../services/api/adminApi";
 import { useAdClassroomStudentQuery } from "../adminQuery";
-
 import YellowModalCl from "./YellowModalCl";
 import BlueModalPlusSt from "./BlueModalPlusSt";
-
 import Trash from "../../../assets/admin/Trash.png";
 
 const header = [
@@ -82,8 +80,8 @@ const BlueModalClSt = ({ setState, id, title }) => {
               id={id}
               mutate={deleteMutate.mutate}
               selection={cancleId}
-              title={`학생 삭제`}
-              content1={`선택한 학생을 삭제하시겠습니까?`}
+              title="학생 삭제"
+              content1="선택한 학생을 삭제하시겠습니까?"
               content2=""
               content3=""
               cancle="취소하기"
@@ -109,7 +107,7 @@ const BlueModalClSt = ({ setState, id, title }) => {
                     </th>
                   ))}
                 </tr>
-                <tr className="w-[20px]"></tr>
+                <tr className="w-[20px]" />
               </thead>
               <tbody className="font-nanum_400 px-[16px] w-[652px] tablet_change:h-[220px] mobile:h-[210px]">
                 {classroomStudentData?.data.map((data, index) => (

@@ -2,14 +2,11 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 import MobileMenu from "./MobileMenu";
-
 import useUserStore from "../store/user";
-
 import NKlogo from "../assets/header/NK_logo.png";
 import UserCircle from "../assets/header/profile.png";
 import List from "../assets/header/List.png";
 import Bell from "../assets/header/Bell.png";
-import Bell_notice from "../assets/header/Bell_notice.png";
 
 const student_route = [
   {
@@ -75,7 +72,7 @@ const Header = () => {
   const role = sessionStorage.getItem("role");
   const [sidebar, setSidebar] = useState(false);
   const { user } = useUserStore();
-  let { pathname } = useLocation();
+  const { pathname } = useLocation();
 
   return (
     <>

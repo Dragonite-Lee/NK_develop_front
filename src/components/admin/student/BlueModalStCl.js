@@ -3,7 +3,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { useAdAllClassroomQuery } from "../adminQuery";
 import { postAdClassroomStudent } from "../../../services/api/adminApi";
-
 import DropdownText from "./DropdownText";
 
 const BlueModalStCl = ({ setState, selection }) => {
@@ -29,7 +28,7 @@ const BlueModalStCl = ({ setState, selection }) => {
   });
 
   useEffect(() => {
-    let postData = [];
+    const postData = [];
     for (let i = 0; i < ClassroomId?.length; i++) {
       postData.push({ data: ClassroomId[i], text: ClassroomName[i] });
     }
@@ -78,10 +77,10 @@ const BlueModalStCl = ({ setState, selection }) => {
         </div>
 
         <div className="flex items-center justify-center gap-[16px] absolute bottom-[12px] left-1/2 -translate-x-1/2 font-nanum_400 text-[14px]">
-          {/*${allCheck ? ' bg-management1' : ' bg-grayLight'}*/}
+          {/* ${allCheck ? ' bg-management1' : ' bg-grayLight'} */}
           <button
             onClick={() => postMutate.mutate(classId, studentPostData)}
-            className={`bg-management1 text-white  tablet_change:w-[109px] mobile:w-[99px] h-[40px] flex items-center justify-center rounded-[10px]`}
+            className="bg-management1 text-white  tablet_change:w-[109px] mobile:w-[99px] h-[40px] flex items-center justify-center rounded-[10px]"
           >
             등록하기
           </button>

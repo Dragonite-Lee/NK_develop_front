@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import YellowModal from "../../YellowModal";
-
 import Pencil from "../../../assets/admin/Pencil.png";
 import Trash from "../../../assets/admin/Trash.png";
 
@@ -97,7 +96,7 @@ const SchoolTable = ({
               </th>
             ))}
           </tr>
-          <tr className="w-[52px]"></tr>
+          <tr className="w-[52px]" />
         </thead>
         <tbody className="font-nanum_400 px-[16px] tablet_change:h-[100px] mobile:h-[210px] overflow-y-auto scrollbar-thin scrollbar-webkit	scroll-behavior:smooth">
           {data?.map((data, index) => (

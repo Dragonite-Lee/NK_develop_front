@@ -4,10 +4,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useInput from "../../../hooks/useInput";
 import { useAdSchoolQuery } from "../adminQuery";
 import { deleteAdSchool, postAdSchool } from "../../../services/api/adminApi";
-
 import ScTable from "./ScTable";
 import YellowModal from "../../YellowModal";
-
 import MagnifyingGlass from "../../../assets/admin/MagnifyingGlass.png";
 
 const header = [
@@ -55,7 +53,7 @@ const BlueModalStSc = ({ setState }) => {
   };
 
   useEffect(() => {
-    //검색된 데이터
+    // 검색된 데이터
     const searched = schoolData?.filter((item) =>
       item.schoolName.includes(searchInput)
     );

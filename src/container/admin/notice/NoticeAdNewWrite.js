@@ -6,9 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import useInput from "../../../hooks/useInput";
-
 import { postAdAdminNotice } from "../../../services/api/adminApi";
-
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
 
 const NoticeAdNewWrite = () => {
@@ -22,8 +20,8 @@ const NoticeAdNewWrite = () => {
   const [paToggle, setPaToggle] = useState(false);
   const [teToggle, setTeToggle] = useState(false);
   const [noticeType, setNoticeType] = useState(new Set());
-  let today = new Date();
-  const createDate = today.getFullYear() + '.' + (today.getMonth() + 1) + '.' + today.getDate();
+  const today = new Date();
+  const createDate = `${today.getFullYear()  }.${  today.getMonth() + 1  }.${  today.getDate()}`;
 
   const formats = [
     "header",
@@ -96,8 +94,7 @@ const NoticeAdNewWrite = () => {
   }
   
   return ( 
-    <>
-      <div className="min-w-[280px]">
+    <div className="min-w-[280px]">
         <Header/>
           <main className='desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight'>
             <Link to="/main/noticeAd">
@@ -132,8 +129,7 @@ const NoticeAdNewWrite = () => {
                     <div className="relative w-[30px] h-[18px] bg-grayDark rounded-full 
                       peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
                       after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:border-gray-300 
-                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1">                    
-                    </div>
+                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1" />
                   </label>
                 </div>
                 <div className="flex items-center justify-start gap-[48px] py-[7.5px]">
@@ -143,8 +139,7 @@ const NoticeAdNewWrite = () => {
                     <div className="relative w-[30px] h-[18px] bg-grayDark rounded-full 
                       peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
                       after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:border-gray-300 
-                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1">                    
-                    </div>
+                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1" />
                   </label>
                 </div>
                 <div className="flex items-center justify-start gap-[48px] py-[7.5px]">
@@ -154,8 +149,7 @@ const NoticeAdNewWrite = () => {
                     <div className="relative w-[30px] h-[18px] bg-grayDark rounded-full 
                       peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
                       after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:border-gray-300 
-                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1">                    
-                    </div>
+                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1" />
                   </label>
                 </div>
               </div>
@@ -168,7 +162,6 @@ const NoticeAdNewWrite = () => {
           </main>
         <Footer />
       </div>
-    </>
   );
 }
  

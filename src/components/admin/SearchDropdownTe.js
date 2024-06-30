@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import useInput from "../../hooks/useInput";
-import { useAdAllTeacherQuery } from "./adminQuery";
 
+import { useAdAllTeacherQuery } from "./adminQuery";
 import CaretUp from "../../assets/CaretUp.png";
 import CaretDown from "../../assets/CaretDown.png";
 import MagnifyingGlass from "../../assets/admin/MagnifyingGlass.png";
@@ -16,7 +16,7 @@ const SearchDropdownTe = ({ state, setState, value, setValue, duplicate }) => {
   const { allTeacherData } = useAdAllTeacherQuery();
 
   useEffect(() => {
-    //검색된 데이터
+    // 검색된 데이터
     const searched = allTeacherData?.data.filter((item) =>
       item.nickname.includes(searchInput)
     );

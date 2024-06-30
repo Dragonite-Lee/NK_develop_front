@@ -4,9 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useInput from "../../../hooks/useInput";
 import { useAdAllStudentQuery } from "../adminQuery";
 import { postAdClassroomStudent } from "../../../services/api/adminApi";
-
 import YellowModal from "../../YellowModal";
-
 import Pencil from "../../../assets/admin/Pencil.png";
 import Trash from "../../../assets/admin/Trash.png";
 import MagnifyingGlass from "../../../assets/admin/MagnifyingGlass.png";
@@ -46,7 +44,7 @@ const BlueModalPlusSt = ({ setState, id }) => {
   });
 
   const studentPostData = {
-    studentIds: studentIds,
+    studentIds,
   };
 
   const headerkey = header.map((header) => header.value);
@@ -83,7 +81,7 @@ const BlueModalPlusSt = ({ setState, id }) => {
   };
 
   useEffect(() => {
-    //검색된 데이터
+    // 검색된 데이터
     const searched = allStudentData?.data.filter((item) =>
       item.nickname.includes(searchInput)
     );
@@ -97,8 +95,7 @@ const BlueModalPlusSt = ({ setState, id }) => {
   }, [allStudentData?.data, searchInput]);
 
   return (
-    <>
-      <div className="z-10 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full y-full min-h-full bg-[#212121]/[.08]">
+    <div className="z-10 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full y-full min-h-full bg-[#212121]/[.08]">
         <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] tablet_change:w-[694px] tablet:w-[383px] mobile:w-[260px] tablet:h-[430px] rounded-[20px] border drop-shadow">
           <div className="h-[64px] bg-management1 flex items-center pl-[36px] rounded-t-[20px]">
             <div className="font-pacbooc_700 text-[18px] text-white">
@@ -187,7 +184,6 @@ const BlueModalPlusSt = ({ setState, id }) => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

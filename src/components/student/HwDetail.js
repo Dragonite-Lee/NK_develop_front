@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import ArrowLeft from "../../assets/student/ArrowLeft.png"
+import Button from "./Button";
+import {getHomeworkList} from "./temporary/HomeworkData"
 
-import Button from "../student/Button";
-import {getHomeworkList} from "../student/temporary/HomeworkData"
 const HomeworkList = getHomeworkList();
 
 const HwDetail = ({ID}) => {
@@ -42,7 +42,7 @@ const HwDetail = ({ID}) => {
             이미지는 총 3장까지 업로드 가능합니다. 정확한 숙제 사진을 제출하세요.
           </div>
           <div className="mt-[20px] text-[13px] font-nanum_700">
-            <Button backgroundColor="#D1D1D6" Color="white" content={"이미지 업로드하기"}/>
+            <Button backgroundColor="#D1D1D6" Color="white" content="이미지 업로드하기"/>
           </div>
         </div>
       </div>

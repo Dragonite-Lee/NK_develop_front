@@ -5,7 +5,6 @@ import useInput from "../../../hooks/useInput";
 import { idReg, pwReg, phoneReg } from "../../../utils/reg";
 import { useAdOneStudentQuery, useAdSchoolQuery } from "../adminQuery";
 import { putAdStudent } from "../../../services/api/adminApi";
-
 import DropdownMenu from "../Dropdown";
 import SearchDropdownMenu from "../SearchDropdownSc";
 

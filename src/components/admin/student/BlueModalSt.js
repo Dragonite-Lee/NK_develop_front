@@ -5,7 +5,6 @@ import useInput from "../../../hooks/useInput";
 import { idReg, pwReg, phoneReg } from "../../../utils/reg";
 import { useAdSchoolQuery } from "../adminQuery";
 import { postAdStudent } from "../../../services/api/adminApi";
-
 import DropdownMenu from "../Dropdown";
 import SearchDropdownSc from "../SearchDropdownSc";
 
@@ -230,10 +229,10 @@ const BlueModalSt = ({ setState }) => {
           </div>
         </div>
         <div className="flex items-center justify-center gap-[16px] tablet:mt-[24px] mobile:mt-[12px] font-nanum_400 text-[14px]">
-          {/*${allCheck ? ' bg-management1' : ' bg-grayLight'}*/}
+          {/* ${allCheck ? ' bg-management1' : ' bg-grayLight'} */}
           <button
             onClick={() => postMutate.mutate(studentPostData)}
-            className={`bg-management1 text-white  tablet_change:w-[109px] mobile:w-[99px] h-[40px] flex items-center justify-center rounded-[10px]`}
+            className="bg-management1 text-white  tablet_change:w-[109px] mobile:w-[99px] h-[40px] flex items-center justify-center rounded-[10px]"
           >
             등록하기
           </button>

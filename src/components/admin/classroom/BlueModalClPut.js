@@ -4,7 +4,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useInput from "../../../hooks/useInput";
 import { useAdOneClassroomQuery } from "../adminQuery";
 import { putAdClassroom } from "../../../services/api/adminApi";
-
 import DropdownMenu from "../Dropdown";
 import SearchDropdownSt from "../SearchDropdownSt";
 import WorkDropdown from "../teacher/WorkDropdown";
@@ -78,7 +77,7 @@ const BlueModalClPut = ({ setState, data }) => {
       const coTeacherId = oneClassroomData.data.AssistantTeacher.map(
         (item) => item.id
       );
-      let coTeacherPutId = [];
+      const coTeacherPutId = [];
       for (let i = 0; i < coTeacherId.length; i++) {
         coTeacherPutId.push({ id: coTeacherId[i] });
       }
@@ -145,7 +144,7 @@ const BlueModalClPut = ({ setState, data }) => {
                 코칭 선생님 <span className="text-error">*</span>
               </div>
               <SearchDropdownTe
-                duplicate={true}
+                duplicate
                 state={coachingTeacher}
                 setState={setCoachingTeacher}
                 value={coachingTeacherValue}

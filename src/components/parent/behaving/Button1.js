@@ -3,7 +3,7 @@ import React from 'react';
 const Button = ({ backgroundColor, Color, content, size}) => {
 
   const buttonStyle = {
-    backgroundColor: backgroundColor,
+    backgroundColor,
     borderRadius: '20px',
     color: Color,
 		width: '66px',

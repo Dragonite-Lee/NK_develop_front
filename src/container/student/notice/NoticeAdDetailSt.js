@@ -5,22 +5,19 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import YellowModal from "../../../components/YellowModal";
-
 import { useAdOneAdminNoticeQuery } from "../../../components/admin/adminQuery";
 import { deleteAdAdminNotice } from "../../../services/api/adminApi";
-
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
 
 const NoticeAdDetailSt = () => {
-  let { id } = useParams();
+  const { id } = useParams();
 
   const { oneAdminNoticeData, isLoading } = useAdOneAdminNoticeQuery(id);
   const markDownText = `${oneAdminNoticeData?.data.content}`;
  
 
   return (
-    <>
-      <div className="min-w-[280px]">
+    <div className="min-w-[280px]">
         <Header />
         <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
           <Link to="/main/noticeSt">
@@ -41,19 +38,19 @@ const NoticeAdDetailSt = () => {
                   <div key={i}>
                     {type == "STUDENT" ? (
                       <div
-                        className={`w-[55px] h-[26px] rounded-[10px] flex items-center justify-center text-main1 border border-main1 outline outline-1 outline-main1`}
+                        className="w-[55px] h-[26px] rounded-[10px] flex items-center justify-center text-main1 border border-main1 outline outline-1 outline-main1"
                       >
                         # 학생
                       </div>
                     ) : type == "PARENT" ? (
                       <div
-                        className={`w-[67px] h-[26px] rounded-[10px] flex items-center justify-center text-main2 border border-main2 outline outline-1 outline-main2`}
+                        className="w-[67px] h-[26px] rounded-[10px] flex items-center justify-center text-main2 border border-main2 outline outline-1 outline-main2"
                       >
                         # 학부모
                       </div>
                     ) : (
                       <div
-                        className={`w-[67px] h-[26px] rounded-[10px] flex items-center justify-center text-main3 border border-main3 outline outline-1 outline-main3`}
+                        className="w-[67px] h-[26px] rounded-[10px] flex items-center justify-center text-main3 border border-main3 outline outline-1 outline-main3"
                       >
                         # 선생님
                       </div>
@@ -80,7 +77,6 @@ const NoticeAdDetailSt = () => {
         </main>
         <Footer />
       </div>
-    </>
   );
 };
 

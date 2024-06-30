@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import CircleRight from "../../../assets/student/CaretCircleRight.png";
-
 import { useTeAllClassNoticeQuery } from "../../teacher/teacherQuery";
 import useParentNoticeStore from "../../../store/parentNotice";
 
@@ -55,9 +54,7 @@ const PaMainNoList = ({ classId, className }) => {
                   className={`flex items-center justify-between mt-[9px] tablet:text-[13px] mobile:text-[11px] font-nanum_400 text-grey ${
                     index != 7 && " mb-[12px]"
                   }`}
-                >
-                
-                </div>
+                 />
               </Link>
             )
           );

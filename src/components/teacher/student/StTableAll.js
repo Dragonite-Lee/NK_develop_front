@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import YellowModalPathDelete from "../YellowModalPathDelete";
-
 import Pencil from "../../../assets/admin/Pencil.png";
 import Trash from "../../../assets/admin/Trash.png";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
@@ -111,7 +110,7 @@ const StTableAll = ({
               </th>
             ))}
           </tr>
-          <tr className="w-[52px]"></tr>
+          <tr className="w-[52px]" />
         </thead>
         <tbody className="font-nanum_400 px-[16px]">
           {studentData?.map((data, index) => (

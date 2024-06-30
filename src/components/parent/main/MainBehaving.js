@@ -5,8 +5,8 @@ import CircleRight from "../../../assets/student/CaretCircleRight.png"
 import Chart from "../behaving/Chart";
 import Button1 from "../behaving/Button1"
 import Button2 from "../behaving/Button2"
-
 import {getweekData} from "../temporary/weekData"
+
 const weekData = getweekData();
 
 const MainBehaving = () => {

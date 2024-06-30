@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 
 import { useTeClassroomStudentQuery } from "../teacherQuery";
 import useTeacherStudentStore from "../../../store/teacherStudent";
-
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import CircleRight from "../../../assets/student/CaretCircleRight.png";
-
 import calculateAge from "../../../utils/calculateAge";
 
 const TeMainStList = ({ classId, className }) => {

@@ -5,7 +5,6 @@ import useInput from "../../../hooks/useInput";
 import { idReg, phoneReg, pwReg } from "../../../utils/reg";
 import { useAdOneParentQuery } from "../adminQuery";
 import { putAdParent } from "../../../services/api/adminApi";
-
 import DropdownMenu from "../Dropdown";
 import SearchDropdownSt from "../SearchDropdownSt";
 
@@ -74,7 +73,7 @@ const BlueModalPaPut = ({ setState, data }) => {
     nickname: nicknameValue,
     phoneNumber: phoneNumberValue,
     relationship: relationshipValue,
-    studentIds: studentIds,
+    studentIds,
     birth: birthValue
   };
 

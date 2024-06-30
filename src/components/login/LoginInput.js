@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useInput from "../../hooks/useInput";
-import useUserStore from "../../store/user";
 
+import useUserStore from "../../store/user";
 import { loginApi, onLoginSuccess, userApi } from "../../services/api/loginApi";
 
 const roleArray = [

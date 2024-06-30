@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useTeAdminNoticeQuery } from "../teacherQuery";
-
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 import Megaphone from "../../../assets/MegaphoneSimple.png";

@@ -9,17 +9,15 @@ import {
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import useInput from "../../../hooks/useInput";
-
 import { useTeOneAdminNoticeQuery } from "../../../components/teacher/teacherQuery";
 import useTeacherNoticeStore from "../../../store/teacherNotice";
 import { putTeClassNotice } from "../../../services/api/teacherApi";
-
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
 
 const NoticeTeWrite = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  let { id } = useParams();
+  const { id } = useParams();
   const {
     classnameIdClient
   } = useTeacherNoticeStore();
@@ -29,9 +27,9 @@ const NoticeTeWrite = () => {
   const [stToggle, setStToggle] = useState(false);
   const [paToggle, setPaToggle] = useState(false);
   const [noticeType, setNoticeType] = useState(new Set());
-  let today = new Date();
+  const today = new Date();
   const createDate =
-    today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate();
+    `${today.getFullYear()  }.${  today.getMonth() + 1  }.${  today.getDate()}`;
   const { oneclassNoticeData, isLoading } = useTeOneAdminNoticeQuery(classnameIdClient, id);
 
   const formats = [
@@ -108,14 +106,13 @@ const NoticeTeWrite = () => {
   
   const teacherPutData = {
     teacher: { id: 1 },
-    title: title,
-    content: content,
+    title,
+    content,
     classNoticeType: noticeType,
   };
 
   return (
-    <>
-      <div className="min-w-[280px]">
+    <div className="min-w-[280px]">
         <Header />
         <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
           <Link to="/main/noticeTe">
@@ -172,7 +169,7 @@ const NoticeTeWrite = () => {
                       peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
                       after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:border-gray-300 
                       after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1"
-                  ></div>
+                   />
                 </label>
               </div>
               <div className="flex items-center justify-start gap-[48px] py-[7.5px]">
@@ -189,7 +186,7 @@ const NoticeTeWrite = () => {
                       peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
                       after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:border-gray-300 
                       after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1"
-                  ></div>
+                   />
                 </label>
               </div>
             </div>
@@ -205,7 +202,6 @@ const NoticeTeWrite = () => {
         </main>
         <Footer />
       </div>
-    </>
   );
 };
 

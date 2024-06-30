@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useAdAdminNoticeQuery } from "../adminQuery";
-
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 
@@ -27,7 +26,7 @@ const NoticeTable = ({ keyword, type }) => {
   }, [keyword, type]);
 
   useEffect(() => {
-    setKeywordValue(keyword)
+    setKeywordValue(keyword);
     setCurrent(adminNoticeData?.data.currentPage);
   }, [adminNoticeData?.data, keyword]);
 

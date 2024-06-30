@@ -3,7 +3,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import useInput from "../../../hooks/useInput";
 import { postAdClassroom } from "../../../services/api/adminApi";
-
 import WorkDropdown from "../teacher/WorkDropdown";
 import SearchDropdownTe from "../SearchDropdownTe";
 
@@ -117,7 +116,7 @@ const BlueModalCl = ({ setState }) => {
                 코칭 선생님 <span className="text-error">*</span>
               </div>
               <SearchDropdownTe
-                duplicate={true}
+                duplicate
                 state={coachingTeacher}
                 setState={setCoachingTeacher}
                 value={coachingTeacherValue}

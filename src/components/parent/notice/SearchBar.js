@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }) => {
   const Search = () => {
     if (onSearch) {
       onSearch(query);
-      //검색 결과 불러오기
+      // 검색 결과 불러오기
     }
   };
 

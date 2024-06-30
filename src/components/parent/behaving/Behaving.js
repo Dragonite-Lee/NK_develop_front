@@ -6,8 +6,8 @@ import SelectStudent from "../SelectStudent"
 import Chart from "./Chart"
 import Button1 from "./Button1"
 import Button2 from "./Button2"
-
 import {getweekData} from "../temporary/weekData"
+
 const weekData = getweekData();
 
 const Behaving = () => {

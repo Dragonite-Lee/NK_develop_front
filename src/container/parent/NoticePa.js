@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import useInput from "../../hooks/useInput";
 
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import {
   useTeAllAdminNoticeQuery,
   useTeAllClassNoticeQuery,
   useTeAllClassroomQuery,
 } from "../../components/teacher/teacherQuery";
 import DropdownCl from "../../components/teacher/DropdownCl";
-
 import { getCookie } from "../../utils/cookie";
 import useParentMainStore from "../../store/parentMain";
 import PaClNoticeTable from "../../components/parent/notice/PaClNoticeTable";
@@ -51,8 +50,7 @@ const NoticePa = () => {
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
 
   return (
-    <>
-      <div className="min-w-[280px]">
+    <div className="min-w-[280px]">
         <Header />
         <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
           <DropdownCl
@@ -98,7 +96,6 @@ const NoticePa = () => {
         </main>
         <Footer />
       </div>
-    </>
   );
 };
 

@@ -4,7 +4,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useInput from "../../../hooks/useInput";
 import { idReg, phoneReg, pwReg } from "../../../utils/reg";
 import { postAdParent } from "../../../services/api/adminApi";
-
 import DropdownMenu from "../Dropdown";
 import SearchDropdownSt from "../SearchDropdownSt";
 
