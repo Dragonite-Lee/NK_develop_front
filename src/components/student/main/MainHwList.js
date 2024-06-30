@@ -1,45 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import ArrowRightBlack from "../../../assets/ArrowRightBlack.png"
-import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png"
-import CircleRight from "../../../assets/student/CaretCircleRight.png"
+import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
+import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
+import CircleRight from "../../../assets/student/CaretCircleRight.png";
 
 const Dummy_student = [
   {
     id: 0,
-    work: '중등 수학 내신반 12월 1주차 테스트 오답풀이',
-    status: '미완료',
-    name: '이적분 선생님',
-    date: '2023.12.09까지',
+    work: "중등 수학 내신반 12월 1주차 테스트 오답풀이",
+    status: "미완료",
+    name: "이적분 선생님",
+    date: "2023.12.09까지",
   },
   {
     id: 1,
-    work: '중등 수학 내신반 12월 1주차 공통숙제',
-    status: '완료',
-    name: '김수학 선생님',
-    date: '2023.12.09까지',
+    work: "중등 수학 내신반 12월 1주차 공통숙제",
+    status: "완료",
+    name: "김수학 선생님",
+    date: "2023.12.09까지",
   },
   {
     id: 2,
-    work: '중등 수학 내신반 6월 기출풀이',
-    status: '반려된 숙제',
-    name: '박미분 선생님',
-    date: '2023.12.09까지',
+    work: "중등 수학 내신반 6월 기출풀이",
+    status: "반려된 숙제",
+    name: "박미분 선생님",
+    date: "2023.12.09까지",
   },
   {
     id: 3,
-    work: '중등 수학 내신반 11월 4주차 공통숙제',
-    status: '반려된 숙제',
-    name: '김수학 선생님',
-    date: '2023.12.09까지',
+    work: "중등 수학 내신반 11월 4주차 공통숙제",
+    status: "반려된 숙제",
+    name: "김수학 선생님",
+    date: "2023.12.09까지",
   },
   {
     id: 4,
-    work: '중등 수학 내신반 11월 3주차 공통숙제',
-    status: '미완료',
-    name: '김수학 선생님',
-    date: '2023.12.09까지',
+    work: "중등 수학 내신반 11월 3주차 공통숙제",
+    status: "미완료",
+    name: "김수학 선생님",
+    date: "2023.12.09까지",
   },
   // {
   //   work: '중등 수학 내신반 11월 2주차 공통숙제',
@@ -70,7 +70,7 @@ const Dummy_student = [
   //   status: '확인 완료',
   //   name: '김수학 선생님',
   //   date: '2023.12.09까지',
-  // },  
+  // },
   // {
   //   work: '중등 수학 내신반 11월 1주차 공통숙제',
   //   status: '미완료',
@@ -83,13 +83,14 @@ const Dummy_student = [
   //   name: '미적분 선생님',
   //   date: '2023.12.09까지',
   // },
-  ];
+];
 
 const MainHwList = () => {
-//   let findHomework = Dummy_student.find(function(homework) { 
-//     return homework.status == 원하는값
-// });
-{/* <div
+  //   let findHomework = Dummy_student.find(function(homework) {
+  //     return homework.status == 원하는값
+  // });
+  {
+    /* <div
                     onClick={() => onChangeSelection("TODO")}
                     className={`w-[68px] h-[26px] rounded-[10px] flex items-center justify-center ${
                       stToggle ? " bg-homework1/30" : " bg-white1"
@@ -112,7 +113,8 @@ const MainHwList = () => {
                     } text-main3 border border-main3 outline outline-1 outline-main3`}
                   >
                     # 완료
-                  </div> */}
+                  </div> */
+  }
   return (
     <section className="glassWhite mt-[24px] py-[24px] desktop:w-[486px] mobile:w-full tablet:px-[32px] mobile:px-[26px]">
       <div className="w-full flex items-center justify-between">
@@ -129,13 +131,21 @@ const MainHwList = () => {
       </div>
       <div className="w-full">
         {Dummy_student.map((item, index) => (
-          <Link key={index} to={`/main/homeworklist/:${item.id}`} className="block">
-            {index != 0 && (<div className="divider" />)}
+          <Link
+            key={index}
+            to={`/main/homeworklist/:${item.id}`}
+            className="block"
+          >
+            {index != 0 && <div className="divider" />}
             <div className="flex items-center justify-between mt-[16px] text-[12px]">
               <div className="font-nanum_700">{item.work}</div>
               <div className="font-paybooc_700">{item.status}</div>
             </div>
-            <div className={`flex items-center justify-between mt-[9px] text-[11px] font-nanum_400 text-grey ${index != 4 && " mb-[16px]"}`}>
+            <div
+              className={`flex items-center justify-between mt-[9px] text-[11px] font-nanum_400 text-grey ${
+                index != 4 && " mb-[16px]"
+              }`}
+            >
               <div>{item.name}</div>
               <div>{item.date}</div>
             </div>
@@ -144,6 +154,6 @@ const MainHwList = () => {
       </div>
     </section>
   );
-}
+};
 
 export default MainHwList;

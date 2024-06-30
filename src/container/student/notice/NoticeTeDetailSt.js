@@ -11,11 +11,12 @@ import useStudentNoticeStore from "../../../store/studentNotice";
 const NoticeTeDetailSt = () => {
   let { id } = useParams();
 
-  const {
-    classnameIdClient
-  } = useStudentNoticeStore();
+  const { classnameIdClient } = useStudentNoticeStore();
 
-  const { oneclassNoticeData, isLoading } = useTeOneAdminNoticeQuery(classnameIdClient, id);
+  const { oneclassNoticeData, isLoading } = useTeOneAdminNoticeQuery(
+    classnameIdClient,
+    id
+  );
   const markDownText = `${oneclassNoticeData?.data.content}`;
 
   return (

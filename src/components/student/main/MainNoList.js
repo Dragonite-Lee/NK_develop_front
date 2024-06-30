@@ -3,25 +3,22 @@ import { Link } from "react-router-dom";
 
 import CircleRight from "../../../assets/student/CaretCircleRight.png";
 
-
 import useStudentNoticeStore from "../../../store/studentNotice";
 import { useTeAllClassNoticeQuery } from "../../teacher/teacherQuery";
 
-
 const StMainNoList = ({ classId, className }) => {
-
   const { allClassNoticeData, isLoading } = useTeAllClassNoticeQuery(classId);
-  const allClassNoticeStudent = allClassNoticeData?.data.filter((data) => data.classNoticeType.includes('STUDENT'));
-  const {
-    setClassnameIdClient,
-    setClassnameNameClient,
-  } = useStudentNoticeStore();
-  
+  const allClassNoticeStudent = allClassNoticeData?.data.filter((data) =>
+    data.classNoticeType.includes("STUDENT")
+  );
+  const { setClassnameIdClient, setClassnameNameClient } =
+    useStudentNoticeStore();
+
   useEffect(() => {
     setClassnameIdClient(classId);
     setClassnameNameClient(className);
-  }, [classId, className])
-  
+  }, [classId, className]);
+
   if (isLoading)
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
   return (
@@ -54,9 +51,7 @@ const StMainNoList = ({ classId, className }) => {
                   className={`flex items-center justify-between mt-[9px] tablet:text-[13px] mobile:text-[11px] font-nanum_400 text-grey ${
                     index != 7 && " mb-[12px]"
                   }`}
-                >
-                
-                </div>
+                ></div>
               </Link>
             )
           );

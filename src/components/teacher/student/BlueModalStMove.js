@@ -2,20 +2,21 @@ import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { useTeAllClassroomQuery } from "../teacherQuery";
-import { deleteTeClassroomStudent, postTeClassroomStudent } from "../../../services/api/teacherApi";
+import {
+  deleteTeClassroomStudent,
+  postTeClassroomStudent,
+} from "../../../services/api/teacherApi";
 
 import DropdownText from "../../admin/student/DropdownText";
-
-
 
 const BlueModalStMove = ({ nowId, setState, selection }) => {
   const [classValue, setClassValue] = useState("");
   const [classId, setClassId] = useState("");
   const [classroomItemList, setClassroomItemList] = useState([]);
 
-  const { allClassroomData } = useTeAllClassroomQuery()
+  const { allClassroomData } = useTeAllClassroomQuery();
   const queryClient = useQueryClient();
-  
+
   const ClassroomId = allClassroomData?.data.map((item) => item.id);
   const ClassroomName = allClassroomData?.data.map((item) => item.classname);
 
@@ -35,10 +36,7 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
       return deleteTeClassroomStudent(deleteData.id, deleteData.studentIds);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries([
-        "/teacher/classroom/student",
-        nowId,
-      ]);
+      queryClient.invalidateQueries(["/teacher/classroom/student", nowId]);
     },
   });
 
@@ -51,12 +49,12 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
   }, [allClassroomData]);
 
   const studentDeleteData = {
-    "id": nowId,
-    "studentIds": selection,
+    id: nowId,
+    studentIds: selection,
   };
 
   const studentPostData = {
-    "studentIds": selection,
+    studentIds: selection,
   };
 
   const onMoveHandler = () => {
@@ -66,7 +64,7 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
 
   useEffect(() => {
     if (postMutate.isSuccess == true) {
-        setState(false);
+      setState(false);
     }
   }, [postMutate.isSuccess]);
 
@@ -79,40 +77,41 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
           </div>
         </div>
         <div className="text-[14px] font-nanum_700 tablet:mt-[24px] mobile:mt-[12px] tablet:px-[22px] mobile:px-[12px]">
-            {selection?.length != 0 && selection?.length != undefined ? (
-                <div className="relative z-10 flex items-start justify-start flex-col gap-[12px]">
-                    <div>
-                    반 선택 <span className="text-error">*</span>
-                    </div>
-                    <DropdownText
-                    state={classId}
-                    setState={setClassId}
-                    itemData={classroomItemList}
-                    setText={setClassValue}
-                    />
+          {selection?.length != 0 && selection?.length != undefined ? (
+            <div className="relative z-10 flex items-start justify-start flex-col gap-[12px]">
+              <div>
+                반 선택 <span className="text-error">*</span>
+              </div>
+              <DropdownText
+                state={classId}
+                setState={setClassId}
+                itemData={classroomItemList}
+                setText={setClassValue}
+              />
+            </div>
+          ) : (
+            <div>학생을 선택하세요.</div>
+          )}
+          {classId &&
+            (classId != nowId ? (
+              <div className="mt-[17px] font-nanum_400 flex items-center justify-center flex-col">
+                <div>
+                  선택한{" "}
+                  <span className="font-nanum_700">
+                    {selection?.length}명의 학생
+                  </span>
+                  을
                 </div>
+                <div>
+                  <span className="font-nanum_700">{classValue}</span>으로
+                  이동할까요?
+                </div>
+              </div>
             ) : (
-                <div>학생을 선택하세요.</div>
-            )}
-            {classId && (
-                classId != nowId ? (
-                    <div className="mt-[17px] font-nanum_400 flex items-center justify-center flex-col">
-                    <div>
-                        선택한{" "}
-                        <span className="font-nanum_700">
-                        {selection?.length}명의 학생
-                        </span>
-                        을
-                    </div>
-                    <div>
-                        <span className="font-nanum_700">{classValue}</span>으로
-                        이동할까요?
-                    </div>
-                    </div>
-                ) : (
-                    <div className="mt-[17px] font-nanum_400">이미 등록된 반 입니다.</div>
-                )
-            )}
+              <div className="mt-[17px] font-nanum_400">
+                이미 등록된 반 입니다.
+              </div>
+            ))}
         </div>
 
         <div className="flex items-center justify-center gap-[16px] tablet:mt-[24px] mobile:mt-[12px] font-nanum_400 text-[14px]">

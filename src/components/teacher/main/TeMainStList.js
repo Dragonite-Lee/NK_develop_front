@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useTeClassroomStudentQuery } from "../teacherQuery";
-import useTeacherStudentStore from "../../../store/teacherStudent"
+import useTeacherStudentStore from "../../../store/teacherStudent";
 
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
@@ -10,19 +10,17 @@ import CircleRight from "../../../assets/student/CaretCircleRight.png";
 
 import calculateAge from "../../../utils/calculateAge";
 
-
 const TeMainStList = ({ classId, className }) => {
-  const { classroomStudentData, isLoading } = useTeClassroomStudentQuery(classId);
+  const { classroomStudentData, isLoading } =
+    useTeClassroomStudentQuery(classId);
 
-  const {
-    setClassnameIdClient,
-    setClassnameNameClient,
-  } = useTeacherStudentStore();
+  const { setClassnameIdClient, setClassnameNameClient } =
+    useTeacherStudentStore();
 
   useEffect(() => {
     setClassnameIdClient(classId);
     setClassnameNameClient(className);
-  }, [classId, className])
+  }, [classId, className]);
 
   if (isLoading)
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;

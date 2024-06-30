@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import CircleRight from "../../../assets/student/CaretCircleRight.png"
-
+import CircleRight from "../../../assets/student/CaretCircleRight.png";
 
 const MainHwDoing = () => {
   return (
@@ -14,9 +13,8 @@ const MainHwDoing = () => {
       <div className="mt-[9px] flex items-center justify-between">
         대충 타이머~
       </div>
-    
     </section>
   );
-}
+};
 
 export default MainHwDoing;

@@ -1,31 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useTeHomeworkAllStudentQuery, useTeHomeworkQuery } from "../teacherQuery";
+import {
+  useTeHomeworkAllStudentQuery,
+  useTeHomeworkQuery,
+} from "../teacherQuery";
 
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 import Megaphone from "../../../assets/MegaphoneSimple.png";
 
-
 const TeHwTable = ({ classId, filter }) => {
   const [paramsPage, setParamsPage] = useState(0);
-  const [keywordValue, setKeywordValue] = useState('');
-  
-  const { homeworkData } = useTeHomeworkQuery(
-    classId,
-    paramsPage,
-    ...filter
-  );
-  console.log(homeworkData)
+  const [keywordValue, setKeywordValue] = useState("");
+
+  const { homeworkData } = useTeHomeworkQuery(classId, paramsPage, ...filter);
+  console.log(homeworkData);
   const [current, setCurrent] = useState(homeworkData?.data.currentPage);
   // const { homeworkAllStudentData } = useTeHomeworkAllStudentQuery(classId, )
   // useEffect(() => {
   //   if (filter) {
   //     setParamsPage(0);
-  //   } 
+  //   }
   // }, [filter]);
-  
+
   // useEffect(() => {
   //   setCurrent(homeworkData?.data.currentPage);
   // }, [homeworkData?.data, filter]);

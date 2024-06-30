@@ -7,7 +7,6 @@ import Trash from "../../../assets/admin/Trash.png";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 
-
 const StTableAll = ({
   classId,
   cancleText,
@@ -20,7 +19,7 @@ const StTableAll = ({
   const [selection, setSelection] = useState(new Set());
   const [cancleModal, setCancleModal] = useState(false);
   const [cancleId, setCancleId] = useState([]);
-    
+
   const onChangeSelection = (value) => {
     const newSelection = new Set(selection);
 
@@ -36,9 +35,7 @@ const StTableAll = ({
 
   const onChangeAllSelection = (e) => {
     if (e.target.checked) {
-      const allCheckedSelection = new Set(
-        studentData?.map((data) => data.id)
-      );
+      const allCheckedSelection = new Set(studentData?.map((data) => data.id));
       setSelection(allCheckedSelection);
       updateSelection([...allCheckedSelection]);
     } else {
@@ -65,18 +62,18 @@ const StTableAll = ({
       setCancleModal(false);
     }
   }, [deleteMutate.isSuccess]);
-  
+
   useEffect(() => {
-    selection.clear()
-  },[studentData])
-  
+    selection.clear();
+  }, [studentData]);
+
   if (studentData?.length == 0)
     return (
       <div className="font-nanum_700 text-[14px]">
         등록된 데이터가 존재하지 않습니다.
       </div>
     );
-   
+
   return (
     <div className="mt-[12px]">
       {cancleModal && (
@@ -150,7 +147,6 @@ const StTableAll = ({
         </tbody>
       </table>
       {/* 페이지네이션 */}
-      
     </div>
   );
 };

@@ -39,10 +39,13 @@ const NoticeSt = () => {
 
   const { allClassroomData } = useTeAllClassroomQuery();
   const { allAdminNoticeData, isLoading } = useTeAllAdminNoticeQuery();
-  const allAdminNoticeStudent = allAdminNoticeData?.data.filter((data) => data.adminNoticeType.includes('STUDENT'));
+  const allAdminNoticeStudent = allAdminNoticeData?.data.filter((data) =>
+    data.adminNoticeType.includes("STUDENT")
+  );
   const { allClassNoticeData } = useTeAllClassNoticeQuery(classnameIdClient);
 
-  const totalNotice = allAdminNoticeStudent?.length + allClassNoticeData?.data.length;
+  const totalNotice =
+    allAdminNoticeStudent?.length + allClassNoticeData?.data.length;
   // console.log("관리자공지", allAdminNoticeData?.data)
   // console.log("수업공지", allClassNoticeData?.data)
   if (isLoading)

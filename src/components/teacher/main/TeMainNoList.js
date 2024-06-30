@@ -8,21 +8,17 @@ import CircleRight from "../../../assets/student/CaretCircleRight.png";
 import { useTeAllClassNoticeQuery } from "../teacherQuery";
 import useTeacherNoticeStore from "../../../store/teacherNotice";
 
-
 const TeMainNoList = ({ classId, className }) => {
-
   const { allClassNoticeData, isLoading } = useTeAllClassNoticeQuery(classId);
 
-  const {
-    setClassnameIdClient,
-    setClassnameNameClient,
-  } = useTeacherNoticeStore();
+  const { setClassnameIdClient, setClassnameNameClient } =
+    useTeacherNoticeStore();
 
   useEffect(() => {
     setClassnameIdClient(classId);
     setClassnameNameClient(className);
-  }, [classId, className])
-  
+  }, [classId, className]);
+
   if (isLoading)
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
   return (

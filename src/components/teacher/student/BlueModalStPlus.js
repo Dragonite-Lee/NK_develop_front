@@ -48,7 +48,7 @@ const BlueModalStPlus = ({ setState, id }) => {
   const studentPostData = {
     studentIds: studentIds,
   };
-  
+
   const headerkey = header.map((header) => header.value);
   const width = header.map((header) => header.width);
 

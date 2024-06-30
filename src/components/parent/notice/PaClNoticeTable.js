@@ -9,8 +9,8 @@ import Megaphone from "../../../assets/MegaphoneSimple.png";
 
 const PaClNoticeTable = ({ classId, adminNotice, keyword, type }) => {
   const [paramsPage, setParamsPage] = useState(0);
-  const [keywordValue, setKeywordValue] = useState('');
-  
+  const [keywordValue, setKeywordValue] = useState("");
+
   const { classNoticeData, isLoading } = useTeAdminNoticeQuery(
     classId,
     paramsPage,
@@ -27,13 +27,13 @@ const PaClNoticeTable = ({ classId, adminNotice, keyword, type }) => {
       setKeywordValue("");
     }
   }, [type, keyword]);
-  
+
   useEffect(() => {
-    setKeywordValue(keyword)
+    setKeywordValue(keyword);
     setCurrent(classNoticeData?.data.currentPage);
     setTotal(classNoticeData?.data.totalPage);
     if (classNoticeData?.data.totalPage == 0) {
-      setTotal(1)
+      setTotal(1);
     }
   }, [classNoticeData?.data, keyword]);
 
@@ -56,24 +56,29 @@ const PaClNoticeTable = ({ classId, adminNotice, keyword, type }) => {
 
   return (
     <div className="w-full pt-[20px] pb-[46px]">
-      {paramsPage == 0 && adminNotice?.map((item, index) => (
-        <Link
-          key={index}
-          className="block pt-[19px] px-[16px] bg-white1"
-          to={`/main/noticeSt/adminDetail/${item.id}`}
-        >
-          <div className="flex items-center justify-between mb-[16px]">
-            <div className="flex items-center justify-start gap-[16px]">
-                <img src={Megaphone} alt="공지아이콘" className="w-[20px] h-[20px]" />
+      {paramsPage == 0 &&
+        adminNotice?.map((item, index) => (
+          <Link
+            key={index}
+            className="block pt-[19px] px-[16px] bg-white1"
+            to={`/main/noticeSt/adminDetail/${item.id}`}
+          >
+            <div className="flex items-center justify-between mb-[16px]">
+              <div className="flex items-center justify-start gap-[16px]">
+                <img
+                  src={Megaphone}
+                  alt="공지아이콘"
+                  className="w-[20px] h-[20px]"
+                />
                 <div className="font-nanum_700 text-[14px]">{item.title}</div>
+              </div>
+              <div className="font-nanum_400 text-[13px] text-grey">
+                {item.created.slice(0, 10)}
+              </div>
             </div>
-            <div className="font-nanum_400 text-[13px] text-grey">
-              {item.created.slice(0, 10)}
-            </div>
-          </div>
-          <div className="divider" />
-        </Link>
-      ))}
+            <div className="divider" />
+          </Link>
+        ))}
       {classNoticeData?.data.results.map((item, index) => (
         <Link
           key={index}
@@ -82,9 +87,9 @@ const PaClNoticeTable = ({ classId, adminNotice, keyword, type }) => {
         >
           <div className="flex items-center justify-between mb-[16px]">
             <div className="font-nanum_700 text-[14px]">{item.title}</div>
-              <div className="font-nanum_400 text-[13px] text-grey">
-                {item.created.slice(0, 10)}
-              </div>
+            <div className="font-nanum_400 text-[13px] text-grey">
+              {item.created.slice(0, 10)}
+            </div>
           </div>
           <div className="divider" />
         </Link>
@@ -113,9 +118,7 @@ const PaClNoticeTable = ({ classId, adminNotice, keyword, type }) => {
         <button
           onClick={NextPage}
           disabled={current === total}
-          className={
-            current === total ? "invisible" : ""
-          }
+          className={current === total ? "invisible" : ""}
         >
           <div className="flex justify-center items-center gap-[3px]">
             <div className="text-grayDark font-nanum_400">다음</div>
