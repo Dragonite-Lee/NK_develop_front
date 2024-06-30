@@ -18,7 +18,7 @@ const student_route = [
   },
   {
     title: "숙제하기",
-    href: "/main/homeworklist"
+    href: "/student/homeworklist"
   },
 ];
 
@@ -40,11 +40,11 @@ const teacher_route = [
 const parent_route = [
   {
     title: "학습태도 분석",
-    href: "#"
+    href: "/parent/behaving"
   },
   {
     title: "공지사항",
-    href: "#"
+    href: "/parent/noticelist"
   }
 ];
 

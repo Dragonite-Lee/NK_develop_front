@@ -74,6 +74,11 @@ const LoginInput = () => {
     }).catch(() => {
       alert("잘못된 정보입니다.")
     })
+<<<<<<< HEAD
+=======
+    
+    navigate("/parent");
+>>>>>>> 63ea915cf62364e15a4a7127aae449923af0cc07
   }
 
   return (
