@@ -1,21 +1,22 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
+import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import CircleRight from "../../../assets/student/CaretCircleRight.png";
 
-
-import useStudentNoticeStore from "../../../store/studentNotice";
 import { useTeAllClassNoticeQuery } from "../../teacher/teacherQuery";
+import useParentNoticeStore from "../../../store/parentNotice";
 
 
-const StMainNoList = ({ classId, className }) => {
+const PaMainNoList = ({ classId, className }) => {
 
   const { allClassNoticeData, isLoading } = useTeAllClassNoticeQuery(classId);
-  const allClassNoticeStudent = allClassNoticeData?.data.filter((data) => data.classNoticeType.includes('STUDENT'));
+  const allClassNoticeStudent = allClassNoticeData?.data.filter((data) => data.classNoticeType.includes('PARENT'));
   const {
     setClassnameIdClient,
     setClassnameNameClient,
-  } = useStudentNoticeStore();
+  } = useParentNoticeStore();
   
   useEffect(() => {
     setClassnameIdClient(classId);
@@ -30,7 +31,7 @@ const StMainNoList = ({ classId, className }) => {
         <div className="text-[16px] flex items-center font-paybooc_700">
           우리반 공지 ({allClassNoticeStudent?.length})
         </div>
-        <Link to="/main/noticeSt">
+        <Link to="/main/noticePa">
           <img src={CircleRight} alt="화살표" className="w-[28px] h-[28px] " />
         </Link>
       </div>
@@ -40,7 +41,7 @@ const StMainNoList = ({ classId, className }) => {
             index < 4 && (
               <Link
                 key={index}
-                to={`/main/noticeSt/noticeDetail/${item.id}`}
+                to={`/main/noticePa/noticeDetail/${item.id}`}
                 className="block"
               >
                 {index != 0 && <div className="divider" />}
@@ -66,4 +67,4 @@ const StMainNoList = ({ classId, className }) => {
   );
 };
 
-export default StMainNoList;
+export default PaMainNoList;

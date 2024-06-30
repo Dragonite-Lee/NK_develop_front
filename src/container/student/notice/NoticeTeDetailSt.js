@@ -1,38 +1,22 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Link, useParams } from "react-router-dom";
 
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import YellowModalTwoPathDelete from "../../../components/teacher/YellowModalTwoPathDelete";
 
 import { useTeOneAdminNoticeQuery } from "../../../components/teacher/teacherQuery";
-import useTeacherNoticeStore from "../../../store/teacherNotice";
-import { deleteTeClassNotice } from "../../../services/api/teacherApi";
 
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
-import Trash from "../../../assets/admin/Trash_white.png";
-import Pencil from "../../../assets/admin/Pencil_white.png";
+import useStudentNoticeStore from "../../../store/studentNotice";
 
 const NoticeTeDetailSt = () => {
   let { id } = useParams();
-  const navigate = useNavigate();
 
   const {
     classnameIdClient
-  } = useTeacherNoticeStore();
-  
-  const [cancleModal, setCancleModal] = useState(false);
-  const [cancleId, setCancleId] = useState([]);
+  } = useStudentNoticeStore();
 
   const { oneclassNoticeData, isLoading } = useTeOneAdminNoticeQuery(classnameIdClient, id);
   const markDownText = `${oneclassNoticeData?.data.content}`;
-
-  
-  const onClickCancleModal = (id) => {
-    cancleId[0] = id;
-    setCancleModal(true);
-  };
 
   return (
     <>

@@ -13,10 +13,10 @@ import {
 import DropdownCl from "../../components/teacher/DropdownCl";
 
 import { getCookie } from "../../utils/cookie";
-import StClNoticeTable from "../../components/student/notice/StClNoticeTable";
-import useStudentNoticeStore from "../../store/studentNotice";
+import useParentMainStore from "../../store/parentMain";
+import PaClNoticeTable from "../../components/parent/notice/PaClNoticeTable";
 
-const NoticeSt = () => {
+const NoticePa = () => {
   const navigator = useNavigate();
   const refreshToken = getCookie("refreshToken");
   useEffect(() => {
@@ -26,21 +26,20 @@ const NoticeSt = () => {
   }, [refreshToken]);
 
   const {
-    classnameIdClient,
-    classnameNameClient,
-    setClassnameIdClient,
-    setClassnameNameClient,
-  } = useStudentNoticeStore();
+    paClassnameIdClient,
+    paClassnameNameClient,
+    setPaClassnameIdClient,
+    setPaClassnameNameClient,
+  } = useParentMainStore();
 
   const [searchInput, setSearchInput] = useInput("");
   const [keyword, setKeyword] = useState("");
-
-  const [type, setType] = useState(["STUDENT"]);
+  const [type, setType] = useState(["PARENT"]);
 
   const { allClassroomData } = useTeAllClassroomQuery();
   const { allAdminNoticeData, isLoading } = useTeAllAdminNoticeQuery();
-  const allAdminNoticeStudent = allAdminNoticeData?.data.filter((data) => data.adminNoticeType.includes('STUDENT'));
-  const { allClassNoticeData } = useTeAllClassNoticeQuery(classnameIdClient);
+  const allAdminNoticeStudent = allAdminNoticeData?.data.filter((data) => data.adminNoticeType.includes('PARENT'));
+  const { allClassNoticeData } = useTeAllClassNoticeQuery(paClassnameIdClient);
 
   const totalNotice = allAdminNoticeStudent?.length + allClassNoticeData?.data.length;
   // console.log("관리자공지", allAdminNoticeData?.data)
@@ -54,9 +53,9 @@ const NoticeSt = () => {
         <Header />
         <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
           <DropdownCl
-            state={classnameNameClient}
-            setState={setClassnameNameClient}
-            setId={setClassnameIdClient}
+            state={paClassnameNameClient}
+            setState={setPaClassnameNameClient}
+            setId={setPaClassnameIdClient}
             itemData={allClassroomData?.data}
           />
           {allClassNoticeData && (
@@ -85,8 +84,8 @@ const NoticeSt = () => {
                 </div>
               </div>
               {/* content */}
-              <StClNoticeTable
-                classId={classnameIdClient}
+              <PaClNoticeTable
+                classId={paClassnameIdClient}
                 adminNotice={allAdminNoticeStudent}
                 keyword={keyword}
                 type={type}
@@ -100,4 +99,4 @@ const NoticeSt = () => {
   );
 };
 
-export default NoticeSt;
+export default NoticePa;

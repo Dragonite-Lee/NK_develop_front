@@ -7,10 +7,7 @@ import { useTeAllClassroomQuery } from "../components/teacher/teacherQuery";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import SelectClass from "../components/student/SelectClass"
-import MainHwList from "../components/student/main/MainHwList";
-import MainHwDoing from "../components/student/main/MainHwDoing";
-import MainNoList from "../components/student/main/MainNoList";
+import PaMainNoList from "../components/parent/main/MainNolist"
 import AdMainNoList from "../components/admin/main/AdMainNoList";
 import AdMainStList from "../components/admin/main/AdMainStList";
 import AdMainTeList from "../components/admin/main/AdMainTeList";
@@ -20,7 +17,7 @@ import TeMainStList from "../components/teacher/main/TeMainStList";
 import useStudentMainStore from "../store/studentMain";
 import useUserStore from "../store/user";
 import StMainNoList from "../components/student/main/MainNoList";
-
+import useParentMainStore from "../store/parentMain";
 
 const Main = () => {
   const navigator = useNavigate();
@@ -42,6 +39,13 @@ const Main = () => {
     setStClassnameIdClient,
     setStClassnameNameClient,
   } = useStudentMainStore();
+
+  const {
+    paClassnameIdClient,
+    paClassnameNameClient,
+    setPaClassnameIdClient,
+    setPaClassnameNameClient,
+  } = useParentMainStore();
 
   const { allClassroomData } = useTeAllClassroomQuery();
   
@@ -69,6 +73,27 @@ const Main = () => {
                 <div className="flex flex-col self-start gap-[24px] mt-[24px]">
                   {/* <AdMainStList /> */}
                   <StMainNoList classId={stClassnameIdClient} className={stClassnameNameClient} />
+                </div>
+              </div>
+            )}
+          </div>
+        </main>
+      )}
+      {role === "학부모" && (
+        <main className='desktop:w-[1000px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] desktop:pb-[156px] tablet_change:pb-[48px] mobile:pb-[68px] mainHeight'>
+          <div className="relative">
+            <DropdownCl
+              state={paClassnameNameClient}
+              setState={setPaClassnameNameClient}
+              setId={setPaClassnameIdClient}
+              itemData={allClassroomData?.data}
+            />
+            {paClassnameIdClient && (
+              <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px] mt-[20px] z-0'>
+                {/* <TeMainStList classId={classnameIdClient} className={classnameNameClient} /> */}
+                <div className="flex flex-col self-start gap-[24px] mt-[24px]">
+                  {/* <AdMainStList /> */}
+                  <PaMainNoList classId={paClassnameIdClient} className={paClassnameNameClient} />
                 </div>
               </div>
             )}

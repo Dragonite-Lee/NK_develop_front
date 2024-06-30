@@ -4,19 +4,36 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import YellowModal from "../../../components/YellowModal";
+import YellowModalTwoPathDelete from "../../../components/teacher/YellowModalTwoPathDelete";
 
-import { useAdOneAdminNoticeQuery } from "../../../components/admin/adminQuery";
-import { deleteAdAdminNotice } from "../../../services/api/adminApi";
+import { useTeOneAdminNoticeQuery } from "../../../components/teacher/teacherQuery";
+import useTeacherNoticeStore from "../../../store/teacherNotice";
+import { deleteTeClassNotice } from "../../../services/api/teacherApi";
 
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
+import Trash from "../../../assets/admin/Trash_white.png";
+import Pencil from "../../../assets/admin/Pencil_white.png";
+import useStudentNoticeStore from "../../../store/studentNotice";
 
-const NoticeAdDetailSt = () => {
+const NoticeTeDetailPa = () => {
   let { id } = useParams();
+  const navigate = useNavigate();
 
-  const { oneAdminNoticeData, isLoading } = useAdOneAdminNoticeQuery(id);
-  const markDownText = `${oneAdminNoticeData?.data.content}`;
- 
+  const {
+    stClassnameIdClient
+  } = useStudentNoticeStore();
+  
+  const [cancleModal, setCancleModal] = useState(false);
+  const [cancleId, setCancleId] = useState([]);
+
+  const { oneclassNoticeData, isLoading } = useTeOneAdminNoticeQuery(stClassnameIdClient, id);
+  const markDownText = `${oneclassNoticeData?.data.content}`;
+
+  
+  const onClickCancleModal = (id) => {
+    cancleId[0] = id;
+    setCancleModal(true);
+  };
 
   return (
     <>
@@ -35,9 +52,9 @@ const NoticeAdDetailSt = () => {
           </Link>
           <div className="glassWhite desktop:w-[999px] py-[32px] px-[40px]">
             <div className="font-nanum_700 flex tablet:flex-row mobile:flex-col items-start justify-between gap-[12px]">
-              <div>[전체 공지] {oneAdminNoticeData?.data.title}</div>
+              <div>[전체 공지] {oneclassNoticeData?.data.title}</div>
               <div className="flex items-center justify-end gap-[6px] text-[13px]">
-                {oneAdminNoticeData?.data.adminNoticeType.map((type, i) => (
+                {oneclassNoticeData?.data.classNoticeType.map((type, i) => (
                   <div key={i}>
                     {type == "STUDENT" ? (
                       <div
@@ -63,8 +80,8 @@ const NoticeAdDetailSt = () => {
               </div>
             </div>
             <div className="font-nanum_700 text-[13px] flex item-center mt-[16px] gap-[12px] text-grayDark">
-              <div>{oneAdminNoticeData?.data.created.slice(0, 10)}</div>
-              <div>관리자</div>
+              <div>{oneclassNoticeData?.data.created.slice(0, 10)}</div>
+              <div>선생님</div>
             </div>
             <div className="mt-[28px] font-nanum_400 text-[14px] text-grayDark">
               <div dangerouslySetInnerHTML={{ __html: markDownText }} />
@@ -84,4 +101,4 @@ const NoticeAdDetailSt = () => {
   );
 };
 
-export default NoticeAdDetailSt;
+export default NoticeTeDetailPa;

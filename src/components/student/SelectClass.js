@@ -58,7 +58,7 @@ const MyComponet = () => {
     <Select 
       options={ClassOptions} styles={customStyles} 
       menuPortalTarget={document.body} isSearchable={false} isClearable={false} classNamePrefix="react-select"
-      placeholder="우리 반을 선택하세요" className="w-full glasswhite z-5" 
+      placeholder="우리 반을 선택하세요" className="w-full z-5" 
     />
     ); 
 }

@@ -16,6 +16,12 @@ const NoticeSt = lazy(() => import("./container/student/NoticeSt"));
 const NoticeAdDetailSt = lazy(() => import("./container/student/notice/NoticeAdDetailSt"));
 const NoticeTeDetailSt = lazy(() => import("./container/student/notice/NoticeTeDetailSt"));
 
+const ParMain = lazy(() => import("./container/parent/ParMain"));
+const NoticePa = lazy(() => import("./container/parent/NoticePa"));
+const NoticeAdDetailPa = lazy(() => import("./container/parent/notice/NoticeAdDetailPa"));
+const NoticeTeDetailPa = lazy(() => import("./container/parent/notice/NoticeTeDetailPa"));
+const ParBehaving = lazy(() => import("./container/parent/ParBehaving"));
+
 const ParentAd = lazy(() => import("./container/admin/ParentAd"));
 const StudentAd = lazy(() => import("./container/admin/StudentAd"));
 const TeacherAd = lazy(() => import("./container/admin/TeacherAd"));
@@ -37,6 +43,11 @@ const NoticeTeNewWrite = lazy(() => import("./container/teacher/notice/NoticeTeN
 // import NoticeAdDetailSt from './container/student/notice/NoticeAdDetailSt';
 // import NoticeTeDetailSt from './container/student/notice/NoticeTeDetailSt';
 // import NoticeSt from './container/student/NoticeSt';
+
+// import ParMain from './container/parent/ParMain';
+// import ParNoticeList from './container/parent/notice/ParNoticeList';
+// import ParNoticeDetail from './container/parent/notice/ParNoticeDetail';
+// import ParBehaving from './container/parent/ParBehaving';
 
 // import ParentAd from './container/admin/ParentAd';
 // import StudentAd from './container/admin/StudentAd';
@@ -73,6 +84,13 @@ function App() {
             <Route path="/main/noticeSt" element={<NoticeSt />}></Route>
             <Route path="/main/noticeSt/adminDetail/:id" element={<NoticeAdDetailSt />}></Route>
             <Route path="/main/noticeSt/teacherDetail/:id" element={<NoticeTeDetailSt />}></Route>
+
+            <Route path="/parent" element={<ParMain />}></Route>
+            <Route path="/main/noticePa" element={<NoticePa />}></Route>
+            <Route path="/main/noticePa/adminDetail/:id" element={<NoticeAdDetailPa />}></Route>
+            <Route path="/main/noticePa/teacherDetail/:id" element={<NoticeTeDetailPa />}></Route>
+            <Route path="/parent/behaving" element={<ParBehaving />}></Route>
+
             
             <Route path="/main/parentAd" element={<ParentAd />}></Route>
             <Route path="/main/studentAd" element={<StudentAd />}></Route>

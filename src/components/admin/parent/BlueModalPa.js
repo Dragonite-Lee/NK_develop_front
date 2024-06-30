@@ -52,7 +52,8 @@ const BlueModalPa = ({setState}) => {
     "nickname": nicknameValue,
     "phoneNumber": phoneNumberValue,
     "relationship": relationshipValue,
-    "studentIds": studentIds
+    "studentIds": studentIds,
+    "birth": birthValue
   }
   
   return ( 
