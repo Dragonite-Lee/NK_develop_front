@@ -1,41 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import ArrowRightBlack from "../../../assets/ArrowRightBlack.png"
-import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png"
-import CircleRight from "../../../assets/student/CaretCircleRight.png"
+import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
+import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
+import CircleRight from "../../../assets/student/CaretCircleRight.png";
 
-import {getNoticeImportant, getNoticeNormal} from "../temporary/NoticeData"
-const NoticeImportant = getNoticeImportant();
-const NoticeNormal = getNoticeNormal().slice(0,3);
-const NoticeNormal2 = getNoticeNormal();
+import { useTeAllClassNoticeQuery } from "../../teacher/teacherQuery";
+import useParentNoticeStore from "../../../store/parentNotice";
 
-const MainNoList = () => {
+
+const PaMainNoList = ({ classId, className }) => {
+
+  const { allClassNoticeData, isLoading } = useTeAllClassNoticeQuery(classId);
+  const allClassNoticeStudent = allClassNoticeData?.data.filter((data) => data.classNoticeType.includes('PARENT'));
+  const {
+    setClassnameIdClient,
+    setClassnameNameClient,
+  } = useParentNoticeStore();
+  
+  useEffect(() => {
+    setClassnameIdClient(classId);
+    setClassnameNameClient(className);
+  }, [classId, className])
+  
+  if (isLoading)
+    return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
   return (
-    <section className="glassWhite py-[24px] desktop:w-[667px] tablet:w-[667px] mobile:w-full tablet:px-[32px] mobile:px-[26px]">
+    <section className="glassWhite py-[24px] desktop:w-[305px] mobile:w-full tablet:px-[26px] mobile:px-[26px]">
       <div className="w-full flex items-center justify-between">
-        <div className="text-[15px] flex items-center font-paybooc_700">
-          우리반 공지 ({NoticeNormal2.length})
+        <div className="text-[16px] flex items-center font-paybooc_700">
+          우리반 공지 ({allClassNoticeStudent?.length})
         </div>
-        <Link to="/parent/nolist">
+        <Link to="/main/noticePa">
           <img src={CircleRight} alt="화살표" className="w-[28px] h-[28px] " />
         </Link>
       </div>
       <div className="w-full mt-[24px]">
-        {NoticeNormal.map((item, index) => (
-          <Link key={index} className="block" to={`/main/noticelist/:${item.id}`}>
-            {index != 0 && (<div className="divider" />)}
-            <div className="flex items-center justify-start mt-[16px] text-[12px]">
-              <div className="font-nanum_700">{item.work}</div>
-            </div>
-            <div className={`flex items-center justify-between mt-[9px] text-[13px] font-nanum_400 text-gray ${index != 2 && " mb-[16px]"}`}>
-              <div>{item.date}</div>
-            </div>
-          </Link>
-        ))}
+        {allClassNoticeStudent?.map((item, index) => {
+          return (
+            index < 4 && (
+              <Link
+                key={index}
+                to={`/main/noticePa/noticeDetail/${item.id}`}
+                className="block"
+              >
+                {index != 0 && <div className="divider" />}
+                <div className="flex items-center justify-between mt-[16px] text-[14px]">
+                  <div className="font-nanum_700">{item.title}</div>
+                  <div className="font-nanum_400 text-grey">
+                    {item.created.slice(0, 10)}
+                  </div>
+                </div>
+                <div
+                  className={`flex items-center justify-between mt-[9px] tablet:text-[13px] mobile:text-[11px] font-nanum_400 text-grey ${
+                    index != 7 && " mb-[12px]"
+                  }`}
+                >
+                
+                </div>
+              </Link>
+            )
+          );
+        })}
       </div>
     </section>
   );
-}
+};
 
-export default MainNoList;
+export default PaMainNoList;

@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
-import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import CircleRight from "../../../assets/student/CaretCircleRight.png";
 
 

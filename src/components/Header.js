@@ -44,7 +44,7 @@ const parent_route = [
   },
   {
     title: "공지사항",
-    href: "/parent/noticelist"
+    href: "/main/noticePa"
   }
 ];
 

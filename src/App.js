@@ -17,8 +17,9 @@ const NoticeAdDetailSt = lazy(() => import("./container/student/notice/NoticeAdD
 const NoticeTeDetailSt = lazy(() => import("./container/student/notice/NoticeTeDetailSt"));
 
 const ParMain = lazy(() => import("./container/parent/ParMain"));
-const ParNoticeList = lazy(() => import("./container/parent/notice/ParNoticeList"));
-const ParNoticeDetail = lazy(() => import("./container/parent/notice/ParNoticeDetail"));
+const NoticePa = lazy(() => import("./container/parent/NoticePa"));
+const NoticeAdDetailPa = lazy(() => import("./container/parent/notice/NoticeAdDetailPa"));
+const NoticeTeDetailPa = lazy(() => import("./container/parent/notice/NoticeTeDetailPa"));
 const ParBehaving = lazy(() => import("./container/parent/ParBehaving"));
 
 const ParentAd = lazy(() => import("./container/admin/ParentAd"));
@@ -85,8 +86,9 @@ function App() {
             <Route path="/main/noticeSt/teacherDetail/:id" element={<NoticeTeDetailSt />}></Route>
 
             <Route path="/parent" element={<ParMain />}></Route>
-            <Route path="/parent/noticelist" element={<ParNoticeList />}></Route>
-            <Route path="/parent/noticelist/:id" element={<ParNoticeDetail />}></Route>
+            <Route path="/main/noticePa" element={<NoticePa />}></Route>
+            <Route path="/main/noticePa/adminDetail/:id" element={<NoticeAdDetailPa />}></Route>
+            <Route path="/main/noticePa/teacherDetail/:id" element={<NoticeTeDetailPa />}></Route>
             <Route path="/parent/behaving" element={<ParBehaving />}></Route>
 
             
