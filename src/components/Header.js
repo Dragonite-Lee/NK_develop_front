@@ -85,7 +85,7 @@ const Header = () => {
   const logout = () => {
     removeCookie("refreshToken");
     navigator("/");
-  }
+  };
 
   return (
     <>
