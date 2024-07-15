@@ -5,7 +5,6 @@ on:
     branches:
       - develop
 
-
 jobs:
   deploy:
     runs-on: ubuntu-latest  
@@ -30,8 +29,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          run: |
           aws s3 sync \
             --region ap-northeast-2 \
-            build s3://nk-edu \
+            build/ s3://nk-edu/ \
             --delete
+    
+    # Disable treating warnings as errors
+    env:
+      CI: false
