@@ -1,31 +1,33 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import {
-  useTeHomeworkAllStudentQuery,
   useTeHomeworkQuery,
 } from "../teacherQuery";
 import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
-import Megaphone from "../../../assets/MegaphoneSimple.png";
+import { Link } from "react-router-dom";
 
 const TeHwTable = ({ classId, filter }) => {
   const [paramsPage, setParamsPage] = useState(0);
-  const [keywordValue, setKeywordValue] = useState("");
 
-  const { homeworkData } = useTeHomeworkQuery(classId, paramsPage, ...filter);
-  console.log(homeworkData);
+  const { homeworkData } = useTeHomeworkQuery(classId, paramsPage);
+ 
   const [current, setCurrent] = useState(homeworkData?.data.currentPage);
-  // const { homeworkAllStudentData } = useTeHomeworkAllStudentQuery(classId, )
-  // useEffect(() => {
-  //   if (filter) {
-  //     setParamsPage(0);
-  //   }
-  // }, [filter]);
-
-  // useEffect(() => {
-  //   setCurrent(homeworkData?.data.currentPage);
-  // }, [homeworkData?.data, filter]);
+  const [total, setTotal] = useState(homeworkData?.data.totalPage);
+ 
+  useEffect(() => {
+    if (filter) {
+      setParamsPage(0);
+    }
+  }, [filter]);
+  
+  useEffect(() => {
+    setCurrent(homeworkData?.data.currentPage);
+    setTotal(homeworkData?.data.totalPage);
+    if (homeworkData?.data.totalPage === 0) {
+      setTotal(1)
+    }
+  }, [homeworkData?.data.results]);
 
   const NextPage = () => {
     setCurrent(current + 1);
@@ -37,38 +39,33 @@ const TeHwTable = ({ classId, filter }) => {
     setParamsPage((page) => page - 1);
   };
 
+  if (homeworkData?.data.results.length === 0)
+    return (
+      <div className="font-nanum_700 text-[14px]">
+        등록된 데이터가 존재하지 않습니다.
+      </div>
+    );
+
   return (
     <div className="w-full pt-[20px] pb-[46px]">
       {homeworkData?.data.results.map((item, index) => (
-        // <Link
-        //   key={index}
-        //   className="block pt-[16px] px-[16px]"
-        //   to={`/main/noticeTe/teacherDetail/${item.id}`}
-        // >
-        //   <div className="flex items-center justify-between mb-[16px]">
-        //     <div className="font-nanum_700 text-[14px]">{item.title}</div>
-        //     <div className="flex flex-col items-end justify-center gap-[6px]">
-        //       <div className="font-nanum_700 text-[13px] flex items-center justify-end gap-[6px]">
-        //         {item.classNoticeType.map((type, i) => (
-        //           <div key={i}>
-        //             {type == "STUDENT" ? (
-        //               <div className="text-main1">학생</div>
-        //             ) : type == "PARENT" ? (
-        //               <div className="text-main2">학부모</div>
-        //             ) : (
-        //               <div className="text-main3">선생님</div>
-        //             )}
-        //           </div>
-        //         ))}
-        //       </div>
-        //       <div className="font-nanum_400 text-[13px] text-grey">
-        //         {item.created.slice(0, 10)}
-        //       </div>
-        //     </div>
-        //   </div>
-        //   <div className="divider" />
-        // </Link>
-        <div>d</div>
+        <Link
+          key={index}
+          className="block pt-[16px]"
+          to={`/main/homeworkTe/homeworkDetail/${item.id}`}
+        >
+          <div className="flex items-center justify-between mb-[16px]">
+            <div>
+              <div className="font-nanum_700 text-[14px]">{item.title}</div>
+            </div>
+            <div className="flex items-center justify-center gap-[8px]">
+              <div className="font-nanum_400 text-[13px] text-grey">
+                {item.deadline.slice(0, 10)} 까지
+              </div>
+            </div>
+          </div>
+          <div className="divider" />
+        </Link>
       ))}
       {/* 페이지네이션 */}
       <div className="flex justify-center items-center w-full tablet:gap-[60px] mobile:gap-[30px] text-[12px] mt-[12px]">
@@ -88,14 +85,13 @@ const TeHwTable = ({ classId, filter }) => {
         </button>
 
         <div className="items-center text-grayDark font-nanum_400">
-          {current} / {homeworkData?.data.totalPage}
+          {current} / {total}
         </div>
-
         <button
           onClick={NextPage}
-          disabled={current === homeworkData?.data.totalPage}
+          disabled={current === total}
           className={
-            current === homeworkData?.data.totalPage ? "invisible" : ""
+            current === total ? "invisible" : ""
           }
         >
           <div className="flex justify-center items-center gap-[3px]">

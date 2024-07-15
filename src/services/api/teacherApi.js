@@ -96,6 +96,23 @@ export const getTeHomework = async (classnameId, page, filter) => {
 };
 
 export const getTeHomeworkAllStudent = async (classnameId, homeworkId) => {
-  const data = await client.get(`/api/classroom/${classnameId}/homework/${homeworkId}/submit`);
+  const data = await client.get(`/api/classroom/${classnameId}/homework/${homeworkId}/submit/list`);
   return data;
 };
+
+export const getTeHomeworkDetailStudent = async (classnameId, homeworkId, submitId) => {
+  const data = await client.get(`/api/classroom/${classnameId}/homework/${homeworkId}/submit/${submitId}`);
+  return data;
+};
+
+export const putTeHomeworkFeedback = async (classnameId, homeworkId, submitId, data) => {
+  await client.put(`/api/classroom/${classnameId}/homework/${homeworkId}/submit/${submitId}`, data);
+};
+
+//사진 다운로드
+export const getFile = async (fileId) => {
+  const { data } = await client.get(`/api/file/${fileId}`);
+  return data;
+}
+
+//숙제 검사

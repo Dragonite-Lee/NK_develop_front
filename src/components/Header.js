@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import MobileMenu from "./MobileMenu";
 import useUserStore from "../store/user";
@@ -7,19 +7,20 @@ import NKlogo from "../assets/header/NK_logo.png";
 import UserCircle from "../assets/header/profile.png";
 import List from "../assets/header/List.png";
 import Bell from "../assets/header/Bell.png";
+import { getCookie, removeCookie } from "../utils/cookie";
 
-const student_route = [
+const studentRoute = [
   {
     title: "우리반 공지",
     href: "/main/noticeSt",
   },
   {
     title: "숙제하기",
-    href: "/student/homeworklist",
+    href: "/main/homeworkSt",
   },
 ];
 
-const teacher_route = [
+const teacherRoute = [
   {
     title: "숙제 관리",
     href: "/main/homeworkTe",
@@ -34,7 +35,7 @@ const teacher_route = [
   },
 ];
 
-const parent_route = [
+const parentRoute = [
   {
     title: "학습태도 분석",
     href: "/parent/behaving",
@@ -45,7 +46,7 @@ const parent_route = [
   },
 ];
 
-const admin_route = [
+const adminRoute = [
   {
     title: "학생 관리",
     href: "/main/studentAd",
@@ -73,6 +74,18 @@ const Header = () => {
   const [sidebar, setSidebar] = useState(false);
   const { user } = useUserStore();
   const { pathname } = useLocation();
+  const navigator = useNavigate();
+  const refreshToken = getCookie("refreshToken");
+  useEffect(() => {
+    if (!refreshToken) {
+      navigator("/");
+    }
+  }, [refreshToken]);
+
+  const logout = () => {
+    removeCookie("refreshToken");
+    navigator("/");
+  }
 
   return (
     <>
@@ -91,7 +104,7 @@ const Header = () => {
         </Link>
         <div className="mobile:hidden tablet_header_change:flex justify-between gap-[44px] font-nanum_700 text-[16px] text-black">
           {role === "학생" &&
-            student_route.map((item, id) => {
+            studentRoute.map((item, id) => {
               return (
                 <Link
                   key={id}
@@ -103,7 +116,7 @@ const Header = () => {
               );
             })}
           {role === "선생님" &&
-            teacher_route.map((item, id) => {
+            teacherRoute.map((item, id) => {
               return (
                 <Link
                   key={id}
@@ -115,7 +128,7 @@ const Header = () => {
               );
             })}
           {role === "학부모" &&
-            parent_route.map((item, id) => {
+            parentRoute.map((item, id) => {
               return (
                 <Link
                   key={id}
@@ -127,7 +140,7 @@ const Header = () => {
               );
             })}
           {role === "관리자" &&
-            admin_route.map((item, id) => {
+            adminRoute.map((item, id) => {
               return (
                 <Link
                   key={id}
@@ -160,6 +173,9 @@ const Header = () => {
           >
             {role}
           </div>
+          <button className="underline" onClick={logout}>
+            로그아웃
+          </button>
         </div>
         <img
           src={List}
@@ -170,10 +186,10 @@ const Header = () => {
       </header>
       {sidebar && (
         <MobileMenu
-          student_route={student_route}
-          teacher_route={teacher_route}
-          parent_route={parent_route}
-          admin_route={admin_route}
+          studentRoute={studentRoute}
+          teacherRoute={teacherRoute}
+          parentRoute={parentRoute}
+          adminRoute={adminRoute}
           onClick={() => setSidebar(false)}
           role={role}
           pathname={pathname}

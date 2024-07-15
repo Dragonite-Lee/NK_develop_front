@@ -45,7 +45,7 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
       postData.push({ data: ClassroomId[i], text: ClassroomName[i] });
     }
     setClassroomItemList([...postData]);
-  }, [allClassroomData]);
+  }, [allClassroomData, ClassroomId, ClassroomName ]);
 
   const studentDeleteData = {
     id: nowId,
@@ -62,7 +62,7 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
   };
 
   useEffect(() => {
-    if (postMutate.isSuccess == true) {
+    if (postMutate.isSuccess === true) {
       setState(false);
     }
   }, [postMutate.isSuccess]);
@@ -76,7 +76,7 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
           </div>
         </div>
         <div className="text-[14px] font-nanum_700 tablet:mt-[24px] mobile:mt-[12px] tablet:px-[22px] mobile:px-[12px]">
-          {selection?.length != 0 && selection?.length != undefined ? (
+          {selection?.length !== 0 && selection?.length !== undefined ? (
             <div className="relative z-10 flex items-start justify-start flex-col gap-[12px]">
               <div>
                 반 선택 <span className="text-error">*</span>
@@ -92,7 +92,7 @@ const BlueModalStMove = ({ nowId, setState, selection }) => {
             <div>학생을 선택하세요.</div>
           )}
           {classId &&
-            (classId != nowId ? (
+            (classId !== nowId ? (
               <div className="mt-[17px] font-nanum_400 flex items-center justify-center flex-col">
                 <div>
                   선택한{" "}

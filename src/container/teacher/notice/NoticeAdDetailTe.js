@@ -1,57 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import YellowModal from "../../../components/YellowModal";
 import { useAdOneAdminNoticeQuery } from "../../../components/admin/adminQuery";
-import { deleteAdAdminNotice } from "../../../services/api/adminApi";
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
+import { getCookie } from "../../../utils/cookie";
 
 const NoticeAdDetailTe = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
 
-  const [cancleModal, setCancleModal] = useState(false);
-  const [cancleId, setCancleId] = useState([]);
+  const refreshToken = getCookie("refreshToken");
+  useEffect(() => {
+    if (!refreshToken) {
+      navigate("/");
+    }
+  }, [refreshToken]);
 
   const { oneAdminNoticeData, isLoading } = useAdOneAdminNoticeQuery(id);
   const markDownText = `${oneAdminNoticeData?.data.content}`;
-  const deleteMutate = useMutation({
-    mutationFn: () => {
-      return deleteAdAdminNotice(id);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries("/teacher/admin-notice");
-      navigate("/main/noticeTe");
-      queryClient.removeQueries(`/teacher/admin-notice/one/${id}`);
-      setCancleModal(false);
-      alert("공지가 삭제 되었습니다.");
-    },
-  });
-
-  const onClickCancleModal = (id) => {
-    cancleId[0] = id;
-    setCancleModal(true);
-  };
 
   return (
     <>
-      {cancleModal && (
-        <YellowModal
-          setState={setCancleModal}
-          mutate={deleteMutate.mutate}
-          selection={cancleId}
-          title="공지사항 삭제"
-          content1="선택한 공지사항을 삭제하시겠습니까?"
-          content2=""
-          content3=""
-          cancle="취소하기"
-          del="삭제하기"
-        />
-      )}
       <div className="min-w-[280px]">
         <Header />
         <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">

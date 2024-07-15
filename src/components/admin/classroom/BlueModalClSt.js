@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import useInput from "../../../hooks/useInput";
-import {
-  deleteAdClassroomStudent,
-  postAdTeacher,
-} from "../../../services/api/adminApi";
+import { deleteAdClassroomStudent } from "../../../services/api/adminApi";
 import { useAdClassroomStudentQuery } from "../adminQuery";
 import YellowModalCl from "./YellowModalCl";
 import BlueModalPlusSt from "./BlueModalPlusSt";
@@ -36,18 +32,18 @@ const header = [
 
 const BlueModalClSt = ({ setState, id, title }) => {
   const [cancleModal, setCancleModal] = useState(false);
-  const [cancleId, setCancleId] = useState([]);
+  const [cancleId] = useState([]);
   const [plusModal, setPlusModal] = useState(false);
 
   const queryClient = useQueryClient();
-  const { classroomStudentData, isLoading } = useAdClassroomStudentQuery(id);
+  const { classroomStudentData } = useAdClassroomStudentQuery(id);
   const deleteMutate = useMutation({
     mutationFn: (deleteData) => {
       return deleteAdClassroomStudent(deleteData.id, deleteData.studentIds);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["/admin/classroom/student", id]);
-      alert("삭제되었습니다.")
+      alert("삭제 되었습니다.");
     },
   });
 
@@ -60,10 +56,10 @@ const BlueModalClSt = ({ setState, id, title }) => {
   const width = header.map((header) => header.width);
 
   useEffect(() => {
-    if (deleteMutate.isSuccess == true) {
-      setCancleModal(false)
+    if (deleteMutate.isSuccess === true) {
+      setCancleModal(false);
     }
-  },[deleteMutate.isSuccess]);
+  }, [deleteMutate.isSuccess]);
 
   return (
     <div className="z-10 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full y-full min-h-full bg-[#212121]/[.08]">
@@ -90,7 +86,7 @@ const BlueModalClSt = ({ setState, id, title }) => {
           )}
           {plusModal && <BlueModalPlusSt setState={setPlusModal} id={id} />}
           {/* 테이블 */}
-          {classroomStudentData?.data.length == 0 ? (
+          {classroomStudentData?.data.length === 0 ? (
             <div className="font-nanum_700 text-[14px] mt-[24px] px-[16px]">
               등록된 데이터가 존재하지 않습니다.
             </div>

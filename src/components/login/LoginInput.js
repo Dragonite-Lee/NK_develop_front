@@ -38,7 +38,7 @@ const LoginInput = () => {
   const [pwValue, pwhHandler] = useInput("");
 
   const [role, setRole] = useState(roleArray);
-  const { user, setUser } = useUserStore();
+  const { setUser } = useUserStore();
   const navigate = useNavigate();
 
   const onClickRoleHandler = (id) => {
@@ -65,7 +65,7 @@ const LoginInput = () => {
         for (let i = 0; i < role.length; i++) {
           if (role[i].default === true) {
             sessionStorage.setItem("role", role[i].title);
-            if (role[i].title != "관리자") {
+            if (role[i].title !== "관리자") {
               userApi(role[i].path, id).then((res) => {
                 setUser(res.data);
               });

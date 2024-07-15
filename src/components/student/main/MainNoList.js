@@ -17,7 +17,7 @@ const StMainNoList = ({ classId, className }) => {
     setClassnameIdClient(classId);
     setClassnameNameClient(className);
   }, [classId, className]);
-
+  
   if (isLoading)
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
   return (
@@ -39,7 +39,7 @@ const StMainNoList = ({ classId, className }) => {
                 to={`/main/noticeSt/noticeDetail/${item.id}`}
                 className="block"
               >
-                {index != 0 && <div className="divider" />}
+                {index !== 0 && <div className="divider" />}
                 <div className="flex items-center justify-between mt-[16px] text-[14px]">
                   <div className="font-nanum_700">{item.title}</div>
                   <div className="font-nanum_400 text-grey">
@@ -48,7 +48,7 @@ const StMainNoList = ({ classId, className }) => {
                 </div>
                 <div
                   className={`flex items-center justify-between mt-[9px] tablet:text-[13px] mobile:text-[11px] font-nanum_400 text-grey ${
-                    index != 7 && " mb-[12px]"
+                    index !== 7 && " mb-[12px]"
                   }`}
                  />
               </Link>

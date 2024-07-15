@@ -1,6 +1,4 @@
 import React, {useState } from "react";
-import { Link } from "react-router-dom";
-
 
 import SelectStudent from "../SelectStudent"
 import Chart from "./Chart"

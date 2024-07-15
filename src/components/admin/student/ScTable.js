@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import YellowModal from "../../YellowModal";
-import Pencil from "../../../assets/admin/Pencil.png";
+
 import Trash from "../../../assets/admin/Trash.png";
 
 const SchoolTable = ({
@@ -16,7 +16,7 @@ const SchoolTable = ({
 }) => {
   const [selection, setSelection] = useState(new Set());
   const [cancleModal, setCancleModal] = useState(false);
-  const [cancleId, setCancleId] = useState([]);
+  const [cancleId] = useState([]);
 
   const onChangeSelection = (value) => {
     const newSelection = new Set(selection);
@@ -55,7 +55,7 @@ const SchoolTable = ({
   const width = header.map((header) => header.width);
 
   useEffect(() => {
-    if (isSuccess == true) {
+    if (isSuccess === true) {
       setCancleModal(false);
     }
   }, [isSuccess]);

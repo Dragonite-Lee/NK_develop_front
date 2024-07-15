@@ -10,6 +10,7 @@ import {
   getTeClassroomStudent,
   getTeHomework,
   getTeHomeworkAllStudent,
+  getTeHomeworkDetailStudent,
   getTeOneClassNotice,
   getTeOneHomework,
 } from "../../services/api/teacherApi";
@@ -77,13 +78,14 @@ export const useTeAllClassNoticeQuery = (classnameId) => {
 };
 
 export const useTeAdminNoticeQuery = (classnameId, page, keyword, type) => {
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     ["/teacher/class-notice", classnameId, page, keyword, type],
     () => getTeClassNotice(classnameId, page, keyword, type)
   );
   return {
     classNoticeData: data,
     isLoading,
+    isError
   };
 };
 
@@ -144,6 +146,17 @@ export const useTeHomeworkAllStudentQuery = (classnameId, homeworkId) => {
   );
   return {
     homeworkAllStudentData: data,
+    isLoading,
+  };
+};
+
+export const useTeHomeworkDetailStudentQuery = (classnameId, homeworkId, submitId) => {
+  const { data, isLoading } = useQuery(
+    ["/teacher/homework/student", classnameId, homeworkId, submitId],
+    () => getTeHomeworkDetailStudent(classnameId, homeworkId, submitId)
+  );
+  return {
+    homeworkDetailStudentData: data,
     isLoading,
   };
 };

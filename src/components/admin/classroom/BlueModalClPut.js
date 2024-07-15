@@ -4,8 +4,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useInput from "../../../hooks/useInput";
 import { useAdOneClassroomQuery } from "../adminQuery";
 import { putAdClassroom } from "../../../services/api/adminApi";
-import DropdownMenu from "../Dropdown";
-import SearchDropdownSt from "../SearchDropdownSt";
 import WorkDropdown from "../teacher/WorkDropdown";
 import SearchDropdownTe from "../SearchDropdownTe";
 
@@ -57,7 +55,7 @@ const BlueModalClPut = ({ setState, data }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/classroom");
-      alert("반이 수정되었습니다.");
+      alert("반이 수정 되었습니다.");
       setState(false);
     },
     onError: (e) => {
@@ -84,8 +82,8 @@ const BlueModalClPut = ({ setState, data }) => {
       setCoachingTeacherValue(coTeacherName);
       setCoachingTeacher(coTeacherPutId);
     }
-  }, [oneClassroomData]);
-  
+  }, [oneClassroomData, setClassname]);
+
   const classroomPostData = {
     classname: classnameValue,
     days: workingDays,

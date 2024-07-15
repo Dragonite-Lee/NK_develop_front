@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import useInput from "../../hooks/useInput";
 
@@ -12,18 +12,10 @@ import {
 } from "../../components/teacher/teacherQuery";
 import AdClNoticeTable from "../../components/teacher/notice/AdClNoticeTable";
 import DropdownCl from "../../components/teacher/DropdownCl";
-import { getCookie } from "../../utils/cookie";
+
 import useTeacherNoticeStore from "../../store/teacherNotice";
 
 const NoticeTe = () => {
-  const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    }
-  }, [refreshToken]);
-
   const {
     classnameIdClient,
     classnameNameClient,

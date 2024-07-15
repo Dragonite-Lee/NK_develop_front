@@ -57,7 +57,7 @@ const BlueModalTePut = ({ setState, data }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/teacher");
-      alert("선생님이 수정되었습니다.");
+      alert("선생님이 수정 되었습니다.");
       setState(false);
     },
     onError: (e) => {
@@ -126,7 +126,7 @@ const BlueModalTePut = ({ setState, data }) => {
                   className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
                 />
               </div>
-              {idValid == false && (
+              {idValid === false && (
                 <div className="absolute font-nanum_400 text-[10px]">
                   영문, 숫자 조합 6글자 이상입니다.
                 </div>
@@ -145,7 +145,7 @@ const BlueModalTePut = ({ setState, data }) => {
                   className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
                 />
               </div>
-              {pwValid == false && (
+              {pwValid === false && (
                 <div className="absolute font-nanum_400 text-[10px] tablet:pr-0 mobile:pr-[">
                   영문, 숫자, 특수문자(?=.*[!@#$%^&*?_) 조합 6글자 이상입니다.
                 </div>
@@ -165,7 +165,7 @@ const BlueModalTePut = ({ setState, data }) => {
                   className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
                 />
               </div>
-              {phoneValid == false && (
+              {phoneValid === false && (
                 <div className="absolute font-nanum_400 text-[10px]">
                   핸드폰 번호 -없이 11자리입니다.
                 </div>

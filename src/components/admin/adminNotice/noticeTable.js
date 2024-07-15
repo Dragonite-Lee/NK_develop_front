@@ -9,12 +9,13 @@ const NoticeTable = ({ keyword, type }) => {
   const [paramsPage, setParamsPage] = useState(0);
   const [keywordValue, setKeywordValue] = useState(keyword);
 
-  const { adminNoticeData, isLoading } = useAdAdminNoticeQuery(
+  const { adminNoticeData } = useAdAdminNoticeQuery(
     paramsPage,
     keywordValue,
     ...type
   );
-  const [current, setCurrent] = useState(adminNoticeData?.data.currentPage);
+  const [current, setCurrent] = useState(1);
+  const [total, setTotal] = useState(1);
 
   // console.log(keywordValue, ...type)
   useEffect(() => {
@@ -28,6 +29,10 @@ const NoticeTable = ({ keyword, type }) => {
   useEffect(() => {
     setKeywordValue(keyword);
     setCurrent(adminNoticeData?.data.currentPage);
+    setTotal(adminNoticeData?.data.totalPage);
+    if (adminNoticeData?.data.totalPage === 0) {
+      setTotal(1);
+    }
   }, [adminNoticeData?.data, keyword]);
 
   const NextPage = () => {
@@ -40,7 +45,7 @@ const NoticeTable = ({ keyword, type }) => {
     setParamsPage((page) => page - 1);
   };
 
-  if (adminNoticeData?.data.results.length == 0)
+  if (adminNoticeData?.data.results.length === 0 || !adminNoticeData)
     return (
       <div className="font-nanum_700 text-[14px]">
         등록된 데이터가 존재하지 않습니다.
@@ -61,9 +66,9 @@ const NoticeTable = ({ keyword, type }) => {
               <div className="font-nanum_700 text-[13px] flex items-center justify-end gap-[6px]">
                 {item.adminNoticeType.map((type, i) => (
                   <div key={i}>
-                    {type == "STUDENT" ? (
+                    {type === "STUDENT" ? (
                       <div className="text-main1">학생</div>
-                    ) : type == "PARENT" ? (
+                    ) : type === "PARENT" ? (
                       <div className="text-main2">학부모</div>
                     ) : (
                       <div className="text-main3">선생님</div>
@@ -97,14 +102,14 @@ const NoticeTable = ({ keyword, type }) => {
         </button>
 
         <div className="items-center text-grayDark font-nanum_400">
-          {current} / {adminNoticeData?.data.totalPage}
+          {current} / {total}
         </div>
 
         <button
           onClick={NextPage}
-          disabled={current === adminNoticeData?.data.totalPage}
+          disabled={current === total}
           className={
-            current === adminNoticeData?.data.totalPage ? "invisible" : ""
+            current === total ? "invisible" : ""
           }
         >
           <div className="flex justify-center items-center gap-[3px]">

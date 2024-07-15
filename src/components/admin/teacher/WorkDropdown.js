@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import CaretUp from "../../../assets/CaretUp.png";
 import CaretDown from "../../../assets/CaretDown.png";

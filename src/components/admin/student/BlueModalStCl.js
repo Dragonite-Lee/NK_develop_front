@@ -12,7 +12,7 @@ const BlueModalStCl = ({ setState, selection }) => {
 
   const { allClassroomData } = useAdAllClassroomQuery();
   const queryClient = useQueryClient();
-  
+
   const ClassroomId = allClassroomData?.data.map((item) => item.id);
   const ClassroomName = allClassroomData?.data.map((item) => item.classname);
 
@@ -22,7 +22,7 @@ const BlueModalStCl = ({ setState, selection }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/classroom/student");
-      alert("학생이 추가되었습니다.");
+      alert("학생이 추가 되었습니다.");
       setState(false);
     },
   });
@@ -33,7 +33,7 @@ const BlueModalStCl = ({ setState, selection }) => {
       postData.push({ data: ClassroomId[i], text: ClassroomName[i] });
     }
     setClassroomItemList([...postData]);
-  }, [allClassroomData]);
+  }, [allClassroomData, ClassroomId, ClassroomName]);
 
   const studentPostData = {
     studentIds: selection,

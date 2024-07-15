@@ -15,6 +15,7 @@ module.exports = {
       'mobile' : '280px'
     },
     fontFamily: {
+      'nanum_900' : ['nanum_900'],
       'nanum_700' : ['nanum_700'],
       'nanum_400' : ['nanum_400'],
       'paybooc_500' : ['paybooc_500'],

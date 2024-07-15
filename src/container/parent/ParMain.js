@@ -1,4 +1,4 @@
-import { useState, React } from "react";
+import { useState, React, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getCookie } from "../../utils/cookie";
@@ -12,14 +12,14 @@ import MainChat from "../../components/parent/main/MainChat";
 
 
 const Main = () => {
-  // const navigator = useNavigate();
-  // const refreshToken = getCookie("refreshToken");
+  const navigator = useNavigate();
+  const refreshToken = getCookie("refreshToken");
   
-  // useEffect(() => {
-  //   if (!refreshToken) {
-  //     navigator("/");
-  //   };
-  // }, [refreshToken])
+  useEffect(() => {
+    if (!refreshToken) {
+      navigator("/");
+    };
+  }, [refreshToken])
 
   const [selectedStudent, setSelectedStudent] = useState(null);
 

@@ -4,9 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useInput from "../../../hooks/useInput";
 import { useAdAllStudentQuery } from "../adminQuery";
 import { postAdClassroomStudent } from "../../../services/api/adminApi";
-import YellowModal from "../../YellowModal";
-import Pencil from "../../../assets/admin/Pencil.png";
-import Trash from "../../../assets/admin/Trash.png";
+
 import MagnifyingGlass from "../../../assets/admin/MagnifyingGlass.png";
 
 const header = [
@@ -38,7 +36,7 @@ const BlueModalPlusSt = ({ setState, id }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/classroom/student");
-      alert("학생이 추가되었습니다.");
+      alert("학생이 추가 되었습니다.");
       setState(false);
     },
   });

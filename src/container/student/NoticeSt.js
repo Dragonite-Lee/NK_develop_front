@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import useInput from "../../hooks/useInput";
 
@@ -11,19 +10,12 @@ import {
   useTeAllClassroomQuery,
 } from "../../components/teacher/teacherQuery";
 import DropdownCl from "../../components/teacher/DropdownCl";
-import { getCookie } from "../../utils/cookie";
+
 import StClNoticeTable from "../../components/student/notice/StClNoticeTable";
 import useStudentNoticeStore from "../../store/studentNotice";
 
 const NoticeSt = () => {
-  const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    }
-  }, [refreshToken]);
-
+ 
   const {
     classnameIdClient,
     classnameNameClient,

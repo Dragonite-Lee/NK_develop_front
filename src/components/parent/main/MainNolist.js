@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
-import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
 import CircleRight from "../../../assets/student/CaretCircleRight.png";
 import { useTeAllClassNoticeQuery } from "../../teacher/teacherQuery";
 import useParentNoticeStore from "../../../store/parentNotice";
@@ -43,7 +41,7 @@ const PaMainNoList = ({ classId, className }) => {
                 to={`/main/noticePa/noticeDetail/${item.id}`}
                 className="block"
               >
-                {index != 0 && <div className="divider" />}
+                {index !== 0 && <div className="divider" />}
                 <div className="flex items-center justify-between mt-[16px] text-[14px]">
                   <div className="font-nanum_700">{item.title}</div>
                   <div className="font-nanum_400 text-grey">
@@ -52,7 +50,7 @@ const PaMainNoList = ({ classId, className }) => {
                 </div>
                 <div
                   className={`flex items-center justify-between mt-[9px] tablet:text-[13px] mobile:text-[11px] font-nanum_400 text-grey ${
-                    index != 7 && " mb-[12px]"
+                    index !== 7 && " mb-[12px]"
                   }`}
                  />
               </Link>

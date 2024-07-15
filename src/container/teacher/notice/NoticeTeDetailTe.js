@@ -11,12 +11,19 @@ import { deleteTeClassNotice } from "../../../services/api/teacherApi";
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
 import Trash from "../../../assets/admin/Trash_white.png";
 import Pencil from "../../../assets/admin/Pencil_white.png";
+import { getCookie } from "../../../utils/cookie";
 
 const NoticeTeDetailTe = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
+  const refreshToken = getCookie("refreshToken");
+  useEffect(() => {
+    if (!refreshToken) {
+      navigate("/");
+    }
+  }, [refreshToken]);
   const {
     classnameIdClient
   } = useTeacherNoticeStore();

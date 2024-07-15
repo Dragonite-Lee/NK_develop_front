@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom";
-
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import { useTeOneAdminNoticeQuery } from "../../../components/teacher/teacherQuery";
@@ -28,7 +27,7 @@ const NoticeTeDetailSt = () => {
                 alt="ArrowLeftBlack"
                 className="w-[24px] h-[24px]"
               />
-              <div>전체 공지로 돌아가기</div>
+              <div>우리 반 공지로 돌아가기</div>
             </div>
           </Link>
           <div className="glassWhite desktop:w-[999px] py-[32px] px-[40px]">

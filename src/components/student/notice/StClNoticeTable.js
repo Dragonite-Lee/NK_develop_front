@@ -10,14 +10,14 @@ const StClNoticeTable = ({ classId, adminNotice, keyword, type }) => {
   const [paramsPage, setParamsPage] = useState(0);
   const [keywordValue, setKeywordValue] = useState('');
   
-  const { classNoticeData, isLoading } = useTeAdminNoticeQuery(
+  const { classNoticeData } = useTeAdminNoticeQuery(
     classId,
     paramsPage,
     keywordValue,
     ...type
   );
-  const [current, setCurrent] = useState(classNoticeData?.data.currentPage);
-  const [total, setTotal] = useState(classNoticeData?.data.totalPage);
+  const [current, setCurrent] = useState(1);
+  const [total, setTotal] = useState(1);
 
   useEffect(() => {
     if (keyword || type) {
@@ -31,7 +31,7 @@ const StClNoticeTable = ({ classId, adminNotice, keyword, type }) => {
     setKeywordValue(keyword)
     setCurrent(classNoticeData?.data.currentPage);
     setTotal(classNoticeData?.data.totalPage);
-    if (classNoticeData?.data.totalPage == 0) {
+    if (classNoticeData?.data.totalPage === 0) {
       setTotal(1)
     }
   }, [classNoticeData?.data, keyword]);
@@ -46,7 +46,7 @@ const StClNoticeTable = ({ classId, adminNotice, keyword, type }) => {
     setParamsPage((page) => page - 1);
   };
 
-  if (classNoticeData?.data.results.length == 0 && adminNotice?.length == 0)
+  if (classNoticeData?.data.results.length === 0 && adminNotice?.length === 0)
     return (
       <div className="font-nanum_700 text-[14px]">
         등록된 데이터가 존재하지 않습니다.
@@ -55,7 +55,7 @@ const StClNoticeTable = ({ classId, adminNotice, keyword, type }) => {
 
   return (
     <div className="w-full pt-[20px] pb-[46px]">
-      {paramsPage == 0 && adminNotice?.map((item, index) => (
+      {paramsPage === 0 && adminNotice?.map((item, index) => (
         <Link
           key={index}
           className="block pt-[19px] px-[16px] bg-white1"

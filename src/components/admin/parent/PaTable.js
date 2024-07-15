@@ -19,7 +19,7 @@ const PaTable = ({
   const [selection, setSelection] = useState(new Set());
   const [cancleModal, setCancleModal] = useState(false);
   const [modifyModal, setModifyModal] = useState(false);
-  const [cancleId, setCancleId] = useState([]);
+  const [cancleId] = useState([]);
   const [modifyId, setModifyId] = useState();
   const [paramsPage, setParamsPage] = useState(0);
   const { parentData, isLoading } = useAdParentQuery(paramsPage, keyword);
@@ -75,7 +75,7 @@ const PaTable = ({
   const width = header.map((header) => header.width);
   // console.log(headerkey)
   useEffect(() => {
-    if (deleteMutate.isSuccess == true) {
+    if (deleteMutate.isSuccess === true) {
       setCancleModal(false);
     }
     // 페이지 새로고침시 페이지 데이터 갱신
@@ -95,7 +95,7 @@ const PaTable = ({
   if (isLoading)
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
 
-  if (parentData?.data.results.length == 0)
+  if (parentData?.data.results.length === 0)
     return (
       <div className="font-nanum_700 text-[14px]">
         등록된 데이터가 존재하지 않습니다.
@@ -161,11 +161,11 @@ const PaTable = ({
                     className={`flex items-center justify-center ${width[id]}`}
                   >
                     <div>
-                      {key == "relationship"
-                        ? data[key] == "FATHER"
+                      {key === "relationship"
+                        ? data[key] === "FATHER"
                           ? "부"
                           : "모"
-                        : key == "students"
+                        : key === "students"
                         ? data[key]?.map((data, index) => (
                             <div key={index}>{data.nickname}</div>
                           ))

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import useInput from "../../hooks/useInput";
@@ -11,7 +10,6 @@ import DropdownCl from "../../components/teacher/DropdownCl";
 import BlueModalStPlus from "../../components/teacher/student/BlueModalStPlus";
 import BlueModalStMove from "../../components/teacher/student/BlueModalStMove";
 import StTableAll from "../../components/teacher/student/StTableAll";
-import { getCookie } from "../../utils/cookie";
 import {
   useTeAllClassroomQuery,
   useTeClassroomStudentQuery,
@@ -46,14 +44,6 @@ const header = [
 ];
 
 const StudentTe = () => {
-  const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    }
-  }, [refreshToken]);
-
   const {
     classnameIdClient,
     classnameNameClient,
@@ -63,15 +53,12 @@ const StudentTe = () => {
 
   const queryClient = useQueryClient();
 
-  const [classname, setClassname] = useState("");
   const [classnameId, setClassnameId] = useState("");
 
   const { allClassroomData, isLoading } = useTeAllClassroomQuery();
   const { classroomStudentData } =
     useTeClassroomStudentQuery(classnameIdClient);
 
-  const [searchInput, setSearchInput] = useInput("");
-  const [keyword, setKeyword] = useState("");
   const [selection, setSelection] = useState([]);
   const [cancleModal, setCancleModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
@@ -86,7 +73,7 @@ const StudentTe = () => {
         "/teacher/classroom/student",
         classnameId,
       ]);
-      alert("삭제되었습니다.");
+      alert("삭제 되었습니다.");
     },
   });
 

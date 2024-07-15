@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import useInput from "../../../hooks/useInput";
@@ -80,7 +80,7 @@ const BlueModalSt = ({ setState }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/student");
-      alert("학생이 추가되었습니다.");
+      alert("학생이 추가 되었습니다.");
       setState(false);
     },
   });
@@ -99,7 +99,6 @@ const BlueModalSt = ({ setState }) => {
     grade: gradeValue,
     registrationDate: createDateValue,
   };
-
 
   return (
     <div className="z-10  fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full y-full min-h-full bg-[#212121]/[.08]">
@@ -136,7 +135,7 @@ const BlueModalSt = ({ setState }) => {
                   className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
                 />
               </div>
-              {idValid == false && (
+              {idValid === false && (
                 <div className="absolute font-nanum_400 text-[10px]">
                   영문, 숫자 조합 6글자 이상입니다.
                 </div>
@@ -155,7 +154,7 @@ const BlueModalSt = ({ setState }) => {
                   className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
                 />
               </div>
-              {pwValid == false && (
+              {pwValid === false && (
                 <div className="absolute font-nanum_400 text-[10px] tablet:pr-0 mobile:pr-[">
                   영문, 숫자, 특수문자(?=.*[!@#$%^&*?_) 조합 6글자 이상입니다.
                 </div>
@@ -175,7 +174,7 @@ const BlueModalSt = ({ setState }) => {
                   className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
                 />
               </div>
-              {phoneValid == false && (
+              {phoneValid === false && (
                 <div className="absolute font-nanum_400 text-[10px]">
                   핸드폰 번호 -없이 11자리입니다.
                 </div>

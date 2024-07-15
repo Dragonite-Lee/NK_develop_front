@@ -4,6 +4,7 @@
 
 html,
 body,
+div
 :root {
   box-sizing: border-box;
 }
@@ -12,6 +13,10 @@ body {
   margin: 0;
 }
 
+@font-face {
+  font-family: "nanum_900";
+  src: url("./fonts/NanumSquareNeo-eHv.ttf");
+}
 @font-face {
   font-family: "nanum_700";
   src: url("./fonts/NanumSquareNeo-cBd.ttf");
@@ -69,6 +74,10 @@ body {
     position: absolute;
     left: 0;
     top:0;
+  }
+  .textStroke {
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
   }
 
 }

@@ -53,7 +53,7 @@ const BlueModalCl = ({ setState }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/classroom");
-      alert("반이 추가되었습니다.");
+      alert("반이 추가 되었습니다.");
       setState(false);
     },
   });

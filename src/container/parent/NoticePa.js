@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import useInput from "../../hooks/useInput";
 
@@ -11,19 +10,11 @@ import {
   useTeAllClassroomQuery,
 } from "../../components/teacher/teacherQuery";
 import DropdownCl from "../../components/teacher/DropdownCl";
-import { getCookie } from "../../utils/cookie";
+
 import useParentMainStore from "../../store/parentMain";
 import PaClNoticeTable from "../../components/parent/notice/PaClNoticeTable";
 
 const NoticePa = () => {
-  const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    }
-  }, [refreshToken]);
-
   const {
     paClassnameIdClient,
     paClassnameNameClient,
@@ -33,7 +24,7 @@ const NoticePa = () => {
 
   const [searchInput, setSearchInput] = useInput("");
   const [keyword, setKeyword] = useState("");
-  const [type, setType] = useState(["PARENT"]);
+  const [type] = useState(["PARENT"]);
 
   const { allClassroomData } = useTeAllClassroomQuery();
   const { allAdminNoticeData, isLoading } = useTeAllAdminNoticeQuery();

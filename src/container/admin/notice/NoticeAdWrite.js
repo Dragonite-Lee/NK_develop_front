@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ReactQuill from "react-quill";
 import {
-  notifyManager,
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
@@ -28,7 +27,7 @@ const NoticeAdWrite = () => {
   const today = new Date();
   const createDate =
     `${today.getFullYear()  }.${  today.getMonth() + 1  }.${  today.getDate()}`;
-  const { oneAdminNoticeData, isLoading } = useAdOneAdminNoticeQuery(id);
+  const { oneAdminNoticeData, } = useAdOneAdminNoticeQuery(id);
 
   const formats = [
     "header",
@@ -98,11 +97,11 @@ const NoticeAdWrite = () => {
       setTitle(oneAdminNoticeData.data.title);
       setContent(oneAdminNoticeData.data.content);
       for (let i = 0; i < oneAdminNoticeData.data.adminNoticeType.length; i++) {
-        if (oneAdminNoticeData.data.adminNoticeType[i] == "STUDENT") {
+        if (oneAdminNoticeData.data.adminNoticeType[i] === "STUDENT") {
           setStToggle(true);
-        } else if (oneAdminNoticeData.data.adminNoticeType[i] == "PARENT") {
+        } else if (oneAdminNoticeData.data.adminNoticeType[i] === "PARENT") {
           setPaToggle(true);
-        } else if (oneAdminNoticeData.data.adminNoticeType[i] == "TEACHER") {
+        } else if (oneAdminNoticeData.data.adminNoticeType[i] === "TEACHER") {
           setTeToggle(true);
         }
       }

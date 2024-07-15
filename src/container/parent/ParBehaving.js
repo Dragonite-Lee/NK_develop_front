@@ -9,14 +9,14 @@ import Behaving from "../../components/parent/behaving/Behaving"
 
 
 const NoticeList = () => {
-  // const navigator = useNavigate();
-  // const refreshToken = getCookie("refreshToken");
+  const navigator = useNavigate();
+  const refreshToken = getCookie("refreshToken");
   
-  // useEffect(() => {
-  //   if (!refreshToken) {
-  //     navigator("/");
-  //   };
-  // }, [refreshToken])
+  useEffect(() => {
+    if (!refreshToken) {
+      navigator("/");
+    };
+  }, [refreshToken])
 
   return ( 
     <div className="min-w-[280px]">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -17,9 +17,9 @@ const NoticeAdDetail = () => {
   const queryClient = useQueryClient();
 
   const [cancleModal, setCancleModal] = useState(false);
-  const [cancleId, setCancleId] = useState([]);
+  const [cancleId] = useState([]);
 
-  const { oneAdminNoticeData, isLoading } = useAdOneAdminNoticeQuery(id);
+  const { oneAdminNoticeData, } = useAdOneAdminNoticeQuery(id);
   const markDownText = `${oneAdminNoticeData?.data.content}`;
   const deleteMutate = useMutation({
     mutationFn: () => {
@@ -73,13 +73,13 @@ const NoticeAdDetail = () => {
               <div className="flex items-center justify-end gap-[6px] text-[13px]">
                 {oneAdminNoticeData?.data.adminNoticeType.map((type, i) => (
                   <div key={i}>
-                    {type == "STUDENT" ? (
+                    {type === "STUDENT" ? (
                       <div
                         className="w-[55px] h-[26px] rounded-[10px] flex items-center justify-center text-main1 border border-main1 outline outline-1 outline-main1"
                       >
                         # 학생
                       </div>
-                    ) : type == "PARENT" ? (
+                    ) : type === "PARENT" ? (
                       <div
                         className="w-[67px] h-[26px] rounded-[10px] flex items-center justify-center text-main2 border border-main2 outline outline-1 outline-main2"
                       >

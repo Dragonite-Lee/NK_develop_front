@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Link, useParams } from "react-router-dom";
 
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import YellowModal from "../../../components/YellowModal";
+
 import { useAdOneAdminNoticeQuery } from "../../../components/admin/adminQuery";
-import { deleteAdAdminNotice } from "../../../services/api/adminApi";
+
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
 
 const NoticeAdDetailSt = () => {
@@ -27,7 +25,7 @@ const NoticeAdDetailSt = () => {
                 alt="ArrowLeftBlack"
                 className="w-[24px] h-[24px]"
               />
-              <div>전체 공지로 돌아가기</div>
+              <div>우리 반 공지로 돌아가기</div>
             </div>
           </Link>
           <div className="glassWhite desktop:w-[999px] py-[32px] px-[40px]">

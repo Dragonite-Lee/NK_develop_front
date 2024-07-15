@@ -21,7 +21,7 @@ const ClTable = ({
   const [cancleModal, setCancleModal] = useState(false);
   const [modifyModal, setModifyModal] = useState(false);
   const [classrommModal, setClassroomModal] = useState(false);
-  const [cancleId, setCancleId] = useState([]);
+  const [cancleId] = useState([]);
   const [modifyId, setModifyId] = useState();
   const [classroomId, setClassroomId] = useState();
   const [paramsPage, setParamsPage] = useState(0);
@@ -83,7 +83,7 @@ const ClTable = ({
   const width = header.map((header) => header.width);
 
   useEffect(() => {
-    if (deleteMutate.isSuccess == true) {
+    if (deleteMutate.isSuccess === true) {
       setCancleModal(false);
     }
     // 페이지 새로고침시 페이지 데이터 갱신
@@ -103,7 +103,7 @@ const ClTable = ({
   if (isLoading)
     return <div className="font-nanum_700 text-[14px]">로딩 중...</div>;
 
-  if (classroomData?.data.results.length == 0)
+  if (classroomData?.data.results.length === 0)
     return (
       <div className="font-nanum_700 text-[14px]">
         등록된 데이터가 존재하지 않습니다.
@@ -176,13 +176,13 @@ const ClTable = ({
                     className={`flex items-center justify-center ${width[id]}`}
                   >
                     <div>
-                      {key == "TeachingTeacher" ? (
+                      {key === "TeachingTeacher" ? (
                         data[key]?.nickname
-                      ) : key == "AssistantTeacher" ? (
+                      ) : key === "AssistantTeacher" ? (
                         data[key].map((data, index) => (
                           <div key={index}>{data.nickname}</div>
                         ))
-                      ) : key == "classname" ? (
+                      ) : key === "classname" ? (
                         <span
                           className="hover:text-management2"
                           onClick={() => onClickClassroomModal(data)}

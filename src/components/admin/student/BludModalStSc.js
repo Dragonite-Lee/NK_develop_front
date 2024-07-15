@@ -33,7 +33,7 @@ const BlueModalStSc = ({ setState }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/school");
-      alert("학교가 추가되었습니다.");
+      alert("학교가 추가 되었습니다.");
       setHandleValue("");
     },
   });
@@ -44,7 +44,7 @@ const BlueModalStSc = ({ setState }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/school");
-      alert("삭제되었습니다.")
+      alert("삭제 되었습니다.");
     },
   });
 
@@ -67,7 +67,7 @@ const BlueModalStSc = ({ setState }) => {
   }, [schoolData, searchInput]);
 
   useEffect(() => {
-    if (deleteMutate.isSuccess == true) {
+    if (deleteMutate.isSuccess === true) {
       setCancleModal(false);
     }
   }, [deleteMutate.isSuccess]);
@@ -75,7 +75,7 @@ const BlueModalStSc = ({ setState }) => {
   return (
     <>
       {cancleModal &&
-        (selection?.length != 0 && selection?.length != undefined ? (
+        (selection?.length !== 0 && selection?.length !== undefined ? (
           <YellowModal
             setState={setCancleModal}
             mutate={deleteMutate.mutate}

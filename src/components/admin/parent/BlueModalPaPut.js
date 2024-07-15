@@ -31,14 +31,14 @@ const BlueModalPaPut = ({ setState, data }) => {
 
   const { oneParentData } = useAdOneParentQuery(data);
   const queryClient = useQueryClient();
-  
+
   const putMutate = useMutation({
     mutationFn: () => {
       return putAdParent(data, parentPostData);
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/parent");
-      alert("학부모가 수정되었습니다.");
+      alert("학부모가 수정 되었습니다.");
       setState(false);
     },
     onError: (e) => {
@@ -57,7 +57,7 @@ const BlueModalPaPut = ({ setState, data }) => {
       setPhoneNumber(oneParentData.data.phoneNumber);
       setUsername(oneParentData.data.username);
       setPassword(oneParentData.data.password);
-      setBirth(oneParentData.data.birth)
+      setBirth(oneParentData.data.birth);
       const allStudentIds = oneParentData.data.students.map((data) => data.id);
       const allStudentNicknames = oneParentData.data.students.map(
         (data) => data.nickname
@@ -74,7 +74,7 @@ const BlueModalPaPut = ({ setState, data }) => {
     phoneNumber: phoneNumberValue,
     relationship: relationshipValue,
     studentIds,
-    birth: birthValue
+    birth: birthValue,
   };
 
   return (
@@ -147,7 +147,7 @@ const BlueModalPaPut = ({ setState, data }) => {
                   className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
                 />
               </div>
-              {phoneValid == false && (
+              {phoneValid === false && (
                 <div className="absolute font-nanum_400 text-[10px]">
                   핸드폰 번호 -없이 11자리입니다.
                 </div>
@@ -166,7 +166,7 @@ const BlueModalPaPut = ({ setState, data }) => {
                   className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
                 />
               </div>
-              {idValid == false && (
+              {idValid === false && (
                 <div className="absolute font-nanum_400 text-[10px]">
                   영문, 숫자 조합 6글자 이상입니다.
                 </div>
@@ -185,7 +185,7 @@ const BlueModalPaPut = ({ setState, data }) => {
                   className="font-nanum_400 tablet:text-[14px] mobile:text-[12px] tablet:w-[167px] mobile:w-[127px] h-[36px] border-border rounded-[10px] placeholder-grey"
                 />
               </div>
-              {pwValid == false && (
+              {pwValid === false && (
                 <div className="absolute font-nanum_400 text-[10px]">
                   영문, 숫자, 특수문자(?=.*[!@#$%^&*?_) 조합 6글자 이상입니다.
                 </div>

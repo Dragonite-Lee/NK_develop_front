@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import useInput from "../../hooks/useInput";
@@ -38,20 +37,11 @@ const header = [
 ];
 
 const ClassroomAd = () => {
-  const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    }
-  }, [refreshToken]);
-
   const queryClient = useQueryClient();
 
   const [selection, setSelection] = useState([]);
   const [searchInput, setSearchInput] = useInput("");
   const [keyword, setKeyword] = useState("");
-  const [searchData, setSearchData] = useState([]);
   const [cancleModal, setCancleModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
 
@@ -61,12 +51,12 @@ const ClassroomAd = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries("/admin/classroom");
-      alert("삭제되었습니다.")
+      alert("삭제 되었습니다.");
     },
   });
 
   useEffect(() => {
-    if (deleteMutate.isSuccess == true) {
+    if (deleteMutate.isSuccess === true) {
       setCancleModal(false);
     }
   }, [deleteMutate.isSuccess]);
@@ -74,7 +64,7 @@ const ClassroomAd = () => {
   return (
     <>
       {cancleModal &&
-        (selection?.length != 0 ? (
+        (selection?.length !== 0 ? (
           <YellowModal
             setState={setCancleModal}
             mutate={deleteMutate.mutate}
@@ -106,26 +96,62 @@ const ClassroomAd = () => {
           <div className="font-paybooc_700 text-[18px] text-black">반 관리</div>
           {/* 필터 및 모달 */}
           <div className="mt-[13px] flex tablet_change:flex-row mobile:flex-col tablet_change:items-center tablet_change:justify-end mobile:items-end mobile:justify-center tablet_change:gap-[16px] mobile:gap-[8px]">
-              <div className="relative">
-                <input type="text" placeholder="반을 검색하세요" value={searchInput} onChange={setSearchInput} className="tablet:w-[300px] mobile:w-[240px] h-[36px] text-[14px] font-nanum_400 pl-[15px] rounded-[10px] bg-whiteTotal drop-shadow-sm" />
-                <button onClick={() => setKeyword(searchInput)} className="absolute right-0 bg-management2 rounded-r-[10px] text-white w-[50px] h-[36px] text-[14px] font-nanum_400">검색</button>
-              </div>
-              <div className="flex items-center justify-end gap-[16px]">
-                <div>
-                  <div onClick={() => setCancleModal(true)} className="flex items-center justify-center gap-[4px] w-[109px] h-[36px] rounded-[10px] bg-grayDark">
-                    <img src={trash_white} alt="삭제아이콘" className="w-[18px] h-[18px]" />
-                    <button className="font-nanum_700 text-[14px] text-white">선택 삭제</button>
-                  </div>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="반을 검색하세요"
+                value={searchInput}
+                onChange={setSearchInput}
+                className="tablet:w-[300px] mobile:w-[240px] h-[36px] text-[14px] font-nanum_400 pl-[15px] rounded-[10px] bg-whiteTotal drop-shadow-sm"
+              />
+              <button
+                onClick={() => setKeyword(searchInput)}
+                className="absolute right-0 bg-management2 rounded-r-[10px] text-white w-[50px] h-[36px] text-[14px] font-nanum_400"
+              >
+                검색
+              </button>
+            </div>
+            <div className="flex items-center justify-end gap-[16px]">
+              <div>
+                <div
+                  onClick={() => setCancleModal(true)}
+                  className="flex items-center justify-center gap-[4px] w-[109px] h-[36px] rounded-[10px] bg-grayDark"
+                >
+                  <img
+                    src={trash_white}
+                    alt="삭제아이콘"
+                    className="w-[18px] h-[18px]"
+                  />
+                  <button className="font-nanum_700 text-[14px] text-white">
+                    선택 삭제
+                  </button>
                 </div>
-                <div>
-                  <div onClick={() => setRegisterModal(true)} className="flex items-center justify-center gap-[4px] w-[94px] h-[36px] rounded-[10px] bg-management2">
-                    <img src={circle_plus_white} alt="추가아이콘" className="w-[18px] h-[18px]" />
-                    <button className="font-nanum_700 text-[14px] text-white">반 등록</button>
-                  </div>
+              </div>
+              <div>
+                <div
+                  onClick={() => setRegisterModal(true)}
+                  className="flex items-center justify-center gap-[4px] w-[94px] h-[36px] rounded-[10px] bg-management2"
+                >
+                  <img
+                    src={circle_plus_white}
+                    alt="추가아이콘"
+                    className="w-[18px] h-[18px]"
+                  />
+                  <button className="font-nanum_700 text-[14px] text-white">
+                    반 등록
+                  </button>
                 </div>
               </div>
             </div>
-          <ClTable cancleText="반" cancleText2="반을" keyword={keyword} header={header} updateSelection={setSelection} deleteMutate={deleteMutate}/>
+          </div>
+          <ClTable
+            cancleText="반"
+            cancleText2="반을"
+            keyword={keyword}
+            header={header}
+            updateSelection={setSelection}
+            deleteMutate={deleteMutate}
+          />
         </main>
         <Footer />
       </div>

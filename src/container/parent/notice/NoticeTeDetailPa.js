@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Link, useParams } from "react-router-dom";
 
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
@@ -13,25 +11,17 @@ import Trash from "../../../assets/admin/Trash_white.png";
 import Pencil from "../../../assets/admin/Pencil_white.png";
 import useStudentNoticeStore from "../../../store/studentNotice";
 
+
 const NoticeTeDetailPa = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const {
     stClassnameIdClient
   } = useStudentNoticeStore();
-  
-  const [cancleModal, setCancleModal] = useState(false);
-  const [cancleId, setCancleId] = useState([]);
 
-  const { oneclassNoticeData, isLoading } = useTeOneAdminNoticeQuery(stClassnameIdClient, id);
+  const { oneclassNoticeData } = useTeOneAdminNoticeQuery(stClassnameIdClient, id);
   const markDownText = `${oneclassNoticeData?.data.content}`;
 
-  
-  const onClickCancleModal = (id) => {
-    cancleId[0] = id;
-    setCancleModal(true);
-  };
 
   return (
     <div className="min-w-[280px]">

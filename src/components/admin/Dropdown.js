@@ -14,9 +14,9 @@ const DropdownMenu = ({state, setState, itemData}) => {
         setValue(savedDate?.text)
       }
     } else if (typeof state === 'string') {
-      if (state == 'MOTHER') {
+      if (state === 'MOTHER') {
         setValue('모');
-      } else if (state == 'FATHER') {
+      } else if (state === 'FATHER') {
         setValue('부')
       }
     }

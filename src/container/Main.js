@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getCookie } from "../utils/cookie";
@@ -14,16 +14,16 @@ import DropdownCl from "../components/teacher/DropdownCl";
 import TeMainNoList from "../components/teacher/main/TeMainNoList";
 import TeMainStList from "../components/teacher/main/TeMainStList";
 import useStudentMainStore from "../store/studentMain";
-import useUserStore from "../store/user";
 import StMainNoList from "../components/student/main/MainNoList";
 import useParentMainStore from "../store/parentMain";
+import StMainHwList from "../components/student/main/MainHwList";
+import StMainHwDoing from "../components/student/main/MainHwDoing";
+import TeMainHwList from "../components/teacher/main/TeMainHwList";
 
 const Main = () => {
   const navigator = useNavigate();
   const refreshToken = getCookie("refreshToken");
   const role = sessionStorage.getItem("role");
-
-  const { user } = useUserStore();
 
   const {
     classnameIdClient,
@@ -67,10 +67,10 @@ const Main = () => {
               itemData={allClassroomData?.data}
             />
             {stClassnameIdClient && (
-              <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px] mt-[20px] z-0'>
-                {/* <TeMainStList classId={classnameIdClient} className={classnameNameClient} /> */}
+              <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-start desktop:gap-[24px] mt-[20px] z-0'>
+                <StMainHwList classId={stClassnameIdClient} className={stClassnameNameClient} />
                 <div className="flex flex-col self-start gap-[24px] mt-[24px]">
-                  {/* <AdMainStList /> */}
+                  <StMainHwDoing />
                   <StMainNoList classId={stClassnameIdClient} className={stClassnameNameClient} />
                 </div>
               </div>
@@ -88,7 +88,7 @@ const Main = () => {
               itemData={allClassroomData?.data}
             />
             {paClassnameIdClient && (
-              <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px] mt-[20px] z-0'>
+              <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-start desktop:gap-[24px] mt-[20px] z-0'>
                 {/* <TeMainStList classId={classnameIdClient} className={classnameNameClient} /> */}
                 <div className="flex flex-col self-start gap-[24px] mt-[24px]">
                   {/* <AdMainStList /> */}
@@ -101,7 +101,7 @@ const Main = () => {
       )}
       {role === "관리자" && (
         <main className='desktop:w-[1000px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] desktop:pb-[156px] tablet_change:pb-[48px] mobile:pb-[68px] mainHeight'>
-          <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px]'>
+          <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-start desktop:gap-[24px]'>
             <AdMainNoList />
             <div className="flex flex-col self-start gap-[24px]">
               <AdMainStList />
@@ -120,10 +120,10 @@ const Main = () => {
               itemData={allClassroomData?.data}
             />
             {classnameIdClient && (
-              <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-center desktop:gap-[24px] mt-[20px] z-0'>
+              <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-start desktop:gap-[24px] mt-[20px] z-0'>
                 <TeMainStList classId={classnameIdClient} className={classnameNameClient} />
-                <div className="flex flex-col self-start gap-[24px] mt-[24px]">
-                  {/* <AdMainStList /> */}
+                <div className="flex flex-col self-start gap-[24px] desktop:mt-0 mt-[24px]">
+                  <TeMainHwList classId={classnameIdClient} className={classnameNameClient} />
                   <TeMainNoList classId={classnameIdClient} className={classnameNameClient} />
                 </div>
               </div>

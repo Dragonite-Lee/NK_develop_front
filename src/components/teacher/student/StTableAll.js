@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 
 import YellowModalPathDelete from "../YellowModalPathDelete";
-import Pencil from "../../../assets/admin/Pencil.png";
+
 import Trash from "../../../assets/admin/Trash.png";
-import ArrowLeftBlack from "../../../assets/ArrowLeftBlack.png";
-import ArrowRightBlack from "../../../assets/ArrowRightBlack.png";
 
 const StTableAll = ({
   classId,
@@ -17,7 +15,7 @@ const StTableAll = ({
 }) => {
   const [selection, setSelection] = useState(new Set());
   const [cancleModal, setCancleModal] = useState(false);
-  const [cancleId, setCancleId] = useState([]);
+  const [cancleId] = useState([]);
 
   const onChangeSelection = (value) => {
     const newSelection = new Set(selection);
@@ -52,12 +50,11 @@ const StTableAll = ({
     setCancleModal(true);
   };
 
-  // console.log(data, current)
   const headerkey = header.map((header) => header.value);
   const width = header.map((header) => header.width);
 
   useEffect(() => {
-    if (deleteMutate.isSuccess == true) {
+    if (deleteMutate.isSuccess === true) {
       setCancleModal(false);
     }
   }, [deleteMutate.isSuccess]);
@@ -66,7 +63,7 @@ const StTableAll = ({
     selection.clear();
   }, [studentData]);
 
-  if (studentData?.length == 0)
+  if (studentData?.length === 0)
     return (
       <div className="font-nanum_700 text-[14px]">
         등록된 데이터가 존재하지 않습니다.

@@ -11,23 +11,28 @@ import useTeacherNoticeStore from "../../../store/teacherNotice";
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
 import { postTeClassNotice } from "../../../services/api/teacherApi";
 import useUserStore from "../../../store/user";
+import { getCookie } from "../../../utils/cookie";
 
 const NoticeTeNewWrite = () => {
-
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-
-  const {
-    classnameIdClient
-  } = useTeacherNoticeStore();
+  const refreshToken = getCookie("refreshToken");
+  useEffect(() => {
+    if (!refreshToken) {
+      navigate("/");
+    }
+  }, [refreshToken]);
+  const { classnameIdClient } = useTeacherNoticeStore();
 
   const [title, titleHandler] = useInput("");
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const [stToggle, setStToggle] = useState(false);
   const [paToggle, setPaToggle] = useState(false);
   const [noticeType, setNoticeType] = useState(new Set());
   const today = new Date();
-  const createDate = `${today.getFullYear()  }.${  today.getMonth() + 1  }.${  today.getDate()}`;
+  const createDate = `${today.getFullYear()}.${
+    today.getMonth() + 1
+  }.${today.getDate()}`;
 
   const { user } = useUserStore();
 
@@ -62,7 +67,7 @@ const NoticeTeNewWrite = () => {
       ["clean"],
     ],
   };
-  
+
   useEffect(() => {
     const newSelection = new Set(noticeType);
     if (stToggle) {
@@ -76,86 +81,115 @@ const NoticeTeNewWrite = () => {
       newSelection.delete("PARENT");
     }
     setNoticeType([...newSelection]);
-  }, [stToggle, paToggle])
+  }, [stToggle, paToggle]);
 
   const postMutate = useMutation({
     mutationFn: (data) => {
       return postTeClassNotice(classnameIdClient, data);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries('/teacher/class-notice');
-      alert("공지가 추가되었습니다.");
-      navigate('/main/noticeTe');
-    }
+      queryClient.invalidateQueries("/teacher/class-notice");
+      alert("공지가 추가 되었습니다.");
+      navigate("/main/noticeTe");
+    },
   });
-  
+
   const teacherPostData = {
-    "teacher" : { "id" : user?.id },
-    "title" : title,
-    "content" : content,
-    "classNoticeType" : noticeType
-  }
-  
-  return ( 
+    teacher: { id: user?.id },
+    title: title,
+    content: content,
+    classNoticeType: noticeType,
+  };
+
+  return (
     <div className="min-w-[280px]">
-        <Header/>
-          <main className='desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight'>
-            <Link to="/main/noticeTe">
-              <div className="text-[15px] font-paybooc_700 flex items-center gap-[6px] mb-[27px]">
-                <img src={ArrowLeft} alt="ArrowLeftBlack" className="w-[24px] h-[24px]" />
-                <div>전체 공지로 돌아가기</div>
-              </div>
-            </Link>
-            <div className="glassWhite desktop:w-[999px] tablet:py-[28px] mobile:p-[20px] tablet:px-[40px] mobile:px-[24px]">
-              <div className="flex tablet:items-center justify-start tablet:flex-row mobile:flex-col tablet:gap-[60px] mobile:gap-[12px] text-[15px] font-nanum_700">
-                <div>공지명 <span className="text-error">*</span></div>
-                <input type="text" placeholder="공지명을 입력하세요." value={title} onChange={titleHandler} className="font-nanum_400 desktop:w-[800px] box-border mobile:w-8/12 h-[38px] border-border rounded-[10px] placeholder-grey"/>
-              </div>
-              <div className="flex items-center justify-start gap-[60px] text-[15px] font-nanum_700 mt-[16px]">
-                <div>등록일 <span className="text-error">*</span></div>
-                <div className="font-nanum_400 text-grayDark">{createDate}</div>
-              </div>
-              <div className="mt-[28px] quillHeight">
-                <ReactQuill 
-                  style={{ height: "200px"}}
-                  formats={formats}
-                  modules={modules}
-                  theme="snow"
-                  onChange={setContent}
-                />
-              </div>
-              <div className="mt-[28px] flex flex-col items-start gap-[12px] font-nanum_400 text-[15px]">
-                <div className="flex items-center justify-start gap-[63px] py-[7.5px]">
-                  <div>학생에게 공개</div>
-                  <label className="inline-flex items-center cursor-pointer">
-                    <input type="checkbox" onChange={() => setStToggle(!stToggle)} className="sr-only peer" />
-                    <div className="relative w-[30px] h-[18px] bg-grayDark rounded-full 
-                      peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
-                      after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:border-gray-300 
-                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1" />
-                  </label>
-                </div>
-                <div className="flex items-center justify-start gap-[48px] py-[7.5px]">
-                  <div>학부모에게 공개</div>
-                  <label className="inline-flex items-center cursor-pointer">
-                    <input type="checkbox" onChange={() => setPaToggle(!paToggle)} className="sr-only peer" />
-                    <div className="relative w-[30px] h-[18px] bg-grayDark rounded-full 
-                      peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
-                      after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:border-gray-300 
-                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1" />
-                  </label>
-                </div>
-              </div>
-              <div className="tablet:mt-[28px] mobile:mt-[12px] flex justify-end">
-                <div onClick={() => postMutate.mutate(teacherPostData)} className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-management1 text-white flex items-center justify-center">
-                  저장하기
-                </div>
-              </div>
+      <Header />
+      <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
+        <Link to="/main/noticeTe">
+          <div className="text-[15px] font-paybooc_700 flex items-center gap-[6px] mb-[27px]">
+            <img
+              src={ArrowLeft}
+              alt="ArrowLeftBlack"
+              className="w-[24px] h-[24px]"
+            />
+            <div>전체 공지로 돌아가기</div>
+          </div>
+        </Link>
+        <div className="glassWhite desktop:w-[999px] tablet:py-[28px] mobile:p-[20px] tablet:px-[40px] mobile:px-[24px]">
+          <div className="flex tablet:items-center justify-start tablet:flex-row mobile:flex-col tablet:gap-[60px] mobile:gap-[12px] text-[15px] font-nanum_700">
+            <div>
+              공지명 <span className="text-error">*</span>
             </div>
-          </main>
-        <Footer />
-      </div>
+            <input
+              type="text"
+              placeholder="공지명을 입력하세요."
+              value={title}
+              onChange={titleHandler}
+              className="font-nanum_400 desktop:w-[800px] box-border mobile:w-8/12 h-[38px] border-border rounded-[10px] placeholder-grey"
+            />
+          </div>
+          <div className="flex items-center justify-start gap-[60px] text-[15px] font-nanum_700 mt-[16px]">
+            <div>
+              등록일 <span className="text-error">*</span>
+            </div>
+            <div className="font-nanum_400 text-grayDark">{createDate}</div>
+          </div>
+          <div className="mt-[28px] quillHeight">
+            <ReactQuill
+              style={{ height: "200px" }}
+              formats={formats}
+              modules={modules}
+              theme="snow"
+              onChange={setContent}
+            />
+          </div>
+          <div className="mt-[28px] flex flex-col items-start gap-[12px] font-nanum_400 text-[15px]">
+            <div className="flex items-center justify-start gap-[63px] py-[7.5px]">
+              <div>학생에게 공개</div>
+              <label className="inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  onChange={() => setStToggle(!stToggle)}
+                  className="sr-only peer"
+                />
+                <div
+                  className="relative w-[30px] h-[18px] bg-grayDark rounded-full 
+                      peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
+                      after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:border-gray-300 
+                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1"
+                />
+              </label>
+            </div>
+            <div className="flex items-center justify-start gap-[48px] py-[7.5px]">
+              <div>학부모에게 공개</div>
+              <label className="inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  onChange={() => setPaToggle(!paToggle)}
+                  className="sr-only peer"
+                />
+                <div
+                  className="relative w-[30px] h-[18px] bg-grayDark rounded-full 
+                      peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
+                      after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:border-gray-300 
+                      after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-management1"
+                />
+              </label>
+            </div>
+          </div>
+          <div className="tablet:mt-[28px] mobile:mt-[12px] flex justify-end">
+            <div
+              onClick={() => postMutate.mutate(teacherPostData)}
+              className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-management1 text-white flex items-center justify-center"
+            >
+              저장하기
+            </div>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
-}
- 
+};
+
 export default NoticeTeNewWrite;

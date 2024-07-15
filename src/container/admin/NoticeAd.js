@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import useInput from "../../hooks/useInput";
@@ -6,18 +6,14 @@ import useInput from "../../hooks/useInput";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { getCookie } from "../../utils/cookie";
-import glass from "../../assets/admin/MagnifyingGlass.png";
+
 import { useAdAllAdminNoticeQuery } from "../../components/admin/adminQuery";
 import NoticeTable from "../../components/admin/adminNotice/noticeTable";
 
 const NoticeAd = () => {
   const navigator = useNavigate();
   const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    }
-  }, [refreshToken]);
+
 
   const [searchInput, setSearchInput] = useInput("");
   const [keyword, setKeyword] = useState("");
@@ -32,18 +28,18 @@ const NoticeAd = () => {
 
     if (newSelection.has(value)) {
       newSelection.delete(value);
-      if (value == "STUDENT") {
+      if (value === "STUDENT") {
         setStToggle(false);
-      } else if (value == "PARENT") {
+      } else if (value === "PARENT") {
         setPaToggle(false);
       } else {
         setTeToggle(false);
       }
     } else {
       newSelection.add(value);
-      if (value == "STUDENT") {
+      if (value === "STUDENT") {
         setStToggle(true);
-      } else if (value == "PARENT") {
+      } else if (value === "PARENT") {
         setPaToggle(true);
       } else {
         setTeToggle(true);
