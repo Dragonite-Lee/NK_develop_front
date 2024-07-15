@@ -6,6 +6,10 @@ export default function useInput(initialValue) {
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
+
+  const handleValue = (value) => {
+    setInputValue(value);
+  }
   
-  return [inputValue, handleChange]
+  return [inputValue, handleChange, handleValue]
 };
