@@ -75,7 +75,7 @@ const Header = () => {
   const { user } = useUserStore();
   const { pathname } = useLocation();
   const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
+  const refreshToken = sessionStorage.getItem("refreshToken");
   useEffect(() => {
     if (!refreshToken) {
       navigator("/");

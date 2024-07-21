@@ -2,9 +2,6 @@ import { client } from "..";
 
 import { getCookie, setCookie } from "../../utils/cookie";
 
-
-
-
 const JWT_EXPIRY_TIME = 24 * 3600 * 1000; // 만료 시간 (24시간 밀리 초로 표현)
 
 export const loginApi = {
@@ -15,7 +12,7 @@ export const loginApi = {
 
 
 export const refreshTokenApi = async () => {
-  const refreshToken = getCookie("refreshToken");
+  const refreshToken = sessionStorage.getItem("refreshToken");
   
   if (refreshToken) {
     // console.log("실행됨",refreshToken)
@@ -32,10 +29,8 @@ export const onLoginSuccess = response => {
 
   client.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
   
-  setCookie("refreshToken", refreshToken, {
-    path: '/',
-    maxAge: 60 * 60 * 24 * 30
-  });
+  sessionStorage.setItem("refreshToken", refreshToken)
+
   
   // console.log("login성공시")
   setTimeout(refreshTokenApi, JWT_EXPIRY_TIME - 10 * 60 * 1000);//accessToken 만료하기 10분 전에 로그인 연장

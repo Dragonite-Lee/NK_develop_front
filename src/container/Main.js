@@ -22,7 +22,7 @@ import TeMainHwList from "../components/teacher/main/TeMainHwList";
 
 const Main = () => {
   const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
+  const refreshToken = sessionStorage.getItem("refreshToken");
   const role = sessionStorage.getItem("role");
 
   const {
