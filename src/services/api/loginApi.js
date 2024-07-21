@@ -29,7 +29,10 @@ export const onLoginSuccess = response => {
 
   client.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
   
-  sessionStorage.setItem("refreshToken", refreshToken)
+  setCookie("refresh", refreshToken, {
+    path: '/',
+    maxAge: 60 * 60 * 24 * 30
+  });
 
   
   // console.log("login성공시")

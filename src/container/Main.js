@@ -22,7 +22,7 @@ import TeMainHwList from "../components/teacher/main/TeMainHwList";
 
 const Main = () => {
   const navigator = useNavigate();
-  const refreshToken = sessionStorage.getItem("refreshToken");
+  const refreshToken = getCookie("refresh");
   const role = sessionStorage.getItem("role");
 
   const {
@@ -48,11 +48,11 @@ const Main = () => {
 
   const { allClassroomData } = useTeAllClassroomQuery();
   
-  useEffect(() => { 
-    if (!refreshToken) {
-      navigator("/");
-    };
-  }, [refreshToken])
+  // useEffect(() => { 
+  //   if (!refreshToken) {
+  //     navigator("/");
+  //   };
+  // }, [refreshToken])
 
   return ( 
     <div className="min-w-[280px]">

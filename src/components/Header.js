@@ -75,15 +75,15 @@ const Header = () => {
   const { user } = useUserStore();
   const { pathname } = useLocation();
   const navigator = useNavigate();
-  const refreshToken = sessionStorage.getItem("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    }
-  }, [refreshToken]);
+  const refreshToken = getCookie("refresh");
+  // useEffect(() => {
+  //   if (!refreshToken) {
+  //     navigator("/");
+  //   }
+  // }, [refreshToken]);
 
   const logout = () => {
-    removeCookie("refreshToken");
+    removeCookie("refresh");
     navigator("/");
   };
 
