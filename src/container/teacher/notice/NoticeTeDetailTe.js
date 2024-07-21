@@ -19,11 +19,7 @@ const NoticeTeDetailTe = () => {
   const queryClient = useQueryClient();
 
   const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigate("/");
-    }
-  }, [refreshToken]);
+
   const {
     classnameIdClient
   } = useTeacherNoticeStore();

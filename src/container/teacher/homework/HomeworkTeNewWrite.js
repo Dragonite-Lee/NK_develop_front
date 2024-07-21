@@ -17,11 +17,7 @@ const HomeworkTeNewWrite = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigate("/");
-    }
-  }, [refreshToken]);
+
   const {
     classnameIdClient
   } = useTeacherHomeworkStore();

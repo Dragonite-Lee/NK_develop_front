@@ -13,11 +13,7 @@ const NoticeAdDetailTe = () => {
   const navigate = useNavigate();
 
   const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigate("/");
-    }
-  }, [refreshToken]);
+
 
   const { oneAdminNoticeData, isLoading } = useAdOneAdminNoticeQuery(id);
   const markDownText = `${oneAdminNoticeData?.data.content}`;

@@ -17,11 +17,7 @@ const NoticeTeNewWrite = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigate("/");
-    }
-  }, [refreshToken]);
+ 
   const { classnameIdClient } = useTeacherNoticeStore();
 
   const [title, titleHandler] = useInput("");

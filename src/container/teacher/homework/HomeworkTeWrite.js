@@ -19,11 +19,7 @@ const HomeworkTeNewWrite = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const refreshToken = getCookie("refreshToken");
-  useEffect(() => {
-    if (!refreshToken) {
-      navigate("/");
-    }
-  }, [refreshToken]);
+
   const {
     classnameIdClient
   } = useTeacherHomeworkStore();
