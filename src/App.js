@@ -87,8 +87,8 @@ function App() {
       <BrowserRouter>
         <Suspense fallback={<div>로딩 중...</div>}>
           <Routes>
-          <Route exact path="/" element={<Login />} />
-          <Route path="/main" element={<Main />} />
+            <Route exact path="/" element={<Login />} />
+            <Route path="/main" element={<Main />} />
     
             <Route path="/main/noticeSt" element={<NoticeSt />} />
             <Route path="/main/noticeSt/adminDetail/:id" element={<NoticeAdDetailSt />} />
