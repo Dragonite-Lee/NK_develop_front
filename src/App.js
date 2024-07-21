@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Suspense fallback={<div>로딩 중...</div>}>
           <Routes>
             <Route exact path="/" element={<Login />} />
