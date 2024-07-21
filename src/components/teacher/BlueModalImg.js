@@ -19,7 +19,7 @@ const BlueModalImg = ({
         </div>
         <div className="py-[14px] px-[18px] w-full h-full font-nanum_400 flex items-center justify-center flex-col">
           <img
-            src={`http://ec2-43-201-63-229.ap-northeast-2.compute.amazonaws.com/api/file/${src}`}
+            src={`http://ec2-43-201-63-229.ap-northeast-2.compute.amazonaws.com:8080/api/file/${src}`}
             alt="url"
             className="w-full h-fi;; object-cover rounded-[10px]"
           />
