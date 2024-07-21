@@ -49,10 +49,10 @@ const Main = () => {
   const { allClassroomData } = useTeAllClassroomQuery();
   
   // useEffect(() => { 
-  //   if (!role) {
+  //   if (!refreshToken) {
   //     navigator("/");
   //   };
-  // }, [role])
+  // }, [refreshToken])
 
   return ( 
     <div className="min-w-[280px]">
