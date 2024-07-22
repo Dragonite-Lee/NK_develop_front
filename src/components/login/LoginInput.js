@@ -5,6 +5,7 @@ import useInput from "../../hooks/useInput";
 
 import useUserStore from "../../store/user";
 import { loginApi, onLoginSuccess, userApi } from "../../services/api/loginApi";
+import { setCookie } from "../../utils/cookie";
 
 const roleArray = [
   {
