@@ -48,11 +48,11 @@ const Main = () => {
 
   const { allClassroomData } = useTeAllClassroomQuery();
   
-  // useEffect(() => { 
-  //   if (!refreshToken) {
-  //     navigator("/");
-  //   };
-  // }, [refreshToken])
+  useEffect(() => { 
+    if (!refreshToken) {
+      navigator("/");
+    };
+  }, [refreshToken])
 
   return ( 
     <div className="min-w-[280px]">

@@ -76,11 +76,11 @@ const Header = () => {
   const { pathname } = useLocation();
   const navigator = useNavigate();
   const refreshToken = getCookie("refresh");
-  // useEffect(() => {
-  //   if (!refreshToken) {
-  //     navigator("/");
-  //   }
-  // }, [refreshToken]);
+  useEffect(() => {
+    if (!refreshToken) {
+      navigator("/");
+    }
+  }, [refreshToken]);
 
   const logout = () => {
     removeCookie("refresh");
