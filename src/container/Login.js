@@ -7,7 +7,7 @@ const Login = () => {
   return ( 
     <div className="min-w-[280px]">
       <main className='desktop:w-[1200px] desktop:mx-auto tablet:w-auto tablet:mx-10 mobile:mx-[20px] tablet:pt-[110px] mobile:pt-[27px] tablet:pb-[111px] mobile:pb-[72px] loginHeight'>
-        <LoginHeader />
+        {/* <LoginHeader /> */}
         <div className='desktop:flex desktop:items-center desktop:gap-[126px]'>
           <LoginInfo />
           <LoginInput />
