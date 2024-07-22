@@ -12,10 +12,6 @@ import MainChat from "../../components/parent/main/MainChat";
 
 
 const Main = () => {
-  const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
-  
-
 
   const [selectedStudent, setSelectedStudent] = useState(null);
 

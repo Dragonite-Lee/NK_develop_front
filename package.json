@@ -2,7 +2,7 @@
   "name": "nk-project",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://ec2-43-201-63-229.ap-northeast-2.compute.amazonaws.com:8080",
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
