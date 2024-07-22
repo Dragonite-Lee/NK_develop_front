@@ -5,6 +5,7 @@ import useInput from "../../hooks/useInput";
 
 import useUserStore from "../../store/user";
 import { loginApi, onLoginSuccess, userApi } from "../../services/api/loginApi";
+import { setCookie } from "../../utils/cookie";
 
 const roleArray = [
   {
@@ -61,6 +62,8 @@ const LoginInput = () => {
       .login(data)
       .then((response) => {
         onLoginSuccess(response);
+        const { refreshToken } = response.data
+        sessionStorage.setItem("refreshToken", refreshToken)
         // console.log("success")
         for (let i = 0; i < role.length; i++) {
           if (role[i].default === true) {

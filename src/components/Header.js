@@ -7,7 +7,6 @@ import NKlogo from "../assets/header/NK_logo.png";
 import UserCircle from "../assets/header/profile.png";
 import List from "../assets/header/List.png";
 import Bell from "../assets/header/Bell.png";
-import { getCookie, removeCookie } from "../utils/cookie";
 
 const studentRoute = [
   {
@@ -75,7 +74,7 @@ const Header = () => {
   const { user } = useUserStore();
   const { pathname } = useLocation();
   const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
+  const refreshToken = sessionStorage.getItem("refreshToken")
   useEffect(() => {
     if (!refreshToken) {
       navigator("/");
@@ -83,7 +82,7 @@ const Header = () => {
   }, [refreshToken]);
 
   const logout = () => {
-    removeCookie("refreshToken");
+    sessionStorage.removeItem("refreshToken");
     navigator("/");
   };
 

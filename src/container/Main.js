@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getCookie } from "../utils/cookie";
 import useTeacherMainStore from "../store/teacherMain";
 import { useTeAllClassroomQuery } from "../components/teacher/teacherQuery";
 import Footer from "../components/Footer";
@@ -22,7 +21,7 @@ import TeMainHwList from "../components/teacher/main/TeMainHwList";
 
 const Main = () => {
   const navigator = useNavigate();
-  const refreshToken = getCookie("refreshToken");
+  const refreshToken = sessionStorage.getItem("refreshToken")
   const role = sessionStorage.getItem("role");
 
   const {

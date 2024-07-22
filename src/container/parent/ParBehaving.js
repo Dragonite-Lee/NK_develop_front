@@ -12,11 +12,7 @@ const NoticeList = () => {
   const navigator = useNavigate();
   const refreshToken = getCookie("refreshToken");
   
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    };
-  }, [refreshToken])
+
 
   return ( 
     <div className="min-w-[280px]">

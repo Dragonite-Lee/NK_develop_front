@@ -15,11 +15,7 @@ const Main = () => {
   const navigator = useNavigate();
   const refreshToken = getCookie("refreshToken");
   
-  useEffect(() => {
-    if (!refreshToken) {
-      navigator("/");
-    };
-  }, [refreshToken])
+
 
   const [selectedStudent, setSelectedStudent] = useState(null);
 
