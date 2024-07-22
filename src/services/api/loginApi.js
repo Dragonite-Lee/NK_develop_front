@@ -1,7 +1,4 @@
 import { client } from "..";
-import { Cookies } from "react-cookie";
-
-const cookies = new Cookies();
 
 const JWT_EXPIRY_TIME = 24 * 3600 * 1000; // 만료 시간 (24시간 밀리 초로 표현)
 
@@ -29,13 +26,13 @@ export const onLoginSuccess = response => {
   const { accessToken, refreshToken } = response.data;
 
   client.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-  cookies.set("refresh", refreshToken, {
-    path: '/',
-    maxAge: 60 * 60 * 24 * 30,
-    httpOnly: false,
-    sameSite: 'none'
-  })
-
+  // cookies.set("refresh", refreshToken, {
+  //   path: '/',
+  //   maxAge: 60 * 60 * 24 * 30,
+  //   httpOnly: false,
+  //   sameSite: 'none'
+  // })
+  sessionStorage.setItem("refreshToken", refreshToken)
 
   
   // console.log("login성공시")
