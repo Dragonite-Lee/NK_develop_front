@@ -152,9 +152,9 @@ const SubmitDetailTe = () => {
               <div className="mt-[16px] flex flex-wrap items-center justify-start gap-[16px]">
                 {homeworkDetailStudentData?.data.fileIds.length > 0 ? (homeworkDetailStudentData?.data.fileIds.map((id, index) => (
                   <div key={index} className="relative">
-                    {`http://ec2-43-201-63-229.ap-northeast-2.compute.amazonaws.com:8080/api/file/${id}`}
+                    {`http://ec2-52-78-180-130.ap-northeast-2.compute.amazonaws.com:8080/api/file/${id}`}
                     <img
-                      src={`http://ec2-43-201-63-229.ap-northeast-2.compute.amazonaws.com:8080/api/file/${id}`}
+                      src={`http://ec2-52-78-180-130.ap-northeast-2.compute.amazonaws.com:8080/api/file/${id}`}
                       alt="url"
                       className="w-[169px] h-[158px] object-cover rounded-[10px]"
                     />
