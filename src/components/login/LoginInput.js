@@ -63,10 +63,7 @@ const LoginInput = () => {
       .then((response) => {
         onLoginSuccess(response);
         const { refreshToken } = response.data
-        setCookie("refresh", refreshToken, {
-          path: '/',
-          maxAge: 60 * 60 * 24 * 30
-        });
+        sessionStorage.setItem("refreshToken", refreshToken)
         // console.log("success")
         for (let i = 0; i < role.length; i++) {
           if (role[i].default === true) {
