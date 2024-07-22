@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import UserCircle from "../assets/header/profile.png";
 import List from "../assets/header/List.png";
-import Bell from "../assets/header/Bell.png";
+
 import useUserStore from "../store/user";
+
 
 const MobileMenu = ({
   studentRoute,
@@ -16,6 +16,12 @@ const MobileMenu = ({
   sidebar,
 }) => {
   const { user } = useUserStore();
+  const navigator = useNavigate();
+  
+  const logout = () => {
+    removeCookie("refreshToken");
+    navigator("/");
+  };
   return (
     <div>
       <div
@@ -28,8 +34,6 @@ const MobileMenu = ({
         <div className="mobile:flex flex-wrap tablet_header_change:hidden items-center justify-start gap-[6px] mt-[24px] tablet:ml-[33px] mobile:ml-[16px]">
           {/* 공지가 있다면 Bell_notice로 바뀔예정 */}
           {/* <div className="flex gap-[8px] items-center justify-start"> */}
-          <img src={Bell} alt="bell" className="w-[25px] h-[25px] mr-[2px]" />
-          <img src={UserCircle} alt="user" className="w-[25px] h-[25px] " />
           {/* </div> */}
           {/* <div className="flex gap-[8px] items-center justify-start" > */}
           <div className="font-nanum_400 text-[14px] text-black">
@@ -49,6 +53,9 @@ const MobileMenu = ({
           >
             {role}
           </div>
+          <button className="underline" onClick={logout}>
+            로그아웃
+          </button>
           {/* </div> */}
           <img
             src={List}

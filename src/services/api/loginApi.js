@@ -32,8 +32,6 @@ export const onLoginSuccess = response => {
   setCookie("refreshToken", refreshToken, {
     path: '/',
     maxAge: 60 * 60 * 24 * 30,
-    httpOnly: false,
-    sameSite: 'none'
   });
 
   
