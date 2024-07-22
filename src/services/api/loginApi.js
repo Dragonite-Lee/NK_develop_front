@@ -28,7 +28,7 @@ export const onLoginSuccess = response => {
   const { accessToken, refreshToken } = response.data;
 
   client.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-  
+  console.log(refreshToken)
   setCookie("refresh", refreshToken, {
     path: '/',
     maxAge: 60 * 60 * 24 * 30
