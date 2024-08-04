@@ -69,7 +69,7 @@ const Main = () => {
             {stClassnameIdClient && (
               <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-start desktop:gap-[24px] mt-[20px] z-0'>
                 <StMainHwList classId={stClassnameIdClient} className={stClassnameNameClient} />
-                <div className="flex flex-col self-start gap-[24px] mt-[24px]">
+                <div className="flex flex-col self-start gap-[24px]">
                   <StMainHwDoing />
                   <StMainNoList classId={stClassnameIdClient} className={stClassnameNameClient} />
                 </div>
@@ -90,7 +90,7 @@ const Main = () => {
             {paClassnameIdClient && (
               <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-start desktop:gap-[24px] mt-[20px] z-0'>
                 {/* <TeMainStList classId={classnameIdClient} className={classnameNameClient} /> */}
-                <div className="flex flex-col self-start gap-[24px] mt-[24px]">
+                <div className="flex flex-col self-start gap-[24px]">
                   {/* <AdMainStList /> */}
                   <PaMainNoList classId={paClassnameIdClient} className={paClassnameNameClient} />
                 </div>

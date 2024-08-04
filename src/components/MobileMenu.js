@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import List from "../assets/header/List.png";
 
 import useUserStore from "../store/user";
+import { removeCookie } from "../utils/cookie";
 
 
 const MobileMenu = ({
