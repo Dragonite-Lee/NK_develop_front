@@ -82,7 +82,7 @@ const HomeworkTeNewWrite = () => {
       setDeadline(oneHomeworkData.data.deadline.slice(0, 10))
     }
   }, [oneHomeworkData])
-  console.log(deadline)
+  // console.log(deadline)
   const teacherPutData = {
     "classroomId" : classnameIdClient,
     "teacherId" : user?.id,

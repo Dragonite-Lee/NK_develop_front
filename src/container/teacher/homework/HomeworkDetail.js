@@ -154,7 +154,7 @@ const HomeworkDetailTe = () => {
                 </button>
               </Link>
               <div
-                onClick={() => onClickCancleModal(oneHomeworkData?.data.studentId)}
+                onClick={() => onClickCancleModal(oneHomeworkData?.data.id)}
                 className="bg-grayDark rounded-[10px] w-[130px] h-[36px] flex items-center justify-center gap-[6px]"
               >
                 <img
