@@ -17,11 +17,9 @@ const NoticeTeDetailSt = lazy(() => import("./container/student/notice/NoticeTeD
 const HomeworkSt = lazy(() => import("./container/student/HomeworkSt"));
 const HomeworkDetail = lazy(() => import("./container/student/homework/HomeworkDetail"));
 
-const ParMain = lazy(() => import("./container/parent/ParMain"));
 const NoticePa = lazy(() => import("./container/parent/NoticePa"));
 const NoticeAdDetailPa = lazy(() => import("./container/parent/notice/NoticeAdDetailPa"));
 const NoticeTeDetailPa = lazy(() => import("./container/parent/notice/NoticeTeDetailPa"));
-const ParBehaving = lazy(() => import("./container/parent/ParBehaving"));
 
 const ParentAd = lazy(() => import("./container/admin/ParentAd"));
 const StudentAd = lazy(() => import("./container/admin/StudentAd"));
@@ -106,7 +104,6 @@ function App() {
               element={<HomeworkDetail />}
             />
 
-            <Route path='/parent' element={<ParMain />} />
             <Route path='/main/noticePa' element={<NoticePa />} />
             <Route
               path='/main/noticePa/adminDetail/:id'
@@ -116,7 +113,6 @@ function App() {
               path='/main/noticePa/teacherDetail/:id'
               element={<NoticeTeDetailPa />}
             />
-            <Route path='/parent/behaving' element={<ParBehaving />} />
 
             <Route path='/main/parentAd' element={<ParentAd />} />
             <Route path='/main/studentAd' element={<StudentAd />} />

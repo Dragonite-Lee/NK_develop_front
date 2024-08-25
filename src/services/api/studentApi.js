@@ -44,3 +44,8 @@ export const getHomeworkStopwatch = async (classroomId, homeworkId) => {
 export const putHomeworkSubmit = async (classroomId, homeworkId, data) => {
   await client.put(`/api/classroom/${classroomId}/homework/${homeworkId}/submit`, data)
 }
+
+export const getHomeworkSubmit = async (classnameId, homeworkId) => {
+  const data = await client.get(`/api/classroom/${classnameId}/homework/${homeworkId}/submit`);
+  return data;
+}

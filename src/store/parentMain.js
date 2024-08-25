@@ -4,10 +4,10 @@ import { createJSONStorage, persist } from "zustand/middleware";
 const useParentMainStore = create(
   persist(
     (set) => ({
-      paClassnameIdClient: '', // 초기값 작성
-      paClassnameNameClient: '', // name의 초기값 작성
-      setPaClassnameIdClient: (value) => set({ paClassnameIdClient: value }), // id 변경 함수
-      setPaClassnameNameClient: (value) => set({ paClassnameNameClient: value }), // name 변경 함수
+      paStudentIdClient: '', // 초기값 작성
+      paStudentNameClient: '', // name의 초기값 작성
+      setPaStudentIdClient: (value) => set({ paStudentIdClient: value }), // id 변경 함수
+      setPaStudentNameClient: (value) => set({ paStudentNameClient: value }), // name 변경 함수
     }),
     {
       name: 'parent-main',

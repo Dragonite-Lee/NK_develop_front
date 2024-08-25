@@ -8,7 +8,7 @@ const BlueModalImg = ({
   return (
     <div className="z-[15] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full y-full min-h-full bg-[#212121]/[.08]">
       <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[20px] border drop-shadow">
-        <div className="h-[64px] bg-management1 flex items-center justify-between px-[36px] py-[20px] rounded-t-[20px]">
+        <div className="h-[64px] bg-management1 flex items-center justify-between gap-12 px-[36px] py-[20px] rounded-t-[20px]">
           <div className="font-pacbooc_700 text-[18px] text-white">{name} - {src}.png</div>
           <img
             src={CancleImg}

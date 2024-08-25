@@ -37,10 +37,6 @@ const teacherRoute = [
 
 const parentRoute = [
   {
-    title: "학습태도 분석",
-    href: "/parent/behaving",
-  },
-  {
     title: "공지사항",
     href: "/main/noticePa",
   },

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getHomeworkStopwatch, getStHomework, getStHomeworkDetail } from "../../services/api/studentApi";
+import { getHomeworkStopwatch, getHomeworkSubmit, getStHomework, getStHomeworkDetail } from "../../services/api/studentApi";
 
 export const useHomeworkStopwatch = (classroomId, homeworkId, submitId) => {
   const { data, isLoading } = useQuery(['/student/homework/detail'],() =>
@@ -40,6 +40,17 @@ export const useStopwatch = (classroomId, homeworkId) => {
   );
   return {
     stopwatchData: data,
+    isLoading,
+  };
+};
+
+export const useHomeworkSubmitQuery = (classroomId, homeworkId) => {
+  const { data, isLoading } = useQuery(
+    ["/student/homework/list", classroomId, homeworkId],
+    () => getHomeworkSubmit(classroomId, homeworkId)
+  );
+  return {
+    submitData: data,
     isLoading,
   };
 };

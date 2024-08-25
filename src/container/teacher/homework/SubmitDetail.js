@@ -6,13 +6,9 @@ import Footer from "../../../components/Footer";
 import { useTeHomeworkDetailStudentQuery, useTeOneHomeworkQuery } from "../../../components/teacher/teacherQuery";
 import ArrowLeft from "../../../assets/student/ArrowLeft.png";
 import Mg from "../../../assets/MagnifyingGlassPlus.png";
-import Pencil from "../../../assets/admin/Pencil_white.png";
-
-import { postImageId } from "../../../services/api/studentApi";
 
 import useTeacherHomeworkStore from "../../../store/teacherHomework";
-import YellowModalHomework from "../../../components/teacher/YellowModalHomework";
-import { deleteTeHomework, getFile, putTeHomeworkFeedback } from "../../../services/api/teacherApi";
+import { putTeHomeworkFeedback } from "../../../services/api/teacherApi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import BlueModal from "../../../components/BlueModal";
 import HomeworkEvaluateModal from "../../../components/teacher/HomeworkEvaluteModal";
@@ -152,7 +148,6 @@ const SubmitDetailTe = () => {
               <div className="mt-[16px] flex flex-wrap items-center justify-start gap-[16px]">
                 {homeworkDetailStudentData?.data.fileIds.length > 0 ? (homeworkDetailStudentData?.data.fileIds.map((id, index) => (
                   <div key={index} className="relative">
-                    {`http://ec2-52-78-180-130.ap-northeast-2.compute.amazonaws.com:8080/api/file/${id}`}
                     <img
                       src={`http://ec2-52-78-180-130.ap-northeast-2.compute.amazonaws.com:8080/api/file/${id}`}
                       alt="url"

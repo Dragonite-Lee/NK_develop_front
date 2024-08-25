@@ -115,9 +115,9 @@ const HomeworkTeNewWrite = () => {
                 />
               </div>
               <div className="tablet:mt-[28px] mobile:mt-[12px] flex justify-end">
-                <div onClick={() => postMutate.mutate(teacherPostData)} className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-homework2 text-white flex items-center justify-center">
+                <button onClick={() => postMutate.mutate(teacherPostData)} disabled={!title || !deadline} className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-homework2 text-white flex items-center justify-center">
                   등록하기
-                </div>
+                </button>
               </div>
             </div>
           </main>

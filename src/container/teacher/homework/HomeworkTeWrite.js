@@ -128,9 +128,9 @@ const HomeworkTeNewWrite = () => {
                 />
               </div>
               <div className="tablet:mt-[28px] mobile:mt-[12px] flex justify-end">
-                <div onClick={() => putMutate.mutate(teacherPutData)} className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-homework2 text-white flex items-center justify-center">
+                <button onClick={() => putMutate.mutate(teacherPutData)} disabled={title && deadline} className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-homework2 text-white flex items-center justify-center">
                   수정하기
-                </div>
+                </button>
               </div>
             </div>
           </main>

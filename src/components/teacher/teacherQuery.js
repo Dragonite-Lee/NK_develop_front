@@ -153,7 +153,10 @@ export const useTeHomeworkAllStudentQuery = (classnameId, homeworkId) => {
 export const useTeHomeworkDetailStudentQuery = (classnameId, homeworkId, submitId) => {
   const { data, isLoading } = useQuery(
     ["/teacher/homework/student", classnameId, homeworkId, submitId],
-    () => getTeHomeworkDetailStudent(classnameId, homeworkId, submitId)
+    () => getTeHomeworkDetailStudent(classnameId, homeworkId, submitId),
+    {
+      enabled: !!submitId,
+    }
   );
   return {
     homeworkDetailStudentData: data,

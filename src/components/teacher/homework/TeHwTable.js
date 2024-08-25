@@ -60,7 +60,7 @@ const TeHwTable = ({ classId, filter }) => {
             </div>
             <div className="flex items-center justify-center gap-[8px]">
               <div className="font-nanum_400 text-[13px] text-grey">
-                {item.deadline.slice(0, 10)} 까지
+                {/* {item?.deadline.slice(0, 10)} 까지 */}
               </div>
             </div>
           </div>

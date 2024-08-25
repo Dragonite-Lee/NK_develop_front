@@ -57,6 +57,9 @@ const BlueModalTe = ({ setState }) => {
       alert("선생님이 추가 되었습니다.");
       setState(false);
     },
+    onError: () => {
+      alert("이미 등록된 유저입니다.")
+    }
   });
   // console.log(nicknameValue,relationshipValue,studentIds,phoneNumberValue,usernameValue,passwordValue)
 
