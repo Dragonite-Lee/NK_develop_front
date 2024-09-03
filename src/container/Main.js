@@ -56,7 +56,7 @@ const Main = () => {
   const { user } = useUserStore();
 
   const { allClassroomData } = useTeAllClassroomQuery();
-  const { parnetInfoData } = useParentInfo(user?.username);
+  const { parnetInfoData } = useParentInfo(role==='학부모' ? user?.username : ''); 
   // console.log('parnetInfoData: ', parnetInfoData);
 
   useEffect(() => {

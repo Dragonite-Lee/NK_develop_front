@@ -19,7 +19,7 @@ const PaMainHwList = ({ studentId }) => {
           {studentHomeworkData?.data.results.map((item) => (
             <tr key={item.id} className="border-b hover:bg-gray-50">
               <td className="py-3 px-4 font-nanum_700">{item.title}</td>
-              <td className="py-3 px-4">{item.deadline.slice(0, 10)}</td>
+              <td className="py-3 px-4">{item.deadline ? item?.deadline.slice(0, 10) : ''} </td>
               <td className="py-3 px-4 font-nanum_700">
                 {item.status === 'TODO' ? (
                   <span className="text-homework1">미제출</span>

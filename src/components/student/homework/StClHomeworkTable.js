@@ -69,7 +69,7 @@ const StClHomeworkTable = ({ classId, filter }) => {
                 <div className="flex items-center justify-between font-nanum_400 text-grey text-[12px] mt-[8px]">
                   <div>{item.teacher.nickname}</div>
                   <div>
-                    {item.deadline.slice(0, 10)} 까지
+                  {item.deadline ? item?.deadline.slice(0, 10) + ' 까지' : ''} 
                   </div>
                 </div>
               </div>
