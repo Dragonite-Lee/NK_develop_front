@@ -262,7 +262,7 @@ const HomeworkDetail = () => {
                         : ' bg-grey'
                     } rounded-[10px] w-[150px] h-[36px] flex items-center justify-center`}
                   >
-                    숙제 최종 최종하기
+                    최종 제출하기
                   </button>
                 </div>
               </>
