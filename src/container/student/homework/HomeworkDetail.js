@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import {
-  useTeHomeworkAllStudentQuery,
   useTeHomeworkDetailStudentQuery,
   useTeOneHomeworkQuery,
 } from '../../../components/teacher/teacherQuery';
@@ -16,7 +15,10 @@ import {
   putHomeworkSubmit,
 } from '../../../services/api/studentApi';
 import Stopwatch from '../../../components/student/stopwatch';
-import { useHomeworkSubmitQuery, useStopwatch } from '../../../components/student/studentQuery';
+import {
+  useHomeworkSubmitQuery,
+  useStopwatch,
+} from '../../../components/student/studentQuery';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import useUserStore from '../../../store/user';
 import BlueModal from '../../../components/BlueModal';
@@ -48,11 +50,8 @@ const HomeworkDetail = () => {
     setHoemworkTimewatch,
   } = useStudentCurrentHomeworkStore();
   const { stopwatchData } = useStopwatch(classnameIdClient, id);
-  
-  const { submitData } = useHomeworkSubmitQuery(
-    classnameIdClient,
-    id
-  );
+
+  const { submitData } = useHomeworkSubmitQuery(classnameIdClient, id);
   const { homeworkDetailStudentData } = useTeHomeworkDetailStudentQuery(
     classnameIdClient,
     id,
@@ -66,27 +65,25 @@ const HomeworkDetail = () => {
     setHoemworkTimewatch(stopwatchData?.data);
   }, [id, oneHomeworkData, stopwatchData]);
   const uploadFile = async (e) => {
-    let fileArr = Array.from(e.target.files);
+    let fileArr = Array.from(e.target.files); // 선택한 파일을 배열로 변환
 
-    // 이미지 업로드 및 id 저장
-    try {
-      const response = await postImageId(fileArr[0]);
-      setImageIds((prevIds) => [...prevIds, response.data.id]);
-      if (images.length < 20) {
-        const newImages = [...images, ...fileArr.slice(0, 20 - images.length)];
-        setImages(newImages);
-
-        fileArr.slice(0, 20 - images.length).forEach((file) => {
+    // 각 파일에 대해 API 호출 및 이미지 업로드 처리
+    for (const file of fileArr) {
+      try {
+        const response = await postImageId(file);
+        setImageIds((prevIds) => [...prevIds, response.data.id]); // 각 파일의 id 저장
+        if (images.length < 20) {
+          setImages((prevImages) => [...prevImages, file]);
           const fileReader = new FileReader();
           fileReader.onload = () => {
-            setPreviews((prevPreviews) => [...prevPreviews, fileReader.result]);
+            setPreviews((prevPreviews) => [...prevPreviews, fileReader.result]); // 이미지 미리보기 생성
           };
           fileReader.readAsDataURL(file);
-        });
-      }
-    } catch (error) {
-      if (error.response.status == 413) {
-        alert('사진 파일의 용량이 너무 큽니다.');
+        }
+      } catch (error) {
+        if (error.response.status === 413) {
+          alert('사진 파일의 용량이 너무 큽니다.');
+        }
       }
     }
   };
@@ -188,12 +185,16 @@ const HomeworkDetail = () => {
                   {oneHomeworkData?.data.teacher.nickname} 선생님
                 </div>
               </div>
-              <div className='flex items-center justify-end gap-[21px]'>
-                <div className='font-nanum_400 text-grayDark'>숙제 마감일</div>
-                <div className='font-nanum_700'>
-                  {oneHomeworkData?.data.deadline.slice(0, 10)} 까지
+              {oneHomeworkData?.data.deadline ? (
+                <div className='flex items-center justify-end gap-[21px]'>
+                  <div className='font-nanum_400 text-grayDark'>
+                    숙제 마감일
+                  </div>
+                  <div className='font-nanum_700'>
+                    {oneHomeworkData?.data.deadline.slice(0, 10) + ' 까지'}
+                  </div>
                 </div>
-              </div>
+              ) : null}
             </div>
             {/* content 시작점 */}
             <div className='py-[28px] border-t-[1px] border-[#f0f0f0] font-nanum_400 text-[14px] text-grayDark'>
@@ -214,19 +215,25 @@ const HomeworkDetail = () => {
                   </div>
                   <label
                     htmlFor='fileUpload'
-                    className={`flex items-center justify-center cursor-pointer font-nanum_700 text-[14px] text-white mt-[20px] ${
-                      images.length >= 20 ? ' bg-grayLight' : ' bg-homework2'
+                    className={`flex items-center justify-center  font-nanum_700 text-[14px] text-white mt-[20px] ${
+                      images.length >= 20 || stopwatchData?.data === 0
+                        ? ' bg-grayLight'
+                        : ' bg-homework2 cursor-pointer'
                     } rounded-[10px] w-[168px] h-[37px]`}
                     onClick={(e) => images.length >= 20 && e.preventDefault()}
+                    disabled={stopwatchData?.data !== 0}
                   >
                     <input
                       type='file'
                       ref={fileInputRef}
                       id='fileUpload'
                       accept='image/*'
+                      multiple={true}
                       onChange={uploadFile}
                       className='hidden'
-                      disabled={images.length >= 20}
+                      disabled={
+                        images.length >= 20 || stopwatchData?.data === 0
+                      }
                     />
                     이미지 업로드하기
                   </label>

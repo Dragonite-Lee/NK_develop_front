@@ -28,8 +28,10 @@ const HomeworkTeNewWrite = () => {
   const { oneHomeworkData } = useTeOneHomeworkQuery(classnameIdClient, id);
 
   const [title, titleHandler, setTitle] = useInput("");
+  console.log('title: ', title);
   const [content, setContent] = useState('');
   const [deadline, deadlineHandler, setDeadline] = useInput("");
+  console.log('deadline: ', deadline);
 
   const formats = [
     "header",
@@ -128,7 +130,7 @@ const HomeworkTeNewWrite = () => {
                 />
               </div>
               <div className="tablet:mt-[28px] mobile:mt-[12px] flex justify-end">
-                <button onClick={() => putMutate.mutate(teacherPutData)} disabled={title && deadline} className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-homework2 text-white flex items-center justify-center">
+                <button onClick={() => putMutate.mutate(teacherPutData)} disabled={!title || !deadline} className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-homework2 text-white flex items-center justify-center">
                   수정하기
                 </button>
               </div>

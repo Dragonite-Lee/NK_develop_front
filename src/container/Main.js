@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { getCookie } from '../utils/cookie';
 import useTeacherMainStore from '../store/teacherMain';
-import { useTeAllClassroomQuery } from '../components/teacher/teacherQuery';
+import {
+  useTeAllClassroomQuery,
+  useTeClassroomQuery,
+} from '../components/teacher/teacherQuery';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import PaMainNoList from '../components/parent/main/MainNolist';
 import AdMainNoList from '../components/admin/main/AdMainNoList';
 import AdMainStList from '../components/admin/main/AdMainStList';
 import AdMainTeList from '../components/admin/main/AdMainTeList';
@@ -20,10 +22,7 @@ import StMainHwList from '../components/student/main/MainHwList';
 import StMainHwDoing from '../components/student/main/MainHwDoing';
 import TeMainHwList from '../components/teacher/main/TeMainHwList';
 import useUserStore from '../store/user';
-import {
-  useParentInfo,
-  useParentStudentQuery,
-} from '../components/parent/parentQuery';
+import { useParentInfo } from '../components/parent/parentQuery';
 import DropdownSt from '../components/parent/DropdownSt';
 import PaMainHwList from '../components/parent/main/MainHwList';
 
@@ -56,7 +55,14 @@ const Main = () => {
   const { user } = useUserStore();
 
   const { allClassroomData } = useTeAllClassroomQuery();
-  const { parnetInfoData } = useParentInfo(role==='학부모' ? user?.username : ''); 
+  const { classroomData } = useTeClassroomQuery(role === '선생님' ? user?.username : '');
+  // console.log('classroomData: ', classroomData);
+  const classroomDataResult = classroomData?.data.Classroom.filter(
+    (item) => item.type
+  ).map((item) => item.classroom);
+  const { parnetInfoData } = useParentInfo(
+    role === '학부모' ? user?.username : ''
+  );
   // console.log('parnetInfoData: ', parnetInfoData);
 
   useEffect(() => {
@@ -130,7 +136,7 @@ const Main = () => {
               state={classnameNameClient}
               setState={setClassnameNameClient}
               setId={setClassnameIdClient}
-              itemData={allClassroomData?.data}
+              itemData={classroomDataResult}
             />
             {classnameIdClient && (
               <div className='desktop:flex tablet:flex-row mobile:flex-col desktop:items-start desktop:gap-[24px] mt-[20px] z-0'>

@@ -38,22 +38,22 @@ const HomeworkSt = () => {
 
     if (newSelection.has(value)) {
       newSelection.delete(value);
-      if (value == "TODO") {
+      if (value === "TODO") {
         setTodoToggle(false);
-      } else if (value == "SUBMIT") {
+      } else if (value === "SUBMIT") {
         setSubmitToggle(false);
-      } else if (value == "COMPLETE") {
+      } else if (value === "COMPLETE") {
         setCompleteToggle(false);
       } else {
         setRejectToggle(false);
       }
     } else {
       newSelection.add(value);
-      if (value == "TODO") {
+      if (value === "TODO") {
         setTodoToggle(true);
-      } else if (value == "SUBMIT") {
+      } else if (value === "SUBMIT") {
         setSubmitToggle(true);
-      } else if (value == "COMPLETE") {
+      } else if (value === "COMPLETE") {
         setCompleteToggle(true);
       } else {
         setRejectToggle(true);

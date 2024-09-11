@@ -44,7 +44,7 @@ const DropdownCl = ({ state, setState, itemData, setId }) => {
           <ul className="indent-[22px] font-paybooc_500 tablet:text-[16px] mobile:text-[14px] m-[16px] max-h-[176px] flex flex-col gap-[24px] overflow-y-scroll scrollbar-medium scroll-smooth">
             {itemData.map((item, id) => (
               <li
-                key={id}
+                key={item.id}
                 onClick={() => onCheckHandler(item)}
                 className="hover:text-information"
               >

@@ -7,6 +7,7 @@ import {
   getTeAllHomework,
   getTeAllStudnet,
   getTeClassNotice,
+  getTeClassroom,
   getTeClassroomStudent,
   getTeHomework,
   getTeHomeworkAllStudent,
@@ -17,11 +18,24 @@ import {
 
 // 반 관리getAdAllClassroom
 export const useTeAllClassroomQuery = () => {
-  const { data, isLoading } = useQuery(["/teacher/classroom"], () =>
+  const { data, isLoading } = useQuery(["/classroom"], () =>
     getTeAllClassroom()
   );
   return {
     allClassroomData: data,
+    isLoading,
+  };
+};
+
+export const useTeClassroomQuery = (username) => {
+  const { data, isLoading } = useQuery(["/teacher/classroom", username], () =>
+    getTeClassroom(username),
+  {
+    enabled: !!username
+  }
+  );
+  return {
+    classroomData: data,
     isLoading,
   };
 };
