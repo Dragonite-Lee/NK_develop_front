@@ -129,7 +129,7 @@ const StudentTe = () => {
       )}
       <div className="min-w-[280px]">
         <Header />
-        <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight">
+        <main className="desktop:w-[996px] desktop:mx-auto tablet:w-auto tablet:mx-[40px] mobile:mx-[20px] pt-[28px] pb-[58px] mainHeight relative z-0">
           <DropdownCl
             state={classnameNameClient}
             setState={setClassnameNameClient}

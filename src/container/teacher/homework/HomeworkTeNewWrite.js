@@ -95,7 +95,7 @@ const HomeworkTeNewWrite = () => {
                 <input type="text" placeholder="숙제명을 입력하세요." value={title} onChange={titleHandler} className="font-nanum_400 desktop:w-[800px] box-border mobile:w-8/12 h-[38px] border-border rounded-[10px] placeholder-grey"/>
               </div>
               <div className="flex items-center justify-start gap-[60px] text-[15px] font-nanum_700 mt-[16px]">
-                <div>등록일 <span className="text-error">*</span></div>
+                <div>마감일 <span className="text-error">*</span></div>
                 <div>
                   <input
                     type="date"
@@ -115,9 +115,9 @@ const HomeworkTeNewWrite = () => {
                 />
               </div>
               <div className="tablet:mt-[28px] mobile:mt-[12px] flex justify-end">
-                <div onClick={() => postMutate.mutate(teacherPostData)} className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-homework2 text-white flex items-center justify-center">
+                <button onClick={() => postMutate.mutate(teacherPostData)} disabled={!title || !deadline} className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-homework2 text-white flex items-center justify-center">
                   등록하기
-                </div>
+                </button>
               </div>
             </div>
           </main>

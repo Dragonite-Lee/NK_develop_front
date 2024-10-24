@@ -6,6 +6,11 @@ export const getTeAllClassroom = async () => {
     return data;
 };
 
+export const getTeClassroom = async (username) => {
+  const data = await client.get(`/api/teacher/classroom/${username}`);
+  return data;
+};
+
 //반에 속한 학생 관리(get, post, delete)
 export const getTeClassroomStudent = async (id) => {
   const data = await client.get(`/api/classroom/${id}/student`);

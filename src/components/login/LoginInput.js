@@ -5,7 +5,6 @@ import useInput from "../../hooks/useInput";
 
 import useUserStore from "../../store/user";
 import { loginApi, onLoginSuccess, userApi } from "../../services/api/loginApi";
-import { setCookie } from "../../utils/cookie";
 
 const roleArray = [
   {
@@ -57,30 +56,26 @@ const LoginInput = () => {
       username: id,
       password: pw,
     };
-
-    await loginApi
-      .login(data)
-      .then((response) => {
-        onLoginSuccess(response);
-        const { refreshToken } = response.data
-        sessionStorage.setItem("refreshToken", refreshToken)
-        // console.log("success")
-        for (let i = 0; i < role.length; i++) {
-          if (role[i].default === true) {
-            sessionStorage.setItem("role", role[i].title);
-            if (role[i].title !== "관리자") {
-              userApi(role[i].path, id).then((res) => {
-                setUser(res.data);
-              });
-            }
+  
+    try {
+      const response = await loginApi.login(data);
+      onLoginSuccess(response);
+      // console.log("success")
+      for (let i = 0; i < role.length; i++) {
+        if (role[i].default === true) {
+          sessionStorage.setItem("role", role[i].title);
+          if (role[i].title !== "관리자") {
+            const res = await userApi(role[i].path, id);
+            setUser(res.data);
           }
         }
-        navigate("/main");
-      })
-      .catch(() => {
-        alert("잘못된 정보입니다.");
-      });
+      }
+      navigate("/main");
+    } catch (error) {
+      alert("잘못된 정보입니다.");
+    }
   };
+  
 
   return (
     <section className="mobile:w-full desktop:w-[486px] flex justify-center items-center tablet:h-[460px] mobile:h-full glassWhite tablet:p-0 mobile:p-[13px]">

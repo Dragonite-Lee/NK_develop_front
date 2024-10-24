@@ -83,6 +83,9 @@ const BlueModalSt = ({ setState }) => {
       alert("학생이 추가 되었습니다.");
       setState(false);
     },
+    onError: () => {
+      alert("이미 등록된 유저입니다.")
+    }
   });
 
   const idValid = idReg.test(usernameValue);

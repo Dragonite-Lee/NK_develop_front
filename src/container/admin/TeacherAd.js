@@ -113,7 +113,7 @@ const TeacherAd = () => {
             전체 선생님 명단 관리
           </div>
           {/* 필터 및 모달 */}
-          <div className="mt-[13px] flex items-center justify-end gap-[16px]">
+          <div className="mt-[13px] flex flex-wrap items-center justify-end gap-[16px]">
             <div className="relative">
               <input
                 type="text"

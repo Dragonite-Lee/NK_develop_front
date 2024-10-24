@@ -64,7 +64,7 @@ const BlueModalCl = ({ setState }) => {
     TeachingTeacher: teachingTeacher[0],
     AssistantTeacher: coachingTeacher,
   };
-  console.log(coachingTeacher);
+  // console.log(coachingTeacher);
   return (
     <div className="z-10 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full y-full min-h-full bg-[#212121]/[.08]">
       <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] tablet_change:w-[694px] tablet:w-[383px] mobile:w-[260px] tablet_change:h-[265px] mobile:h-[381px] rounded-[20px] border drop-shadow">

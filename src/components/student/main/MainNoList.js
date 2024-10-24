@@ -43,7 +43,7 @@ const StMainNoList = ({ classId, className }) => {
                 <div className="flex items-center justify-between mt-[16px] text-[14px]">
                   <div className="font-nanum_700">{item.title}</div>
                   <div className="font-nanum_400 text-grey">
-                    {item.created.slice(0, 10)}
+                    {item ? item.created.slice(0, 10) : ''}
                   </div>
                 </div>
                 <div

@@ -3,11 +3,11 @@ import { useState } from "react";
 import CaretUp from "../../assets/CaretUp.png";
 import CaretDown from "../../assets/CaretDown.png";
 
-const DropdownCl = ({ state, setState, itemData, setId }) => {
+const DropdownSt = ({ state, setState, itemData, setId }) => {
   const [trigger, setTrigger] = useState(false);
 
   const onCheckHandler = (data) => {
-    setState(data.classname);
+    setState(data.nickname);
     setTrigger(!trigger);
     setId(data.id);
   };
@@ -44,11 +44,11 @@ const DropdownCl = ({ state, setState, itemData, setId }) => {
           <ul className="indent-[22px] font-paybooc_500 tablet:text-[16px] mobile:text-[14px] m-[16px] max-h-[176px] flex flex-col gap-[24px] overflow-y-scroll scrollbar-medium scroll-smooth">
             {itemData.map((item, id) => (
               <li
-                key={item.id}
+                key={id}
                 onClick={() => onCheckHandler(item)}
                 className="hover:text-information"
               >
-                {item.classname}
+                {item.nickname}
               </li>
             ))}
           </ul>
@@ -58,4 +58,4 @@ const DropdownCl = ({ state, setState, itemData, setId }) => {
   );
 };
 
-export default DropdownCl;
+export default DropdownSt;

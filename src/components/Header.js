@@ -7,6 +7,7 @@ import NKlogo from "../assets/header/NK_logo.png";
 import UserCircle from "../assets/header/profile.png";
 import List from "../assets/header/List.png";
 import Bell from "../assets/header/Bell.png";
+import { getCookie, removeCookie } from "../utils/cookie";
 
 const studentRoute = [
   {
@@ -35,10 +36,6 @@ const teacherRoute = [
 ];
 
 const parentRoute = [
-  {
-    title: "학습태도 분석",
-    href: "/parent/behaving",
-  },
   {
     title: "공지사항",
     href: "/main/noticePa",
@@ -74,7 +71,7 @@ const Header = () => {
   const { user } = useUserStore();
   const { pathname } = useLocation();
   const navigator = useNavigate();
-  const refreshToken = sessionStorage.getItem("refreshToken")
+  const refreshToken = getCookie("refreshToken")
   useEffect(() => {
     if (!refreshToken) {
       navigator("/");
@@ -82,7 +79,7 @@ const Header = () => {
   }, [refreshToken]);
 
   const logout = () => {
-    sessionStorage.removeItem("refreshToken");
+    removeCookie("refreshToken");
     navigator("/");
   };
 

@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import CircleRight from "../../../assets/student/CaretCircleRight.png";
-import { useTeAllClassNoticeQuery, useTeAllHomeworkQuery, useTeHomeworkQuery } from "../teacherQuery";
+import { useTeAllHomeworkQuery, useTeHomeworkQuery } from "../teacherQuery";
 import useTeacherHomeworkStore from "../../../store/teacherHomework";
 
 const TeMainHwList = ({ classId, className }) => {
-  const [paramsPage, setParamsPage] = useState(0);
+  const [paramsPage] = useState(0);
 
   const { setClassnameIdClient, setClassnameNameClient } =
     useTeacherHomeworkStore();
   
   const { allHomeworkData } = useTeAllHomeworkQuery(classId);
   const { homeworkData } = useTeHomeworkQuery(classId, paramsPage);
+ 
   useEffect(() => {
     setClassnameIdClient(classId);
     setClassnameNameClient(className);
@@ -50,7 +51,7 @@ const TeMainHwList = ({ classId, className }) => {
                     {item.teacher.nickname} 선생님
                   </div>
                   <div className="font-nanum_400">
-                    {item.deadline.slice(0, 10)} 까지
+                    {item.deadline ? item?.deadline.slice(0, 10) + ' 까지' : ''} 
                   </div>
                 </div>
               </Link>

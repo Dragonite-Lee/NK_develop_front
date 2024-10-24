@@ -174,12 +174,13 @@ const NoticeTeNewWrite = () => {
             </div>
           </div>
           <div className="tablet:mt-[28px] mobile:mt-[12px] flex justify-end">
-            <div
+            <button
               onClick={() => postMutate.mutate(teacherPostData)}
+              disabled={!title || !content}
               className="rounded-[10px] w-[120px] h-[41px] font-nanum_700 text-[15px] bg-management1 text-white flex items-center justify-center"
             >
               저장하기
-            </div>
+            </button>
           </div>
         </div>
       </main>
